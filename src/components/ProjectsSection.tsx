@@ -4,20 +4,20 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 export const ProjectsSection: React.FC = () => {
   return (
-    <section id="projects" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-white/10">
+    <section id="projects" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
         <div>
-          <div className="text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase mb-2">
-            Selected Work
+          <div className="text-xs font-mono font-bold tracking-wider text-[#d4f769] uppercase mb-2">
+            Enterprise Deliverables
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
             Enterprise & FinTech Projects
           </h2>
         </div>
-        <div className="text-xs font-mono text-slate-400 max-w-xs md:text-right">
-          Production Systems • High-Concurrency Architecture • Multi-Region Resiliency
+        <div className="text-xs font-mono text-slate-400 max-w-xs md:text-right font-medium">
+          Multi-Region Gateways • Double-Entry Ledgers • Headless Migrations
         </div>
       </div>
 
@@ -26,37 +26,37 @@ export const ProjectsSection: React.FC = () => {
         {PORTFOLIO_DATA.projects.map((project) => (
           <div
             key={project.id}
-            className="rounded-2xl border border-white/10 bg-[#0c1017] p-7 sm:p-8 flex flex-col justify-between hover:border-white/20 transition-all shadow-lg"
+            className="rounded-3xl bg-[#121622] border border-white/10 p-8 sm:p-10 flex flex-col justify-between hover:border-white/20 transition-all shadow-xl"
           >
             <div>
               {/* Card Header */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-[#141b27] border border-white/10 text-emerald-400 font-medium">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span className="text-xs font-mono px-3 py-1 rounded-full bg-[#1c2436] border border-white/5 text-[#d4f769] font-bold">
                   {project.company}
                 </span>
-                <span className="text-xs font-mono text-slate-400">
+                <span className="text-xs font-mono text-slate-400 font-semibold">
                   {project.period}
                 </span>
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-white tracking-tight mb-3">
+              <h3 className="text-2xl font-bold text-white tracking-tight mb-4">
                 {project.title}
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+              <p className="text-sm text-slate-300 leading-relaxed mb-6 font-medium">
                 {project.summary}
               </p>
 
-              {/* Metrics */}
-              <div className="mb-6 p-4 rounded-xl bg-[#080b12] border border-white/5 space-y-2">
-                <div className="text-[10px] font-mono font-semibold tracking-wider text-slate-400 uppercase">
+              {/* Verified Metrics */}
+              <div className="mb-6 p-5 rounded-2xl bg-[#0b0f17] border border-white/5 space-y-2.5">
+                <div className="text-[10px] font-mono font-bold tracking-wider text-slate-400 uppercase">
                   Verified Engineering Metrics
                 </div>
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   {project.metrics.map((metric, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-200">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
+                      <CheckCircle2 className="w-4 h-4 text-[#d4f769] shrink-0 mt-0.5" />
                       <span>{metric}</span>
                     </div>
                   ))}
@@ -64,14 +64,14 @@ export const ProjectsSection: React.FC = () => {
               </div>
 
               {/* Architecture highlights */}
-              <div className="space-y-2 mb-6">
-                <div className="text-[10px] font-mono font-semibold tracking-wider text-slate-400 uppercase">
-                  System Architecture Highlights
+              <div className="space-y-2.5 mb-6">
+                <div className="text-[10px] font-mono font-bold tracking-wider text-slate-400 uppercase">
+                  System Architecture
                 </div>
                 <ul className="space-y-2">
                   {project.architecturePoints.map((point, idx) => (
-                    <li key={idx} className="text-xs text-slate-300 flex items-start gap-2 leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 shrink-0"></span>
+                    <li key={idx} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5 leading-relaxed font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0"></span>
                       <span>{point}</span>
                     </li>
                   ))}
@@ -80,11 +80,11 @@ export const ProjectsSection: React.FC = () => {
             </div>
 
             {/* Tech Stack */}
-            <div className="pt-4 border-t border-white/5 flex flex-wrap gap-1.5">
+            <div className="pt-6 border-t border-white/10 flex flex-wrap gap-2">
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#141a26] border border-white/5 text-slate-300"
+                  className="text-xs font-mono px-3 py-1 rounded-xl bg-[#182030] border border-white/5 text-slate-300"
                 >
                   {tech}
                 </span>

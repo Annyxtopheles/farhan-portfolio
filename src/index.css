@@ -8,51 +8,39 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: #080a0d;
-    color: #94a3b8;
+    background-color: #0b0f17;
+    color: #1e293b;
     overflow-x: hidden;
   }
-
-  code, pre, .font-mono {
-    font-family: var(--font-mono);
-  }
 }
 
-/* Custom subtle FinTech grid background */
-.fintech-grid {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+/* Paymid-style Citron Glow and Hero Gradients */
+.bg-citron {
+  background-color: #d4f769;
 }
 
-.fintech-dot-grid {
-  background-size: 24px 24px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+.text-citron {
+  color: #d4f769;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #090b0e;
-}
-::-webkit-scrollbar-thumb {
-  background: #1e2633;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+.border-citron {
+  border-color: #d4f769;
 }
 
-/* Pulse badge animation */
-@keyframes pulse-slow {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.96); }
+.hero-citron-gradient {
+  background: radial-gradient(120% 100% at 50% 0%, #dff776 0%, #cbf04a 45%, #bce638 100%);
 }
 
-.pulse-dot {
-  animation: pulse-slow 2.4s ease-in-out infinite;
+.fintech-card-shadow {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.fintech-card-shadow-dark {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Smooth transitions */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

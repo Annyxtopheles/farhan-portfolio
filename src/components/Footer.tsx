@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Copy, Check } from 'lucide-react';
+import { ArrowUpRight, Copy, Check, ShieldCheck } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { LinkedInIcon } from './icons/LinkedInIcon';
 
@@ -17,44 +17,45 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <footer className="border-t border-white/10 bg-[#06080d]">
+    <footer>
       
-      {/* High-Impact CTA Banner matching reference */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <div className="text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase">
-            Let's Build Together
+      {/* High-Impact Paymid Citron CTA Banner */}
+      <div className="bg-[#d4f769] text-black py-20 sm:py-28 px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/10 text-xs font-mono font-bold uppercase tracking-wider">
+            <ShieldCheck className="w-4 h-4 fill-black text-[#d4f769]" />
+            <span>High-Throughput Global Infrastructure</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Let's discuss scaling your next platform
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]">
+            Let's discuss scaling your next platform.
           </h2>
 
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl mx-auto">
-            Available for mission-critical FinTech engineering, multi-PSP orchestration, distributed systems, and technical contracts.
+          <p className="text-base sm:text-xl text-slate-800 font-medium max-w-2xl mx-auto leading-relaxed">
+            Available for mission-critical FinTech engineering, multi-gateway orchestration, distributed systems, and technical advisory.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-6">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <button
               onClick={onOpenContact}
-              className="px-6 py-3 rounded-xl font-mono text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white flex items-center gap-2 shadow-lg shadow-blue-600/25 transition-all active:scale-[0.98]"
+              className="px-8 py-4 rounded-2xl font-mono text-xs font-black uppercase tracking-wider bg-black hover:bg-slate-900 text-white flex items-center gap-2 shadow-2xl transition-all active:scale-[0.98]"
             >
-              <span>Hire Farhan</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span>Retain / Hire Farhan</span>
+              <ArrowUpRight className="w-4 h-4" />
             </button>
 
             <button
               onClick={handleCopy}
-              className="px-5 py-3 rounded-xl font-mono text-xs font-medium text-slate-300 hover:text-white bg-[#10141e] hover:bg-[#161c2b] border border-white/10 transition-colors flex items-center gap-2"
+              className="px-6 py-4 rounded-2xl font-mono text-xs font-bold uppercase tracking-wider bg-white/80 hover:bg-white text-black flex items-center gap-2 shadow-md transition-all active:scale-[0.98] border border-black/10"
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-300">Copied to Clipboard</span>
+                  <Check className="w-4 h-4 text-emerald-600" />
+                  <span>Copied to Clipboard</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-3.5 h-3.5" />
+                  <Copy className="w-4 h-4" />
                   <span>{PORTFOLIO_DATA.engineer.links.email}</span>
                 </>
               )}
@@ -64,31 +65,35 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               href={PORTFOLIO_DATA.engineer.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-[#10141e] hover:bg-[#161c2b] border border-white/10 text-slate-300 hover:text-white transition-colors"
+              className="p-4 rounded-2xl bg-white/80 hover:bg-white text-black border border-black/10 shadow-md transition-all flex items-center justify-center"
               title="LinkedIn Profile"
             >
-              <LinkedInIcon className="w-4 h-4 text-blue-400" />
+              <LinkedInIcon className="w-4 h-4" />
             </a>
           </div>
         </div>
       </div>
 
-      {/* Telemetry & Copyright Bar */}
-      <div className="border-t border-white/5 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
-            <span className="text-slate-300 font-semibold">{PORTFOLIO_DATA.engineer.name}</span>
-            <span>—</span>
-            <span>{PORTFOLIO_DATA.engineer.headline}</span>
+      {/* Deep Obsidian Telemetry & Footer Bar */}
+      <div className="bg-[#07090e] border-t border-white/10 py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-slate-400">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-black text-[#d4f769] border border-white/10 flex items-center justify-center font-black">
+              FK
+            </div>
+            <div>
+              <span className="text-white font-bold">{PORTFOLIO_DATA.engineer.name}</span>
+              <span className="mx-2 text-slate-600">•</span>
+              <span>{PORTFOLIO_DATA.engineer.headline}</span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] text-slate-400">
+          <div className="flex items-center gap-4 text-slate-400">
             <span>KUET ECE '13</span>
             <span>•</span>
-            <span>Paymid (Limassol)</span>
+            <span>Paymid (Limassol, Cyprus)</span>
             <span>•</span>
-            <span className="text-emerald-400 font-medium">99.99% Nominal SLA</span>
+            <span className="text-[#d4f769] font-bold">99.99% Nominal SLA</span>
           </div>
         </div>
       </div>

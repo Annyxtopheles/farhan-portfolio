@@ -4,39 +4,39 @@ import { Server, CreditCard, Layout } from 'lucide-react';
 export const CoreStack: React.FC = () => {
   const competencies = [
     {
-      title: "Backend & Architecture",
+      title: "Backend & Concurrency Architecture",
       icon: Server,
-      iconColor: "text-blue-400",
-      description: "Architecting high-concurrency transactional backends, RESTful APIs, distributed microservices, and zero-downtime database schemas.",
+      accent: "text-blue-500",
+      description: "Architecting high-throughput transactional backends, RESTful APIs, distributed microservices, and zero-downtime database schemas.",
       tags: ["PHP 8.3", "Laravel 11", "MySQL 8.0", "RoadRunner", "Redis Caching", "RESTful APIs"]
     },
     {
       title: "FinTech & Payment Rails",
       icon: CreditCard,
-      iconColor: "text-emerald-400",
-      description: "Deep expertise in multi-PSP orchestration, smart cost routing, automatic cascade failover, idempotency locking, and double-entry ledgers.",
+      accent: "text-[#d4f769]",
+      description: "Multi-PSP orchestration, smart fee routing, automatic cascade failover, Redis idempotency locking, and double-entry ledgers.",
       tags: ["Payment Gateways", "200+ PSP Drivers", "Card & 3DS 2.2", "Local APMs", "HMAC Webhooks", "Docker"]
     },
     {
       title: "Frontend, Cloud & CMS",
       icon: Layout,
-      iconColor: "text-purple-400",
-      description: "Building responsive frontends and executing massive enterprise migrations (like moving Johnson & Johnson to headless Contentful DXP).",
+      accent: "text-purple-400",
+      description: "Engineering responsive client frontends and leading enterprise migrations (like moving Johnson & Johnson to headless Contentful DXP).",
       tags: ["Vue.js", "TypeScript", "Tailwind CSS", "Contentful DXP", "Linux & CI/CD", "Git Architecture"]
     }
   ];
 
   return (
-    <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-white/10">
-      <div className="text-center max-w-2xl mx-auto mb-12">
-        <div className="text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase mb-2">
-          Engineering Depth
+    <section id="stack" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-xs font-mono font-bold tracking-wider text-[#d4f769] uppercase mb-2">
+          Engineering Competencies
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Core Competencies & Stack
         </h2>
-        <p className="text-slate-400 text-sm mt-2">
-          Specialized in high-reliability transactional architecture with hardware-level engineering rigor from KUET.
+        <p className="text-slate-400 text-base mt-3 font-medium">
+          Grounded in electrical & communications engineering fundamentals from KUET ECE '13.
         </p>
       </div>
 
@@ -46,25 +46,25 @@ export const CoreStack: React.FC = () => {
           return (
             <div
               key={idx}
-              className="rounded-2xl border border-white/10 bg-[#0c1017] p-7 flex flex-col justify-between hover:border-white/20 transition-all shadow-lg"
+              className="rounded-3xl bg-[#121622] border border-white/10 p-8 flex flex-col justify-between hover:border-white/20 transition-all shadow-xl"
             >
               <div>
-                <div className="w-12 h-12 rounded-xl bg-[#141b27] border border-white/10 flex items-center justify-center mb-5">
-                  <Icon className={`w-6 h-6 ${comp.iconColor}`} />
+                <div className="w-12 h-12 rounded-2xl bg-[#192030] border border-white/10 flex items-center justify-center mb-6">
+                  <Icon className={`w-6 h-6 ${comp.accent}`} />
                 </div>
-                <h3 className="text-lg font-bold text-white tracking-tight mb-2">
+                <h3 className="text-xl font-bold text-white tracking-tight mb-3">
                   {comp.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                <p className="text-sm text-slate-300 leading-relaxed mb-6 font-medium">
                   {comp.description}
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
                 {comp.tags.map((tag, tIdx) => (
                   <span
                     key={tIdx}
-                    className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-[#141a26] border border-white/5 text-slate-300"
+                    className="text-xs font-mono px-3 py-1 rounded-xl bg-[#182030] border border-white/5 text-slate-200"
                   >
                     {tag}
                   </span>
