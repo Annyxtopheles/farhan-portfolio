@@ -188,7 +188,7 @@ DB::transaction(function () use ($transactionId, $amount) {
   const activeNode = nodes.find(n => n.id === activeNodeId) || nodes[1];
 
   return (
-    <section id="workbench" className="py-20 max-w-6xl mx-auto px-6 lg:px-8 border-t border-white/[0.08]">
+    <section id="workbench" className="py-20 max-w-6xl mx-auto px-6 lg:px-8 border-t border-white/[0.06]">
       
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
@@ -225,11 +225,11 @@ DB::transaction(function () use ($transactionId, $amount) {
                 onClick={() => setActiveNodeId(node.id)}
                 className={`w-full p-4 rounded-xl border text-left transition-all flex items-start gap-3.5 ${
                   isSelected
-                    ? 'bg-blue-600/10 border-blue-500/40 text-white shadow-sm'
-                    : 'bg-[#0e1422] border-white/[0.05] text-slate-400 hover:text-slate-200 hover:border-white/10'
+                    ? 'bg-[#141620] border-blue-500/40 text-white shadow-sm'
+                    : 'bg-[#111318] border-white/[0.06] text-slate-400 hover:text-slate-200 hover:border-white/15'
                 }`}
               >
-                <div className={`p-2 rounded-lg mt-0.5 ${isSelected ? 'bg-blue-600 text-white' : 'bg-[#080c14] text-slate-500'}`}>
+                <div className={`p-2 rounded-lg mt-0.5 ${isSelected ? 'bg-white text-black' : 'bg-[#090a0d] text-slate-500 border border-white/[0.04]'}`}>
                   <Icon className="w-4 h-4" />
                 </div>
 
@@ -258,7 +258,7 @@ DB::transaction(function () use ($transactionId, $amount) {
         </div>
 
         {/* Right Column: Architectural Deep-Dive & Code Specification (7 cols) */}
-        <div className="lg:col-span-7 rounded-2xl bg-[#0e1422] border border-blue-500/20 p-6 sm:p-8 space-y-6 shadow-xl">
+        <div className="lg:col-span-7 rounded-2xl bg-[#111318] border border-white/[0.07] p-6 sm:p-8 space-y-6 shadow-xl">
           
           {/* Header of Active Node */}
           <div className="border-b border-white/[0.06] pb-4">
@@ -281,7 +281,7 @@ DB::transaction(function () use ($transactionId, $amount) {
               <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-1">
                 The Financial Failure Mode
               </div>
-              <p className="text-slate-300 leading-relaxed bg-[#080c14] p-3.5 rounded-xl border border-white/[0.04]">
+              <p className="text-slate-300 leading-relaxed bg-[#090a0d] p-3.5 rounded-xl border border-white/[0.05]">
                 {activeNode.spec.problemStatement}
               </p>
             </div>
@@ -290,7 +290,7 @@ DB::transaction(function () use ($transactionId, $amount) {
               <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-1">
                 Architectural Resolution
               </div>
-              <p className="text-slate-300 leading-relaxed bg-[#080c14] p-3.5 rounded-xl border border-white/[0.04]">
+              <p className="text-slate-300 leading-relaxed bg-[#090a0d] p-3.5 rounded-xl border border-white/[0.05]">
                 {activeNode.spec.architecturalSolution}
               </p>
             </div>
@@ -299,7 +299,7 @@ DB::transaction(function () use ($transactionId, $amount) {
               <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-1">
                 Concurrency & Edge Case Invariant
               </div>
-              <p className="text-slate-300 leading-relaxed bg-[#080c14] p-3.5 rounded-xl border border-white/[0.04]">
+              <p className="text-slate-300 leading-relaxed bg-[#090a0d] p-3.5 rounded-xl border border-white/[0.05]">
                 {activeNode.spec.concurrencyHandling}
               </p>
             </div>
@@ -310,7 +310,7 @@ DB::transaction(function () use ($transactionId, $amount) {
             <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-2">
               Production Architecture Pattern (PHP 8.3)
             </div>
-            <div className="p-4 rounded-xl bg-[#060910] border border-blue-500/15 font-mono text-xs overflow-x-auto text-slate-300 leading-relaxed">
+            <div className="p-4 rounded-xl bg-[#07080b] border border-white/[0.07] font-mono text-xs overflow-x-auto text-slate-300 leading-relaxed">
               <pre>{activeNode.spec.codePattern}</pre>
             </div>
           </div>

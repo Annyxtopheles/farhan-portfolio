@@ -39,12 +39,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-      <div className="relative w-full max-w-xl rounded-2xl border border-blue-500/20 bg-[#0e1422] shadow-2xl p-6 sm:p-8 text-left">
+      <div className="relative w-full max-w-xl rounded-2xl border border-white/[0.08] bg-[#111318] shadow-2xl p-6 sm:p-8 text-left">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-lg bg-[#080c14] border border-white/[0.08] text-slate-400 hover:text-white transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-lg bg-[#090a0d] border border-white/[0.08] text-slate-400 hover:text-white transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
@@ -64,9 +64,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         </div>
 
         {/* Fast Action: Direct Email Pill */}
-        <div className="mb-6 p-4 rounded-xl bg-[#080c14] border border-blue-500/15 flex flex-wrap items-center justify-between gap-3">
+        <div className="mb-6 p-4 rounded-xl bg-[#090a0d] border border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-blue-600/15 border border-blue-500/30 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center">
               <Mail className="w-4 h-4 text-blue-400" />
             </div>
             <div>
@@ -80,7 +80,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyEmail}
-              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-blue-600/10 border border-blue-500/20 text-blue-300 hover:text-white flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
             >
               {copiedEmail ? (
                 <>
@@ -99,7 +99,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               href={PORTFOLIO_DATA.engineer.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-blue-600/20 border border-blue-500/40 text-blue-300 hover:bg-blue-600/30 flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
             >
               <LinkedInIcon className="w-3.5 h-3.5" />
               <span>LinkedIn</span>
@@ -109,8 +109,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
         {/* Message Form */}
         {formSent ? (
-          <div className="py-8 text-center space-y-3 bg-[#080c14] rounded-xl border border-blue-500/30 p-6">
-            <div className="w-12 h-12 rounded-full bg-blue-600/15 border border-blue-500/30 flex items-center justify-center mx-auto">
+          <div className="py-8 text-center space-y-3 bg-[#090a0d] rounded-xl border border-white/[0.08] p-6">
+            <div className="w-12 h-12 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center mx-auto">
               <ShieldCheck className="w-6 h-6 text-blue-400" />
             </div>
             <h4 className="text-white font-bold text-base">Transmission Formatted</h4>
@@ -135,7 +135,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="e.g. Alex Mercer"
-                  className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
                 />
               </div>
               <div>
@@ -146,7 +146,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="alex@fintech.co"
-                  className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder="e.g. PayFlow Global"
-                  className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
                 />
               </div>
               <div>
@@ -167,7 +167,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 <select
                   value={formData.scope}
                   onChange={(e) => setFormData({ ...formData, scope: e.target.value })}
-                  className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white focus:outline-none focus:border-white/30"
                 >
                   <option value="Payment Gateway Integration">Payment Gateway Integration</option>
                   <option value="Multi-PSP Orchestration & Routing">Multi-PSP Orchestration & Routing</option>
@@ -186,15 +186,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="Describe your current payment routing challenge or backend requirements..."
-                className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
+                className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-2.5 px-4 rounded-xl font-bold bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg shadow-blue-600/20"
+              className="w-full py-2.5 px-4 rounded-xl font-bold bg-white hover:bg-slate-200 text-black flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
             >
-              <Send className="w-3.5 h-3.5 fill-white" />
+              <Send className="w-3.5 h-3.5 fill-black" />
               <span>Transmit Engineering Ingress</span>
             </button>
           </form>

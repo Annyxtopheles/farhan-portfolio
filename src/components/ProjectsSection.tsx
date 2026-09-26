@@ -4,7 +4,7 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 export const ProjectsSection: React.FC = () => {
   return (
-    <section id="work" className="py-20 max-w-6xl mx-auto px-6 lg:px-8 border-t border-blue-950/40">
+    <section id="work" className="py-20 max-w-6xl mx-auto px-6 lg:px-8 border-t border-white/[0.06]">
       
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
@@ -22,16 +22,16 @@ export const ProjectsSection: React.FC = () => {
         </p>
       </div>
 
-      {/* 2-Column Grid (Cuts vertical scroll in half!) */}
+      {/* 2-Column Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {PORTFOLIO_DATA.projects.map((project) => (
           <div
             key={project.id}
-            className="p-6 sm:p-7 rounded-2xl bg-[#0e1422] border border-blue-500/15 hover:border-blue-500/30 transition-all flex flex-col justify-between shadow-lg"
+            className="p-6 sm:p-7 rounded-2xl bg-[#111318] border border-white/[0.07] hover:border-white/20 transition-all flex flex-col justify-between shadow-lg"
           >
             <div>
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                <span className="text-xs font-mono font-medium text-blue-400 bg-blue-950/60 px-2.5 py-0.5 rounded border border-blue-500/20">
+                <span className="text-xs font-mono font-medium text-blue-400 bg-white/[0.04] px-2.5 py-0.5 rounded border border-white/[0.08]">
                   {project.company}
                 </span>
                 <span className="text-xs font-mono text-slate-500">
@@ -51,7 +51,7 @@ export const ProjectsSection: React.FC = () => {
               <div className="space-y-1.5 mb-5 text-xs text-slate-400">
                 {project.architecturePoints.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-2">
-                    <span className="text-blue-500/70 mt-1">•</span>
+                    <span className="text-blue-400/80 mt-1">•</span>
                     <span className="leading-relaxed">{point}</span>
                   </div>
                 ))}
@@ -63,7 +63,7 @@ export const ProjectsSection: React.FC = () => {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#080c14] border border-white/[0.06] text-slate-400"
+                  className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#090a0d] border border-white/[0.05] text-slate-400"
                 >
                   {tech}
                 </span>

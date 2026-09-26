@@ -8,35 +8,24 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: #080c14; /* Deep midnight titanium */
-    color: #94a3b8;
+    background-color: #090a0d; /* True neutral deep black */
+    color: #8b949e;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {
-    color: #f8fafc;
+    color: #f0f3f6;
   }
 }
 
-/* Subtle modern blue ambient glow */
-.blue-ambient {
-  background: radial-gradient(800px circle at 50% 0%, rgba(37, 99, 235, 0.08), transparent 70%);
+/* Neutral subtle dark surfaces */
+.neutral-card {
+  background-color: #12141a;
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* Subtle geometric dot grid */
-.midnight-grid {
-  background-size: 32px 32px;
-  background-image: radial-gradient(rgba(59, 130, 246, 0.07) 1px, transparent 1px);
-}
-
-/* Midnight card surface with crisp border */
-.midnight-card {
-  background-color: #0e1422;
-  border: 1px solid rgba(59, 130, 246, 0.12);
-}
-
-.midnight-card:hover {
-  border-color: rgba(59, 130, 246, 0.28);
+.neutral-card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 /* Custom scrollbar */
@@ -45,12 +34,12 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #080c14;
+  background: #090a0d;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #1c1f26;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #2a2f3a;
 }

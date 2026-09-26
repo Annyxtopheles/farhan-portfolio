@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <footer className="py-20 max-w-6xl mx-auto px-6 lg:px-8 border-t border-blue-950/40">
+    <footer className="py-20 max-w-6xl mx-auto px-6 lg:px-8 border-t border-white/[0.06]">
       
       {/* Contact Section */}
       <div className="mb-14 space-y-4">
@@ -31,11 +31,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
         <div className="flex flex-wrap items-center gap-3 pt-2">
           <button
             onClick={handleCopy}
-            className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs font-mono transition-all shadow-md shadow-blue-600/20 flex items-center gap-2"
+            className="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-200 text-black font-semibold text-xs font-mono transition-colors flex items-center gap-2"
           >
             {copied ? (
               <>
-                <Check className="w-3.5 h-3.5 text-white" />
+                <Check className="w-3.5 h-3.5 text-black" />
                 <span>Copied to Clipboard</span>
               </>
             ) : (
@@ -48,20 +48,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
           <button
             onClick={onOpenContact}
-            className="px-4 py-2.5 rounded-xl bg-[#0e1422] hover:bg-[#151f33] text-slate-200 text-xs font-mono border border-blue-500/20 transition-colors flex items-center gap-1.5"
+            className="px-4 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 text-xs font-mono border border-white/[0.08] transition-colors flex items-center gap-1.5"
           >
             <span>Send message</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-blue-400" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
           </button>
 
           <a
             href={PORTFOLIO_DATA.engineer.links.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 rounded-xl bg-[#0e1422] hover:bg-[#151f33] text-slate-300 hover:text-white border border-blue-500/20 transition-colors"
+            className="p-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/[0.08] transition-colors"
             title="LinkedIn Profile"
           >
-            <LinkedInIcon className="w-4 h-4 text-blue-400" />
+            <LinkedInIcon className="w-4 h-4 text-slate-400" />
           </a>
         </div>
       </div>
