@@ -168,7 +168,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
   const activeStage = stages.find(s => s.id === activeStageId) || stages[1];
 
   return (
-    <div className="min-h-screen bg-[#0f1117] text-slate-300 font-sans selection:bg-white/20 selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-[#0f1117] text-slate-400 font-sans selection:bg-white/10 selection:text-slate-200 flex flex-col justify-between">
       
       {/* =========================================================================
           GLOBAL SHELL: CONSISTENT WIDTH (max-w-6xl), NO JUMPING, SOFT PROFESSIONAL PALETTE
@@ -176,7 +176,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col min-h-screen">
         
         {/* Top Navigation Header: NO duplicate name/logo! Clean navigation */}
-        <header className="flex items-center justify-between py-4 border-b border-white/[0.08] shrink-0">
+        <header className="flex items-center justify-between py-4 border-b border-white/[0.06] shrink-0">
           <div>
             {currentPage === 'bento' ? (
               <span className="text-xs font-medium text-slate-400 tracking-wide uppercase">
@@ -185,7 +185,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             ) : (
               <button
                 onClick={() => navigateTo('bento')}
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white transition-colors group"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors group"
               >
                 <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
                 <span>Back to Overview</span>
@@ -197,7 +197,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('bento')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'bento' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'bento' ? 'text-slate-200 bg-white/[0.06]' : 'text-slate-400 hover:text-slate-300'
               }`}
             >
               Overview
@@ -205,7 +205,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('about')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'about' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'about' ? 'text-slate-200 bg-white/[0.06]' : 'text-slate-400 hover:text-slate-300'
               }`}
             >
               About
@@ -213,7 +213,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('architecture')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'architecture' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'architecture' ? 'text-slate-200 bg-white/[0.06]' : 'text-slate-400 hover:text-slate-300'
               }`}
             >
               Architecture
@@ -221,7 +221,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('projects')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'projects' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'projects' ? 'text-slate-200 bg-white/[0.06]' : 'text-slate-400 hover:text-slate-300'
               }`}
             >
               Projects
@@ -229,14 +229,14 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('experience')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'experience' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'experience' ? 'text-slate-200 bg-white/[0.06]' : 'text-slate-400 hover:text-slate-300'
               }`}
             >
               Experience
             </button>
             <button
               onClick={() => setIsContactOpen(true)}
-              className="ml-2 px-3 py-1 rounded-lg text-xs font-medium text-slate-200 bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] transition-colors"
+              className="ml-2 px-3 py-1 rounded-lg text-xs font-medium text-slate-300 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] transition-colors"
             >
               Contact
             </button>
@@ -252,19 +252,19 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 1: Persona & Bio (5 cols) */}
             <div
               onClick={() => navigateTo('about')}
-              className="lg:col-span-5 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
                 <div className="flex items-center gap-4 mb-3.5 xl:mb-4">
                   <img
                     src="/farhan.jpg"
                     alt={PORTFOLIO_DATA.engineer.name}
-                    className="w-14 h-14 xl:w-16 xl:h-16 rounded-xl border border-white/[0.08] object-cover bg-black shrink-0"
+                    className="w-14 h-14 xl:w-16 xl:h-16 rounded-xl border border-white/[0.06] object-cover bg-black shrink-0"
                     width="64"
                     height="64"
                   />
                   <div>
-                    <h1 className="text-lg xl:text-xl font-bold text-slate-100 tracking-tight group-hover:text-white transition-colors">
+                    <h1 className="text-lg xl:text-xl font-bold text-slate-200 tracking-tight group-hover:text-slate-100 transition-colors">
                       {PORTFOLIO_DATA.engineer.name}
                     </h1>
                     <p className="text-xs text-slate-400 mt-0.5">
@@ -273,8 +273,8 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
                 </div>
 
-                <p className="text-xs xl:text-sm text-slate-300 leading-relaxed mb-3.5 xl:mb-4">
-                  Over 7 years architecting high-throughput payment rails, sub-15ms dynamic routing solvers, distributed Redis mutexes, and zero-variance double-entry ledgers at <strong className="text-slate-100 font-medium">Paymid</strong>.
+                <p className="text-xs xl:text-sm text-slate-400 leading-relaxed mb-3.5 xl:mb-4">
+                  Over 7 years architecting high-throughput payment rails, sub-15ms dynamic routing solvers, distributed Redis mutexes, and zero-variance double-entry ledgers at <strong className="text-slate-200 font-medium">Paymid</strong>.
                 </p>
 
                 {/* Direct Social Links */}
@@ -314,9 +314,9 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 </div>
               </div>
 
-              <div className="pt-3 mt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+              <div className="pt-3 mt-3 border-t border-white/[0.05] flex items-center justify-between text-xs text-slate-400">
                 <span>Limassol, Cyprus (Remote)</span>
-                <span className="text-slate-300 group-hover:text-white font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                <span className="text-slate-300 group-hover:text-slate-100 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>About Farhan</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
@@ -326,11 +326,11 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 2: Architecture Focus (7 cols) */}
             <div
               onClick={() => navigateTo('architecture')}
-              className="lg:col-span-7 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-semibold text-slate-200">
+                  <span className="text-xs font-semibold text-slate-300">
                     Payment Architecture & Concurrency
                   </span>
                   <span className="text-xs text-slate-400">
@@ -338,34 +338,34 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </span>
                 </div>
 
-                <h2 className="text-base xl:text-lg font-bold text-slate-100 tracking-tight mb-1.5 group-hover:text-white transition-colors">
+                <h2 className="text-base xl:text-lg font-bold text-slate-200 tracking-tight mb-1.5 group-hover:text-slate-100 transition-colors">
                   Fault-Tolerant Payment Rail Orchestration
                 </h2>
 
-                <p className="text-xs xl:text-sm text-slate-300 leading-relaxed mb-3 xl:mb-4">
+                <p className="text-xs xl:text-sm text-slate-400 leading-relaxed mb-3 xl:mb-4">
                   Multi-acquirer priority routing, distributed idempotency locks, and ACID double-entry bookkeeping engineered for zero downtime and zero financial drift.
                 </p>
 
                 {/* 3 Clean Focus Invariant Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] text-left">
-                    <div className="text-xs font-semibold text-slate-200">Dynamic Failover</div>
+                  <div className="p-3 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
+                    <div className="text-xs font-semibold text-slate-300">Dynamic Failover</div>
                     <div className="text-xs text-slate-400 mt-0.5">&lt;15ms automated swap</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                       Instant circuit breaker fallbacks when upstream acquirers timeout.
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] text-left">
-                    <div className="text-xs font-semibold text-slate-200">Redis Mutex Lock</div>
+                  <div className="p-3 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
+                    <div className="text-xs font-semibold text-slate-300">Redis Mutex Lock</div>
                     <div className="text-xs text-slate-400 mt-0.5">Zero double charges</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                       Distributed locks guarantee single-execution mutation per key.
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] text-left">
-                    <div className="text-xs font-semibold text-slate-200">ACID Double-Entry</div>
+                  <div className="p-3 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
+                    <div className="text-xs font-semibold text-slate-300">ACID Double-Entry</div>
                     <div className="text-xs text-slate-400 mt-0.5">Zero rounding drift</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                       Serializable journal records ensure matching debits and credits sum to zero.
@@ -374,9 +374,9 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 </div>
               </div>
 
-              <div className="pt-3 mt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+              <div className="pt-3 mt-3 border-t border-white/[0.05] flex items-center justify-between text-xs text-slate-400">
                 <span>Interactive Pipeline & PHP 8.3 Patterns</span>
-                <span className="text-slate-300 group-hover:text-white font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                <span className="text-slate-300 group-hover:text-slate-100 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>Explore Architecture</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
@@ -386,23 +386,23 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 3: Selected Platforms (4 cols) */}
             <div
               onClick={() => navigateTo('projects')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-slate-200 mb-1">
+                <div className="text-xs font-semibold text-slate-300 mb-1">
                   Production Platforms
                 </div>
 
-                <h3 className="text-base font-bold text-slate-100 mb-2.5 group-hover:text-white transition-colors">
+                <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
                   Key Systems Engineered
                 </h3>
 
                 <div className="space-y-2 text-xs">
                   {/* Paymid Flagship Feature */}
-                  <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                  <div className="p-2.5 rounded-xl bg-white/[0.015] border border-white/[0.05]">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-slate-100">Paymid</span>
-                      <span className="text-[10px] text-slate-300 bg-white/[0.06] px-2 py-0.5 rounded font-medium">Core PSP</span>
+                      <span className="font-semibold text-slate-200">Paymid</span>
+                      <span className="text-[10px] text-slate-400 bg-white/[0.04] px-2 py-0.5 rounded font-medium">Core PSP</span>
                     </div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
                       Global payment gateway orchestrator handling multi-acquirer transaction routing and APMs across Europe.
@@ -410,26 +410,26 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
 
                   {/* Secondary platforms list */}
-                  <div className="px-1 space-y-1.5 text-xs text-slate-300">
+                  <div className="px-1 space-y-1.5 text-xs">
                     <div className="flex items-center justify-between">
-                      <span>Namhost</span>
+                      <span className="text-slate-300">Namhost</span>
                       <span className="text-[11px] text-slate-400">Cross-Border Fintech</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span>Johnson & Johnson</span>
+                      <span className="text-slate-300">Johnson & Johnson</span>
                       <span className="text-[11px] text-slate-400">Enterprise DXP</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span>Grameenphone</span>
+                      <span className="text-slate-300">Grameenphone</span>
                       <span className="text-[11px] text-slate-400">Telecom Core API</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-2.5 mt-2.5 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+              <div className="pt-2.5 mt-2.5 border-t border-white/[0.05] flex items-center justify-between text-xs text-slate-400">
                 <span>4 Production Platforms</span>
-                <span className="text-slate-300 group-hover:text-white font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                <span className="text-slate-300 group-hover:text-slate-100 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>View Systems</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
@@ -439,46 +439,46 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 4: Career Record (4 cols) — Real Engineering Roles Only! */}
             <div
               onClick={() => navigateTo('experience')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-slate-200 mb-1">
+                <div className="text-xs font-semibold text-slate-300 mb-1">
                   Career Record
                 </div>
 
-                <h3 className="text-base font-bold text-slate-100 mb-2.5 group-hover:text-white transition-colors">
+                <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
                   Work History
                 </h3>
 
                 {/* Real Software Engineering Roles Timeline */}
                 <div className="space-y-2 text-xs">
-                  <div className="border-l-2 border-white/[0.2] pl-3 py-0.5">
+                  <div className="border-l-2 border-white/[0.15] pl-3 py-0.5">
                     <div className="flex items-baseline justify-between">
-                      <span className="font-semibold text-slate-100">Paymid (Cyprus)</span>
+                      <span className="font-semibold text-slate-200">Paymid (Cyprus)</span>
                       <span className="text-[11px] text-slate-400">2024 — Present</span>
                     </div>
                     <div className="text-[11px] text-slate-400">Software Engineer — Platform & Payments</div>
                   </div>
 
-                  <div className="border-l-2 border-white/[0.1] pl-3 py-0.5">
+                  <div className="border-l-2 border-white/[0.08] pl-3 py-0.5">
                     <div className="flex items-baseline justify-between">
-                      <span className="font-medium text-slate-200">SJ Innovation</span>
+                      <span className="font-medium text-slate-300">SJ Innovation</span>
                       <span className="text-[11px] text-slate-400">2023 — 2024</span>
                     </div>
                     <div className="text-[11px] text-slate-400">Senior Software Engineer</div>
                   </div>
 
-                  <div className="border-l-2 border-white/[0.1] pl-3 py-0.5">
+                  <div className="border-l-2 border-white/[0.08] pl-3 py-0.5">
                     <div className="flex items-baseline justify-between">
-                      <span className="font-medium text-slate-200">Namhost</span>
+                      <span className="font-medium text-slate-300">Namhost</span>
                       <span className="text-[11px] text-slate-400">2023 — 2024</span>
                     </div>
                     <div className="text-[11px] text-slate-400">FinTech & Ledger Engineer</div>
                   </div>
 
-                  <div className="border-l-2 border-white/[0.1] pl-3 py-0.5">
+                  <div className="border-l-2 border-white/[0.08] pl-3 py-0.5">
                     <div className="flex items-baseline justify-between">
-                      <span className="font-medium text-slate-200">IYLMA / Grameenphone</span>
+                      <span className="font-medium text-slate-300">IYLMA / Grameenphone</span>
                       <span className="text-[11px] text-slate-400">2022</span>
                     </div>
                     <div className="text-[11px] text-slate-400">Software Engineer</div>
@@ -486,9 +486,9 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 </div>
               </div>
 
-              <div className="pt-2.5 mt-2.5 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+              <div className="pt-2.5 mt-2.5 border-t border-white/[0.05] flex items-center justify-between text-xs text-slate-400">
                 <span>7+ Years Production Track Record</span>
-                <span className="text-slate-300 group-hover:text-white font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                <span className="text-slate-300 group-hover:text-slate-100 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>View Timeline</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
@@ -498,14 +498,14 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 5: Core Tech Stack (4 cols) — With Real Vector Tech Logos! */}
             <div
               onClick={() => navigateTo('architecture')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-slate-200 mb-1">
+                <div className="text-xs font-semibold text-slate-300 mb-1">
                   Core Technologies
                 </div>
 
-                <h3 className="text-base font-bold text-slate-100 mb-2.5 group-hover:text-white transition-colors">
+                <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
                   Backend & Systems Stack
                 </h3>
 
@@ -513,23 +513,23 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   <div>
                     <span className="text-[11px] text-slate-400 block mb-1">Languages & Frameworks</span>
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <PhpIcon className="w-3 h-3 text-slate-400" />
                         <span>PHP 8.3</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <LaravelIcon className="w-3 h-3 text-slate-400" />
                         <span>Laravel 11</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <GoIcon className="w-3 h-3 text-slate-400" />
                         <span>Go</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <NodeIcon className="w-3 h-3 text-slate-400" />
                         <span>Node.js</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <SymfonyIcon className="w-3 h-3 text-slate-400" />
                         <span>Symfony</span>
                       </span>
@@ -538,15 +538,15 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   <div>
                     <span className="text-[11px] text-slate-400 block mb-1">Data & Mutex</span>
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <RedisIcon className="w-3 h-3 text-slate-400" />
                         <span>Redis Cluster</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <MySqlIcon className="w-3 h-3 text-slate-400" />
                         <span>MySQL 8.0</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <PostgreSqlIcon className="w-3 h-3 text-slate-400" />
                         <span>PostgreSQL</span>
                       </span>
@@ -555,18 +555,18 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   <div>
                     <span className="text-[11px] text-slate-400 block mb-1">Protocols & Standards</span>
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <DockerIcon className="w-3 h-3 text-slate-400" />
                         <span>Docker</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         <TypeScriptIcon className="w-3 h-3 text-slate-400" />
                         <span>TypeScript</span>
                       </span>
-                      <span className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         PCI-DSS Ingress
                       </span>
-                      <span className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                         HMAC-SHA256
                       </span>
                     </div>
@@ -574,9 +574,9 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 </div>
               </div>
 
-              <div className="pt-2.5 mt-2.5 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
+              <div className="pt-2.5 mt-2.5 border-t border-white/[0.05] flex items-center justify-between text-xs text-slate-400">
                 <span>Production Stack</span>
-                <span className="text-slate-300 group-hover:text-white font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                <span className="text-slate-300 group-hover:text-slate-100 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>Stack Details</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
@@ -597,22 +597,22 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               <div className="space-y-10 text-left max-w-4xl">
                 
                 {/* Hero Header with Large Portrait */}
-                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.07] flex flex-col md:flex-row items-start md:items-center gap-6">
+                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex flex-col md:flex-row items-start md:items-center gap-6">
                   <img
                     src="/farhan.jpg"
                     alt={PORTFOLIO_DATA.engineer.name}
-                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border border-white/[0.1] object-cover shadow-xl shrink-0"
+                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border border-white/[0.08] object-cover shadow-xl shrink-0"
                     width="112"
                     height="112"
                   />
                   <div className="space-y-1.5">
-                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-[11px] text-slate-300 font-medium">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-[11px] text-slate-400 font-medium">
                       <span>Based in Dhaka, Bangladesh · Remote for Paymid (Cyprus)</span>
                     </div>
-                    <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
                       {PORTFOLIO_DATA.engineer.name}
                     </h1>
-                    <p className="text-sm sm:text-base text-slate-300 font-medium">
+                    <p className="text-sm sm:text-base text-slate-400 font-normal">
                       Senior Backend & Payment Systems Engineer specializing in multi-PSP orchestration, distributed mutexes, and zero-drift financial ledgers.
                     </p>
                     <div className="pt-2 flex items-center gap-3 text-xs text-slate-400">
@@ -620,7 +620,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         href={PORTFOLIO_DATA.engineer.links.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-white transition-colors"
+                        className="hover:text-slate-200 transition-colors"
                       >
                         GitHub Profile
                       </a>
@@ -629,14 +629,14 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         href={PORTFOLIO_DATA.engineer.links.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-white transition-colors"
+                        className="hover:text-slate-200 transition-colors"
                       >
                         LinkedIn Profile
                       </a>
                       <span>•</span>
                       <button
                         onClick={handleCopyEmail}
-                        className="hover:text-white transition-colors"
+                        className="hover:text-slate-200 transition-colors"
                       >
                         {copiedEmail ? 'Copied' : PORTFOLIO_DATA.engineer.links.email}
                       </button>
@@ -646,54 +646,54 @@ if (abs(now()->timestamp - $timestamp) > 300) {
 
                 {/* 4 Proven Operational Milestones */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
-                    <div className="text-2xl font-bold text-slate-100">7+</div>
+                  <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
+                    <div className="text-2xl font-bold text-slate-200">7+</div>
                     <div className="text-xs text-slate-300 font-medium mt-0.5">Years Experience</div>
                     <p className="text-[11px] text-slate-400 mt-1">High-concurrency backend & fintech platforms.</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
-                    <div className="text-2xl font-bold text-slate-100">200+</div>
+                  <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
+                    <div className="text-2xl font-bold text-slate-200">200+</div>
                     <div className="text-xs text-slate-300 font-medium mt-0.5">Payment Gateways</div>
                     <p className="text-[11px] text-slate-400 mt-1">APMs, cards, and banking connectors integrated.</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
-                    <div className="text-2xl font-bold text-slate-100">&lt;15ms</div>
+                  <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
+                    <div className="text-2xl font-bold text-slate-200">&lt;15ms</div>
                     <div className="text-xs text-slate-300 font-medium mt-0.5">Acquirer Failover</div>
                     <p className="text-[11px] text-slate-400 mt-1">Automated circuit breaking without checkout loss.</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
-                    <div className="text-2xl font-bold text-slate-100">0.00%</div>
+                  <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
+                    <div className="text-2xl font-bold text-slate-200">0.00%</div>
                     <div className="text-xs text-slate-300 font-medium mt-0.5">Ledger Variance</div>
                     <p className="text-[11px] text-slate-400 mt-1">Strict double-entry bookkeeping precision.</p>
                   </div>
                 </div>
 
                 {/* Grounding Narrative: The Engineer's Journey */}
-                <div className="space-y-6 text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
+                <div className="space-y-6 text-sm sm:text-base text-slate-400 leading-relaxed font-sans">
                   
                   <div className="space-y-3">
-                    <h2 className="text-lg font-bold text-slate-100 tracking-tight">
+                    <h2 className="text-lg font-bold text-slate-200 tracking-tight">
                       The Stakes of Moving Money
                     </h2>
                     <p>
                       In typical web backends, a transient HTTP 504 error means the user refreshes the page. In financial engineering, that same timeout means someone may have been charged twice, an acquirer may have captured funds without notifying the merchant, or an account ledger may have drifted into negative balance.
                     </p>
                     <p>
-                      Over the last seven years, I have specialized in eliminating those failure modes by design. At <strong className="text-slate-100 font-medium">Paymid</strong> (Cyprus), I architect our core multi-PSP payment orchestrator—the pipeline responsible for dynamically evaluating incoming merchant requests, checking card BIN jurisdictions, acquiring atomic distributed Redis mutexes to make duplicate mutations physically impossible, and cascading across secondary fallbacks in under 15 milliseconds when primary acquirers drop.
+                      Over the last seven years, I have specialized in eliminating those failure modes by design. At <strong className="text-slate-300 font-medium">Paymid</strong> (Cyprus), I architect our core multi-PSP payment orchestrator—the pipeline responsible for dynamically evaluating incoming merchant requests, checking card BIN jurisdictions, acquiring atomic distributed Redis mutexes to make duplicate mutations physically impossible, and cascading across secondary fallbacks in under 15 milliseconds when primary acquirers drop.
                     </p>
                   </div>
 
                   <div className="space-y-3 pt-2">
-                    <h2 className="text-lg font-bold text-slate-100 tracking-tight">
+                    <h2 className="text-lg font-bold text-slate-200 tracking-tight">
                       Engineering Pragmatism & Modern PHP 8.3
                     </h2>
                     <p>
-                      I believe in boring, reliable technologies pushed to exceptional throughput. Modern <strong className="text-slate-100 font-medium">PHP 8.3 with strict typing, readonly classes, and persistent worker processes (RoadRunner / Octane)</strong> delivers predictable sub-50ms p99 response times while maintaining maintainable, decoupled domain contracts. Combined with <strong className="text-slate-100 font-medium">Go</strong> for lightweight concurrent daemon workers and <strong className="text-slate-100 font-medium">Redis Cluster</strong> for distributed lock synchronization, our systems process thousands of transaction mutations with zero downtime.
+                      I believe in boring, reliable technologies pushed to exceptional throughput. Modern <strong className="text-slate-300 font-medium">PHP 8.3 with strict typing, readonly classes, and persistent worker processes (RoadRunner / Octane)</strong> delivers predictable sub-50ms p99 response times while maintaining maintainable, decoupled domain contracts. Combined with <strong className="text-slate-300 font-medium">Go</strong> for lightweight concurrent daemon workers and <strong className="text-slate-300 font-medium">Redis Cluster</strong> for distributed lock synchronization, our systems process thousands of transaction mutations with zero downtime.
                     </p>
                   </div>
 
                   <div className="space-y-3 pt-2">
-                    <h2 className="text-lg font-bold text-slate-100 tracking-tight">
+                    <h2 className="text-lg font-bold text-slate-200 tracking-tight">
                       Beyond the Terminal
                     </h2>
                     <p>
@@ -709,26 +709,26 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     Core Engineering Invariants
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
-                      <div className="text-xs font-bold text-slate-100">01 · Idempotency by Default</div>
+                    <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] space-y-1">
+                      <div className="text-xs font-bold text-slate-200">01 · Idempotency by Default</div>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         Never assume a reliable network. Every payment mutation must accept an idempotency key and be safely replayable without side effects.
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
-                      <div className="text-xs font-bold text-slate-100">02 · Pessimistic Integrity over Hope</div>
+                    <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] space-y-1">
+                      <div className="text-xs font-bold text-slate-200">02 · Pessimistic Integrity over Hope</div>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         When account balances are mutated, row-level locks (SELECT FOR UPDATE) and serializable transactions guarantee zero overdraft races.
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
-                      <div className="text-xs font-bold text-slate-100">03 · Zero-Trust Webhook Ingestion</div>
+                    <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] space-y-1">
+                      <div className="text-xs font-bold text-slate-200">03 · Zero-Trust Webhook Ingestion</div>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         Treat asynchronous callbacks as unverified until constant-time HMAC-SHA256 verification and 300s timestamp drift checks confirm origin.
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
-                      <div className="text-xs font-bold text-slate-100">04 · Contract Decoupling</div>
+                    <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] space-y-1">
+                      <div className="text-xs font-bold text-slate-200">04 · Contract Decoupling</div>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         Wrap raw third-party gateway APIs behind strict Polymorphic Strategy Pattern drivers so acquirer breaking changes never leak into core domain logic.
                       </p>
@@ -737,23 +737,23 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 </div>
 
                 {/* Direct Action Strip */}
-                <div className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4">
+                <div className="pt-6 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-4">
                   <div className="text-xs text-slate-400">
                     Discussing payment architecture, backend contracts, or a senior engineering role?
                   </div>
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => setIsContactOpen(true)}
-                      className="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-black font-semibold text-xs transition-colors flex items-center gap-1.5"
+                      className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-white text-slate-900 font-semibold text-xs transition-colors flex items-center gap-1.5 shadow-sm"
                     >
                       <Mail className="w-3.5 h-3.5" />
                       <span>Contact Farhan</span>
                     </button>
                     <button
                       onClick={handleCopyEmail}
-                      className="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] text-slate-300 text-xs transition-colors flex items-center gap-1.5"
+                      className="px-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] text-slate-300 text-xs transition-colors flex items-center gap-1.5"
                     >
-                      {copiedEmail ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5 text-slate-400" />}
+                      {copiedEmail ? <Check className="w-3.5 h-3.5 text-slate-200" /> : <Copy className="w-3.5 h-3.5 text-slate-400" />}
                       <span>{copiedEmail ? 'Copied' : 'Copy Email'}</span>
                     </button>
                   </div>
@@ -766,10 +766,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'architecture' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
                     Technical Architecture
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
                     Anatomy of a Fault-Tolerant Payment Rail
                   </h1>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
@@ -787,14 +787,14 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         onClick={() => setActiveStageId(stage.id)}
                         className={`p-3 rounded-xl border text-left transition-all ${
                           isSelected
-                            ? 'bg-white/[0.08] border-white/[0.2] text-slate-100 shadow-sm'
-                            : 'bg-white/[0.02] border-white/[0.05] text-slate-400 hover:text-slate-200 hover:border-white/[0.1]'
+                            ? 'bg-white/[0.06] border-white/[0.15] text-slate-200 shadow-sm'
+                            : 'bg-white/[0.015] border-white/[0.05] text-slate-400 hover:text-slate-200 hover:border-white/[0.08]'
                         }`}
                       >
                         <div className="text-[11px] font-bold text-slate-400">
                           Stage {stage.num}
                         </div>
-                        <div className="text-xs font-medium text-slate-200 truncate mt-1">
+                        <div className="text-xs font-medium text-slate-300 truncate mt-1">
                           {stage.title}
                         </div>
                       </button>
@@ -803,54 +803,54 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 </div>
 
                 {/* Active Stage Deep Dive */}
-                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-6">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
+                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-6">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
                     <span>Stage {activeStage.num}</span>
                     <span>•</span>
                     <span>{activeStage.category}</span>
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl font-bold text-slate-100">
+                  <h2 className="text-xl sm:text-2xl font-bold text-slate-200">
                     {activeStage.title}
                   </h2>
 
                   <div className="space-y-4">
                     <div>
-                      <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                      <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
                         The Financial Failure Mode
                       </h3>
-                      <p className="text-sm text-slate-300 leading-relaxed">
+                      <p className="text-sm text-slate-400 leading-relaxed">
                         {activeStage.problem}
                       </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                      <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
                         Architectural Resolution
                       </h3>
-                      <p className="text-sm text-slate-300 leading-relaxed">
+                      <p className="text-sm text-slate-400 leading-relaxed">
                         {activeStage.solution}
                       </p>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                    <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
                       Production Architecture Pattern (PHP 8.3)
                     </h3>
-                    <div className="p-4 rounded-xl bg-[#090b0f] border border-white/[0.07] font-mono text-xs overflow-x-auto text-slate-300 leading-relaxed">
+                    <div className="p-4 rounded-xl bg-[#0a0c11] border border-white/[0.06] font-mono text-xs overflow-x-auto text-slate-300 leading-relaxed">
                       <pre>{activeStage.code}</pre>
                     </div>
                   </div>
                 </div>
 
                 {/* Stack & System Invariants Section — With Vector Tech Logos! */}
-                <div className="space-y-6 pt-6 border-t border-white/[0.08]">
+                <div className="space-y-6 pt-6 border-t border-white/[0.06]">
                   <div>
-                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                    <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
                       Production Stack & Principles
                     </div>
-                    <h2 className="text-xl font-bold text-slate-100 tracking-tight">
+                    <h2 className="text-xl font-bold text-slate-200 tracking-tight">
                       Core Tech Stack & Systems Invariants
                     </h2>
                     <p className="text-sm text-slate-400 mt-1 leading-relaxed">
@@ -859,28 +859,28 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
-                      <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
+                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                      <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                         Languages & Frameworks
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <PhpIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>PHP 8.3</span>
                         </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <LaravelIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>Laravel 11</span>
                         </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <GoIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>Go</span>
                         </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <NodeIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>Node.js</span>
                         </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <SymfonyIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>Symfony</span>
                         </span>
@@ -890,20 +890,20 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                       </p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
-                      <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
+                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                      <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                         Data & Mutex Defense
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <RedisIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>Redis Cluster</span>
                         </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <MySqlIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>MySQL 8.0</span>
                         </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <PostgreSqlIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>PostgreSQL</span>
                         </span>
@@ -913,23 +913,23 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                       </p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
-                      <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
+                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                      <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                         Protocols & Standards
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <DockerIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>Docker</span>
                         </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           <TypeScriptIcon className="w-3.5 h-3.5 text-slate-400" />
                           <span>TypeScript</span>
                         </span>
-                        <span className="px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           PCI-DSS Ingress
                         </span>
-                        <span className="px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <span className="px-2.5 py-1 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
                           HMAC-SHA256
                         </span>
                       </div>
@@ -946,10 +946,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'projects' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
                     Production Platforms
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
                     Selected Systems & Production Migrations
                   </h1>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
@@ -961,10 +961,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   {PORTFOLIO_DATA.projects.map((project) => (
                     <div
                       key={project.id}
-                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-3"
+                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-3"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="text-xs font-medium text-slate-200 bg-white/[0.05] px-2.5 py-0.5 rounded-full border border-white/[0.06]">
+                        <span className="text-xs font-medium text-slate-300 bg-white/[0.035] px-2.5 py-0.5 rounded-full border border-white/[0.06]">
                           {project.company}
                         </span>
                         <span className="text-xs text-slate-400">
@@ -972,33 +972,33 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         </span>
                       </div>
 
-                      <h2 className="text-lg sm:text-xl font-bold text-slate-100">
+                      <h2 className="text-lg sm:text-xl font-bold text-slate-200">
                         {project.title}
                       </h2>
 
-                      <p className="text-sm text-slate-300 leading-relaxed">
+                      <p className="text-sm text-slate-400 leading-relaxed">
                         {project.summary}
                       </p>
 
                       <div className="space-y-1.5 pt-2">
-                        <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
+                        <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                           Architectural Highlights
                         </h3>
-                        <ul className="space-y-1.5 text-xs text-slate-300">
+                        <ul className="space-y-1.5 text-xs text-slate-400">
                           {project.architecturePoints.map((point, idx) => (
                             <li key={idx} className="flex items-start gap-2">
-                              <span className="text-slate-400 mt-0.5">•</span>
+                              <span className="text-slate-500 mt-0.5">•</span>
                               <span className="leading-relaxed">{point}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.06]">
+                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.05]">
                         {project.techStack.map((tech, idx) => (
                           <span
                             key={idx}
-                            className="text-xs px-2.5 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300"
+                            className="text-xs px-2.5 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300"
                           >
                             {tech}
                           </span>
@@ -1014,10 +1014,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'experience' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
                     Career Record
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
                     Work Experience & Academic Background
                   </h1>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
@@ -1030,15 +1030,15 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   {PORTFOLIO_DATA.experiences.map((exp, idx) => (
                     <div
                       key={idx}
-                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-3"
+                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-3"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                         <div className="flex flex-wrap items-baseline gap-2">
-                          <h2 className="text-lg sm:text-xl font-bold text-slate-100">
+                          <h2 className="text-lg sm:text-xl font-bold text-slate-200">
                             {exp.role}
                           </h2>
                           <span className="text-slate-500 text-sm">at</span>
-                          <span className="text-slate-200 font-semibold text-base">{exp.company}</span>
+                          <span className="text-slate-300 font-semibold text-base">{exp.company}</span>
                         </div>
                         <span className="text-xs text-slate-400">
                           {exp.period}
@@ -1049,24 +1049,24 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         {exp.location} • {exp.type}
                       </div>
 
-                      <p className="text-sm text-slate-300 leading-relaxed">
+                      <p className="text-sm text-slate-400 leading-relaxed">
                         {exp.description}
                       </p>
 
-                      <ul className="space-y-1.5 text-xs text-slate-300">
+                      <ul className="space-y-1.5 text-xs text-slate-400">
                         {exp.highlights.map((hl, hIdx) => (
                           <li key={hIdx} className="flex items-start gap-2">
-                            <span className="text-slate-400 mt-0.5">•</span>
+                            <span className="text-slate-500 mt-0.5">•</span>
                             <span className="leading-relaxed">{hl}</span>
                           </li>
                         ))}
                       </ul>
 
-                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.06]">
+                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.05]">
                         {exp.techStack.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="text-xs px-2.5 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300"
+                            className="text-xs px-2.5 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300"
                           >
                             {tech}
                           </span>
@@ -1080,34 +1080,34 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                   
                   {/* Academic Background / Education */}
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
-                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                    <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                       Academic Background
                     </div>
-                    <h3 className="text-base font-bold text-slate-100">
+                    <h3 className="text-base font-bold text-slate-200">
                       Khulna University of Engineering & Technology (KUET)
                     </h3>
-                    <div className="text-xs text-slate-300 font-medium">
+                    <div className="text-xs text-slate-400 font-medium">
                       B.Sc. in Electrical, Electronics & Communication Engineering
                     </div>
                     <div className="text-xs text-slate-400">
                       2014 – 2019
                     </div>
-                    <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-white/[0.06]">
+                    <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-white/[0.05]">
                       Rigorous 4-year engineering foundation in telecommunication protocols, signal processing, network topologies, and computational systems.
                     </p>
                   </div>
 
                   {/* Manager Testimonial */}
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
-                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                    <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                       Manager Testimonial
                     </div>
-                    <p className="text-xs text-slate-300 leading-relaxed italic">
+                    <p className="text-xs text-slate-400 leading-relaxed italic">
                       "{PORTFOLIO_DATA.recommendations[0].quote}"
                     </p>
-                    <div className="pt-2 border-t border-white/[0.06] text-xs">
-                      <div className="font-semibold text-slate-100">{PORTFOLIO_DATA.recommendations[0].name}</div>
+                    <div className="pt-2 border-t border-white/[0.05] text-xs">
+                      <div className="font-semibold text-slate-200">{PORTFOLIO_DATA.recommendations[0].name}</div>
                       <div className="text-xs text-slate-400 mt-0.5">
                         {PORTFOLIO_DATA.recommendations[0].title} · SJ Innovation
                       </div>

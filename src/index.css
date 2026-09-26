@@ -9,12 +9,12 @@
   body {
     font-family: var(--font-sans);
     background-color: #0f1117;
-    color: #94a3b8;
+    color: #8c96a5;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {
-    color: #e2e8f0;
+    color: #c4ccd8;
   }
 }
 
