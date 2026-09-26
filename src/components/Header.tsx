@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { Sparkles, Mail, Menu, X } from 'lucide-react';
+import { Mail, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
   activeTab: string;
   onSelectTab: (tab: string) => void;
   onOpenContact: () => void;
-  onOpenAskAI: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeTab,
   onSelectTab,
   onOpenContact,
-  onOpenAskAI
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -40,16 +38,16 @@ export const Header: React.FC<HeaderProps> = ({
           title="Farhan Zaman Khan"
         >
           <img
-            src="/farhan-avatar.jpg"
+            src="/farhan.jpg"
             alt="Farhan Zaman Khan"
-            className="w-[46px] h-[46px] rounded-full object-cover border border-white/10 hover:border-white/30 transition-all shadow-sm"
-            width="46"
-            height="46"
+            className="w-[42px] h-[42px] rounded-full object-cover border border-white/10 hover:border-white/30 transition-all shadow-sm"
+            width="42"
+            height="42"
           />
         </button>
 
         {/* Center: Desktop Navigation Bar */}
-        <nav className="hidden sm:flex items-center gap-0.5">
+        <nav className="hidden sm:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -58,8 +56,8 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => handleNavClick(item.id)}
                 className={`px-3 py-1.5 text-sm rounded-lg transition-colors font-medium ${
                   isActive
-                    ? 'text-blue-400 font-semibold bg-white/[0.04]'
-                    : 'text-slate-400/80 hover:text-white hover:bg-white/[0.03]'
+                    ? 'text-sky-400 font-semibold bg-white/[0.04]'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.02]'
                 }`}
               >
                 {item.label}
@@ -68,23 +66,12 @@ export const Header: React.FC<HeaderProps> = ({
           })}
         </nav>
 
-        {/* Right: Ask AI + Email Buttons */}
+        {/* Right: Email Button */}
         <div className="flex items-center gap-2">
-          
-          {/* Ask AI CTA Pill */}
-          <button
-            onClick={onOpenAskAI}
-            className="group flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-blue-400 bg-white/[0.03] border border-blue-500/30 rounded-full hover:border-blue-400 hover:bg-blue-500/10 hover:shadow-[0_0_15px_rgba(56,189,248,0.2)] transition-all duration-200"
-            aria-label="Ask AI about Farhan"
-          >
-            <Sparkles className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-12" />
-            <span>Ask AI</span>
-          </button>
-
           {/* Email Envelope Button */}
           <button
             onClick={onOpenContact}
-            className="p-2 text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/[0.03]"
+            className="p-2 text-slate-400 hover:text-slate-200 transition-colors rounded-lg hover:bg-white/[0.03]"
             aria-label="Contact Farhan"
             title="Send Email"
           >
