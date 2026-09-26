@@ -37,20 +37,20 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
-      <div className="relative w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl p-6 sm:p-7 text-left font-sans">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+      <div className="relative w-full max-w-lg rounded-2xl border border-white/[0.1] bg-[#0c0e14] shadow-2xl p-6 sm:p-7 text-left font-sans">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-lg bg-slate-950/80 border border-slate-800 text-slate-400 hover:text-slate-200 transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-400 hover:text-white transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Header */}
         <div className="mb-5">
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
             Get in Touch
           </h3>
           <p className="text-xs text-slate-400 mt-1">
@@ -59,14 +59,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         </div>
 
         {/* Direct Email Pill */}
-        <div className="mb-5 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div className="mb-5 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center">
-              <Mail className="w-4 h-4 text-sky-400" />
+            <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center">
+              <Mail className="w-4 h-4 text-slate-300" />
             </div>
             <div>
               <div className="text-[11px] text-slate-400">Direct Email</div>
-              <div className="text-xs font-semibold text-slate-200">
+              <div className="text-xs font-semibold text-white">
                 {PORTFOLIO_DATA.engineer.links.email}
               </div>
             </div>
@@ -75,12 +75,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyEmail}
-              className="px-3 py-1.5 rounded-lg text-xs bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-lg text-xs bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
             >
               {copiedEmail ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-sky-400" />
-                  <span className="text-sky-300">Copied</span>
+                  <Check className="w-3.5 h-3.5 text-white" />
+                  <span className="text-white">Copied</span>
                 </>
               ) : (
                 <>
@@ -94,7 +94,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               href={PORTFOLIO_DATA.engineer.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-lg text-xs bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
             >
               <LinkedInIcon className="w-3.5 h-3.5" />
               <span>LinkedIn</span>
@@ -104,14 +104,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
         {/* Message Form */}
         {formSent ? (
-          <div className="py-8 text-center space-y-3 bg-slate-950/60 rounded-xl border border-slate-800 p-6">
-            <h4 className="text-slate-100 font-bold text-base">Message Ready</h4>
+          <div className="py-8 text-center space-y-3 bg-white/[0.02] rounded-xl border border-white/[0.08] p-6">
+            <h4 className="text-white font-bold text-base">Message Ready</h4>
             <p className="text-xs text-slate-300 max-w-sm mx-auto">
               Opening your default email client with your message to Farhan.
             </p>
             <button
               onClick={() => setFormSent(false)}
-              className="text-xs text-sky-400 hover:underline pt-2 inline-block"
+              className="text-xs text-white underline pt-2 inline-block"
             >
               Edit message
             </button>
@@ -127,7 +127,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="e.g. Alex Mercer"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-slate-600"
+                  className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
                 />
               </div>
               <div>
@@ -138,7 +138,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="alex@example.com"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-slate-600"
+                  className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
                 />
               </div>
             </div>
@@ -150,7 +150,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 placeholder="e.g. Fintech Corp"
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-slate-600"
+                className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
               />
             </div>
 
@@ -162,15 +162,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="How can Farhan help your team or system?"
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-slate-600"
+                className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-2.5 px-4 rounded-xl font-semibold bg-slate-100 hover:bg-white text-slate-950 flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm mt-1"
+              className="w-full py-2.5 px-4 rounded-xl font-semibold bg-white hover:bg-slate-100 text-black flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm mt-1"
             >
-              <Send className="w-3.5 h-3.5 fill-slate-950" />
+              <Send className="w-3.5 h-3.5 fill-black" />
               <span>Send Message</span>
             </button>
           </form>
