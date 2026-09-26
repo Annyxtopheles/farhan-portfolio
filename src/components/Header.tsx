@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 interface HeaderProps {
@@ -8,59 +8,39 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#d4f769] border-b border-black/10 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-[#0c0e12]/80 backdrop-blur-md border-b border-white/[0.06]">
+      <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
         
-        {/* Brand */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-black flex items-center justify-center text-[#d4f769] font-black text-base shadow-sm">
-            FK
-          </div>
-          <div>
-            <div className="font-extrabold text-black text-base tracking-tight flex items-center gap-2">
-              {PORTFOLIO_DATA.engineer.name}
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/10 text-black font-bold">
-                Paymid SDE-1
-              </span>
-            </div>
-            <div className="text-[11px] text-slate-700 font-mono font-medium hidden sm:block">
-              KUET ECE '13 • Limassol, Cyprus (Remote)
-            </div>
-          </div>
-        </div>
+        {/* Clean Personal Name */}
+        <a href="#" className="flex items-center gap-2 group">
+          <span className="font-bold text-slate-100 text-sm tracking-tight group-hover:text-white transition-colors">
+            {PORTFOLIO_DATA.engineer.name}
+          </span>
+          <span className="text-slate-500 text-xs hidden sm:inline">
+            / Software Engineer
+          </span>
+        </a>
 
-        {/* Navigation */}
-        <nav className="hidden lg:flex items-center gap-7 text-xs font-mono font-bold text-slate-900 uppercase tracking-wider">
-          <a href="#orchestration-engine" className="hover:text-black transition-colors flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-black"></span>
-            Payment Sandbox
+        {/* Minimal Navigation */}
+        <nav className="flex items-center gap-6 text-xs text-slate-400">
+          <a href="#workbench" className="hover:text-white transition-colors hidden sm:block">
+            Workbench
           </a>
-          <a href="#stack" className="hover:text-black transition-colors">
-            Core Stack
+          <a href="#work" className="hover:text-white transition-colors hidden sm:block">
+            Work
           </a>
-          <a href="#experience" className="hover:text-black transition-colors">
-            Experience Log
+          <a href="#experience" className="hover:text-white transition-colors hidden sm:block">
+            Experience
           </a>
-          <a href="#projects" className="hover:text-black transition-colors">
-            Case Studies
-          </a>
-        </nav>
-
-        {/* CTA */}
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-1.5 text-xs font-mono font-bold bg-black/10 px-3 py-1.5 rounded-full text-black">
-            <ShieldCheck className="w-3.5 h-3.5 text-black" />
-            <span>99.99% Uptime</span>
-          </div>
-
+          
           <button
             onClick={onOpenContact}
-            className="px-5 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-black hover:bg-slate-900 text-white flex items-center gap-1.5 shadow-md transition-all active:scale-[0.98]"
+            className="text-xs font-medium text-slate-200 hover:text-white flex items-center gap-1 transition-colors px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.08]"
           >
-            <span>Retain / Hire</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <span>Get in touch</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
           </button>
-        </div>
+        </nav>
 
       </div>
     </header>

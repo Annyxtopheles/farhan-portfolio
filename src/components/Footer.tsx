@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Copy, Check, ShieldCheck } from 'lucide-react';
+import { Copy, Check, ArrowUpRight } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { LinkedInIcon } from './icons/LinkedInIcon';
 
@@ -17,84 +17,62 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <footer>
+    <footer className="py-20 max-w-4xl mx-auto px-6 border-t border-white/[0.08]">
       
-      {/* High-Impact Paymid Citron CTA Banner */}
-      <div className="bg-[#d4f769] text-black py-20 sm:py-28 px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/10 text-xs font-mono font-bold uppercase tracking-wider">
-            <ShieldCheck className="w-4 h-4 fill-black text-[#d4f769]" />
-            <span>High-Throughput Global Infrastructure</span>
-          </div>
+      {/* Contact Section */}
+      <div className="mb-14 space-y-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          Let's talk architecture.
+        </h2>
+        <p className="text-sm text-slate-400 max-w-xl leading-relaxed">
+          Whether you're scaling a payment gateway integration, untangling high-concurrency race conditions, or looking for a senior backend engineer — my inbox is open.
+        </p>
 
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]">
-            Let's discuss scaling your next platform.
-          </h2>
+        <div className="flex flex-wrap items-center gap-3 pt-2">
+          <button
+            onClick={handleCopy}
+            className="px-4 py-2.5 rounded-xl bg-white text-black font-semibold text-xs font-mono hover:bg-slate-200 transition-colors flex items-center gap-2"
+          >
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Copied to Clipboard</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-3.5 h-3.5" />
+                <span>{PORTFOLIO_DATA.engineer.links.email}</span>
+              </>
+            )}
+          </button>
 
-          <p className="text-base sm:text-xl text-slate-800 font-medium max-w-2xl mx-auto leading-relaxed">
-            Available for mission-critical FinTech engineering, multi-gateway orchestration, distributed systems, and technical advisory.
-          </p>
+          <button
+            onClick={onOpenContact}
+            className="px-4 py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-200 text-xs font-mono border border-white/[0.08] transition-colors flex items-center gap-1.5"
+          >
+            <span>Send message</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
+          </button>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <button
-              onClick={onOpenContact}
-              className="px-8 py-4 rounded-2xl font-mono text-xs font-black uppercase tracking-wider bg-black hover:bg-slate-900 text-white flex items-center gap-2 shadow-2xl transition-all active:scale-[0.98]"
-            >
-              <span>Retain / Hire Farhan</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={handleCopy}
-              className="px-6 py-4 rounded-2xl font-mono text-xs font-bold uppercase tracking-wider bg-white/80 hover:bg-white text-black flex items-center gap-2 shadow-md transition-all active:scale-[0.98] border border-black/10"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 text-emerald-600" />
-                  <span>Copied to Clipboard</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4" />
-                  <span>{PORTFOLIO_DATA.engineer.links.email}</span>
-                </>
-              )}
-            </button>
-
-            <a
-              href={PORTFOLIO_DATA.engineer.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 rounded-2xl bg-white/80 hover:bg-white text-black border border-black/10 shadow-md transition-all flex items-center justify-center"
-              title="LinkedIn Profile"
-            >
-              <LinkedInIcon className="w-4 h-4" />
-            </a>
-          </div>
+          <a
+            href={PORTFOLIO_DATA.engineer.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white border border-white/[0.08] transition-colors"
+            title="LinkedIn Profile"
+          >
+            <LinkedInIcon className="w-4 h-4 text-blue-400" />
+          </a>
         </div>
       </div>
 
-      {/* Deep Obsidian Telemetry & Footer Bar */}
-      <div className="bg-[#07090e] border-t border-white/10 py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-slate-400">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-black text-[#d4f769] border border-white/10 flex items-center justify-center font-black">
-              FK
-            </div>
-            <div>
-              <span className="text-white font-bold">{PORTFOLIO_DATA.engineer.name}</span>
-              <span className="mx-2 text-slate-600">•</span>
-              <span>{PORTFOLIO_DATA.engineer.headline}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 text-slate-400">
-            <span>KUET ECE '13</span>
-            <span>•</span>
-            <span>Paymid (Limassol, Cyprus)</span>
-            <span>•</span>
-            <span className="text-[#d4f769] font-bold">99.99% Nominal SLA</span>
-          </div>
+      {/* Subtle Colophon */}
+      <div className="pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-slate-500">
+        <div>
+          {PORTFOLIO_DATA.engineer.name} • {PORTFOLIO_DATA.engineer.headline}
+        </div>
+        <div>
+          Dhaka (UTC+6) • Remote
         </div>
       </div>
 
