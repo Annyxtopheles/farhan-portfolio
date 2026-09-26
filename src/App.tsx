@@ -1,13 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ArrowUpRight, 
-  ArrowLeft
+  ArrowLeft,
+  Mail,
+  Copy,
+  Check
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from './data/portfolioData';
 import { GithubIcon } from './components/icons/GithubIcon';
 import { TwitterIcon } from './components/icons/TwitterIcon';
 import { LinkedInIcon } from './components/icons/LinkedInIcon';
 import { ContactModal } from './components/ContactModal';
+import { 
+  PhpIcon, 
+  LaravelIcon, 
+  GoIcon, 
+  NodeIcon, 
+  SymfonyIcon, 
+  RedisIcon, 
+  MySqlIcon, 
+  PostgreSqlIcon, 
+  DockerIcon,
+  TypeScriptIcon
+} from './components/TechLogos';
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<string>('bento');
@@ -480,7 +495,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               </div>
             </div>
 
-            {/* BOX 5: Core Tech Stack (4 cols) */}
+            {/* BOX 5: Core Tech Stack (4 cols) — With Real Vector Tech Logos! */}
             <div
               onClick={() => navigateTo('architecture')}
               className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
@@ -497,32 +512,63 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 <div className="space-y-2 text-xs">
                   <div>
                     <span className="text-[11px] text-slate-400 block mb-1">Languages & Frameworks</span>
-                    <div className="flex flex-wrap gap-1">
-                      {['PHP 8.3', 'Laravel 11', 'Go', 'Node.js', 'Symfony'].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
-                          {t}
-                        </span>
-                      ))}
+                    <div className="flex flex-wrap gap-1.5">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <PhpIcon className="w-3 h-3 text-slate-400" />
+                        <span>PHP 8.3</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <LaravelIcon className="w-3 h-3 text-slate-400" />
+                        <span>Laravel 11</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <GoIcon className="w-3 h-3 text-slate-400" />
+                        <span>Go</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <NodeIcon className="w-3 h-3 text-slate-400" />
+                        <span>Node.js</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <SymfonyIcon className="w-3 h-3 text-slate-400" />
+                        <span>Symfony</span>
+                      </span>
                     </div>
                   </div>
                   <div>
                     <span className="text-[11px] text-slate-400 block mb-1">Data & Mutex</span>
-                    <div className="flex flex-wrap gap-1">
-                      {['Redis Cluster', 'Redlock', 'MySQL', 'PostgreSQL'].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
-                          {t}
-                        </span>
-                      ))}
+                    <div className="flex flex-wrap gap-1.5">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <RedisIcon className="w-3 h-3 text-slate-400" />
+                        <span>Redis Cluster</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <MySqlIcon className="w-3 h-3 text-slate-400" />
+                        <span>MySQL 8.0</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <PostgreSqlIcon className="w-3 h-3 text-slate-400" />
+                        <span>PostgreSQL</span>
+                      </span>
                     </div>
                   </div>
                   <div>
                     <span className="text-[11px] text-slate-400 block mb-1">Protocols & Standards</span>
-                    <div className="flex flex-wrap gap-1">
-                      {['PCI-DSS Ingress', 'HMAC-SHA256', 'OpenAPI', 'Docker'].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
-                          {t}
-                        </span>
-                      ))}
+                    <div className="flex flex-wrap gap-1.5">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <DockerIcon className="w-3 h-3 text-slate-400" />
+                        <span>Docker</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                        <TypeScriptIcon className="w-3 h-3 text-slate-400" />
+                        <span>TypeScript</span>
+                      </span>
+                      <span className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
+                        PCI-DSS Ingress
+                      </span>
+                      <span className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
+                        HMAC-SHA256
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -546,76 +592,173 @@ if (abs(now()->timestamp - $timestamp) > 300) {
         {currentPage !== 'bento' && (
           <main className="py-8 lg:py-10 flex-1">
             
-            {/* DETAIL PAGE 1: ABOUT */}
+            {/* DETAIL PAGE 1: ABOUT (Inspired, Grounded Story & Narrative) */}
             {currentPage === 'about' && (
-              <div className="max-w-3xl space-y-8 text-left">
-                <div className="flex items-center gap-5 pb-6 border-b border-white/[0.08]">
+              <div className="space-y-10 text-left max-w-4xl">
+                
+                {/* Hero Header with Large Portrait */}
+                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.07] flex flex-col md:flex-row items-start md:items-center gap-6">
                   <img
                     src="/farhan.jpg"
                     alt={PORTFOLIO_DATA.engineer.name}
-                    className="w-20 h-20 rounded-2xl border border-white/[0.08] object-cover shadow-lg"
-                    width="80"
-                    height="80"
+                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border border-white/[0.1] object-cover shadow-xl shrink-0"
+                    width="112"
+                    height="112"
                   />
-                  <div>
+                  <div className="space-y-1.5">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-[11px] text-slate-300 font-medium">
+                      <span>Based in Dhaka, Bangladesh · Remote for Paymid (Cyprus)</span>
+                    </div>
                     <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
                       {PORTFOLIO_DATA.engineer.name}
                     </h1>
-                    <p className="text-base text-slate-300 font-medium mt-1">
-                      Senior Backend & Payment Systems Engineer at Paymid
+                    <p className="text-sm sm:text-base text-slate-300 font-medium">
+                      Senior Backend & Payment Systems Engineer specializing in multi-PSP orchestration, distributed mutexes, and zero-drift financial ledgers.
                     </p>
-                    <p className="text-xs text-slate-400 mt-1">
-                      Limassol, Cyprus (Remote) · Dhaka, Bangladesh
-                    </p>
+                    <div className="pt-2 flex items-center gap-3 text-xs text-slate-400">
+                      <a
+                        href={PORTFOLIO_DATA.engineer.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors"
+                      >
+                        GitHub Profile
+                      </a>
+                      <span>•</span>
+                      <a
+                        href={PORTFOLIO_DATA.engineer.links.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors"
+                      >
+                        LinkedIn Profile
+                      </a>
+                      <span>•</span>
+                      <button
+                        onClick={handleCopyEmail}
+                        className="hover:text-white transition-colors"
+                      >
+                        {copiedEmail ? 'Copied' : PORTFOLIO_DATA.engineer.links.email}
+                      </button>
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-5 text-base text-slate-300 leading-relaxed font-sans">
-                  <p>
-                    I’m a backend engineer with over 7 years of production experience, specializing in payment gateway integration, multi-PSP orchestration, and distributed transactional systems. I care deeply about building resilient financial rails where race conditions, duplicate webhooks, and upstream acquirer timeouts are solved by design.
-                  </p>
+                {/* 4 Proven Operational Milestones */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
+                    <div className="text-2xl font-bold text-slate-100">7+</div>
+                    <div className="text-xs text-slate-300 font-medium mt-0.5">Years Experience</div>
+                    <p className="text-[11px] text-slate-400 mt-1">High-concurrency backend & fintech platforms.</p>
+                  </div>
+                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
+                    <div className="text-2xl font-bold text-slate-100">200+</div>
+                    <div className="text-xs text-slate-300 font-medium mt-0.5">Payment Gateways</div>
+                    <p className="text-[11px] text-slate-400 mt-1">APMs, cards, and banking connectors integrated.</p>
+                  </div>
+                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
+                    <div className="text-2xl font-bold text-slate-100">&lt;15ms</div>
+                    <div className="text-xs text-slate-300 font-medium mt-0.5">Acquirer Failover</div>
+                    <p className="text-[11px] text-slate-400 mt-1">Automated circuit breaking without checkout loss.</p>
+                  </div>
+                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
+                    <div className="text-2xl font-bold text-slate-100">0.00%</div>
+                    <div className="text-xs text-slate-300 font-medium mt-0.5">Ledger Variance</div>
+                    <p className="text-[11px] text-slate-400 mt-1">Strict double-entry bookkeeping precision.</p>
+                  </div>
+                </div>
 
-                  <p>
-                    Currently, I’m a Senior Backend Engineer at{' '}
-                    <a
-                      href="https://paymid.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-100 font-medium underline underline-offset-4 hover:text-white transition-colors"
+                {/* Grounding Narrative: The Engineer's Journey */}
+                <div className="space-y-6 text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
+                  
+                  <div className="space-y-3">
+                    <h2 className="text-lg font-bold text-slate-100 tracking-tight">
+                      The Stakes of Moving Money
+                    </h2>
+                    <p>
+                      In typical web backends, a transient HTTP 504 error means the user refreshes the page. In financial engineering, that same timeout means someone may have been charged twice, an acquirer may have captured funds without notifying the merchant, or an account ledger may have drifted into negative balance.
+                    </p>
+                    <p>
+                      Over the last seven years, I have specialized in eliminating those failure modes by design. At <strong className="text-slate-100 font-medium">Paymid</strong> (Cyprus), I architect our core multi-PSP payment orchestrator—the pipeline responsible for dynamically evaluating incoming merchant requests, checking card BIN jurisdictions, acquiring atomic distributed Redis mutexes to make duplicate mutations physically impossible, and cascading across secondary fallbacks in under 15 milliseconds when primary acquirers drop.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 pt-2">
+                    <h2 className="text-lg font-bold text-slate-100 tracking-tight">
+                      Engineering Pragmatism & Modern PHP 8.3
+                    </h2>
+                    <p>
+                      I believe in boring, reliable technologies pushed to exceptional throughput. Modern <strong className="text-slate-100 font-medium">PHP 8.3 with strict typing, readonly classes, and persistent worker processes (RoadRunner / Octane)</strong> delivers predictable sub-50ms p99 response times while maintaining maintainable, decoupled domain contracts. Combined with <strong className="text-slate-100 font-medium">Go</strong> for lightweight concurrent daemon workers and <strong className="text-slate-100 font-medium">Redis Cluster</strong> for distributed lock synchronization, our systems process thousands of transaction mutations with zero downtime.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 pt-2">
+                    <h2 className="text-lg font-bold text-slate-100 tracking-tight">
+                      Beyond the Terminal
+                    </h2>
+                    <p>
+                      I operate remotely from Dhaka, seamlessly integrated with European and global timezones. Outside of production alerts and transaction pipelines, I spend time studying distributed consensus literature (Raft, Paxos, Spanner), experimenting with localized caching topologies, brewing pour-over coffee, and mentoring younger backend engineers on the importance of database indexing, invariant defenses, and idempotent API design.
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* 4 Core Architectural Principles */}
+                <div className="space-y-3 pt-2">
+                  <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                    Core Engineering Invariants
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                      <div className="text-xs font-bold text-slate-100">01 · Idempotency by Default</div>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Never assume a reliable network. Every payment mutation must accept an idempotency key and be safely replayable without side effects.
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                      <div className="text-xs font-bold text-slate-100">02 · Pessimistic Integrity over Hope</div>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        When account balances are mutated, row-level locks (SELECT FOR UPDATE) and serializable transactions guarantee zero overdraft races.
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                      <div className="text-xs font-bold text-slate-100">03 · Zero-Trust Webhook Ingestion</div>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Treat asynchronous callbacks as unverified until constant-time HMAC-SHA256 verification and 300s timestamp drift checks confirm origin.
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1">
+                      <div className="text-xs font-bold text-slate-100">04 · Contract Decoupling</div>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Wrap raw third-party gateway APIs behind strict Polymorphic Strategy Pattern drivers so acquirer breaking changes never leak into core domain logic.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Direct Action Strip */}
+                <div className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4">
+                  <div className="text-xs text-slate-400">
+                    Discussing payment architecture, backend contracts, or a senior engineering role?
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setIsContactOpen(true)}
+                      className="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-black font-semibold text-xs transition-colors flex items-center gap-1.5"
                     >
-                      Paymid
-                    </a>
-                    , where I architect our multi-PSP routing engine and dynamic failover cascade — turning dozens of fragmented banking APIs into high-throughput, unified payment pipelines with sub-15ms automated failover.
-                  </p>
-
-                  <p>
-                    My technical foundation centers around event-driven architectures, distributed idempotency mutexes, and zero-variance double-entry ledgers with{' '}
-                    <strong className="text-slate-100 font-semibold">PHP 8.3 / Laravel</strong>,{' '}
-                    <strong className="text-slate-100 font-semibold">Go</strong>,{' '}
-                    <strong className="text-slate-100 font-semibold">Node.js</strong>, and{' '}
-                    <strong className="text-slate-100 font-semibold">Redis</strong>.
-                  </p>
-
-                  <p>
-                    I hold an engineering degree from{' '}
-                    <strong className="text-slate-100 font-semibold">Khulna University of Engineering & Technology (KUET)</strong> in Electrical, Electronics & Communication Engineering. When away from production logs, I study distributed consensus papers, brew pour-over coffee, and mentor engineers.
-                  </p>
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Contact Farhan</span>
+                    </button>
+                    <button
+                      onClick={handleCopyEmail}
+                      className="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] text-slate-300 text-xs transition-colors flex items-center gap-1.5"
+                    >
+                      {copiedEmail ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5 text-slate-400" />}
+                      <span>{copiedEmail ? 'Copied' : 'Copy Email'}</span>
+                    </button>
+                  </div>
                 </div>
 
-                <div className="pt-6 border-t border-white/[0.08] flex items-center gap-4">
-                  <button
-                    onClick={() => setIsContactOpen(true)}
-                    className="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-black font-semibold text-xs transition-colors"
-                  >
-                    Contact Farhan
-                  </button>
-                  <button
-                    onClick={handleCopyEmail}
-                    className="px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] text-slate-300 text-xs transition-colors"
-                  >
-                    {copiedEmail ? 'Copied Email' : 'Copy Email'}
-                  </button>
-                </div>
               </div>
             )}
 
@@ -701,7 +844,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
                 </div>
 
-                {/* Stack & System Invariants Section */}
+                {/* Stack & System Invariants Section — With Vector Tech Logos! */}
                 <div className="space-y-6 pt-6 border-t border-white/[0.08]">
                   <div>
                     <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
@@ -721,11 +864,26 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         Languages & Frameworks
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        {['PHP 8.3', 'Laravel 11', 'Go', 'Node.js', 'Symfony'].map((t) => (
-                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
-                            {t}
-                          </span>
-                        ))}
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <PhpIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>PHP 8.3</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <LaravelIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>Laravel 11</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <GoIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>Go</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <NodeIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>Node.js</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <SymfonyIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>Symfony</span>
+                        </span>
                       </div>
                       <p className="text-xs text-slate-400 leading-relaxed pt-2">
                         Modern PHP 8.3 typed properties, readonly classes, and JIT compilation powering high-throughput API endpoints with low memory footprint.
@@ -737,11 +895,18 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         Data & Mutex Defense
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        {['Redis Cluster', 'Redlock', 'MySQL 8.0', 'PostgreSQL'].map((t) => (
-                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
-                            {t}
-                          </span>
-                        ))}
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <RedisIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>Redis Cluster</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <MySqlIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>MySQL 8.0</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <PostgreSqlIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>PostgreSQL</span>
+                        </span>
                       </div>
                       <p className="text-xs text-slate-400 leading-relaxed pt-2">
                         Distributed idempotency locks with Redlock algorithm, ACID serializable transactions, and strict row-level pessimistic locking for ledger records.
@@ -753,11 +918,20 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         Protocols & Standards
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        {['PCI-DSS Ingress', 'HMAC-SHA256', 'OpenAPI 3.1', 'Docker'].map((t) => (
-                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
-                            {t}
-                          </span>
-                        ))}
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <DockerIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>Docker</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          <TypeScriptIcon className="w-3.5 h-3.5 text-slate-400" />
+                          <span>TypeScript</span>
+                        </span>
+                        <span className="px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          PCI-DSS Ingress
+                        </span>
+                        <span className="px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06] text-slate-200 text-xs">
+                          HMAC-SHA256
+                        </span>
                       </div>
                       <p className="text-xs text-slate-400 leading-relaxed pt-2">
                         Zero card data at rest outside tokenization perimeter, constant-time webhook verification, and contract-first OpenAPI schemas.

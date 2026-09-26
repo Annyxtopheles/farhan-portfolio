@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Mail, Copy, Check, Send } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { LinkedInIcon } from './icons/LinkedInIcon';
@@ -17,6 +17,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     company: '',
     message: ''
   });
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -37,8 +47,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg rounded-2xl border border-white/[0.1] bg-[#0c0e14] shadow-2xl p-6 sm:p-7 text-left font-sans">
+    <div 
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm cursor-pointer"
+    >
+      <div 
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-lg rounded-2xl border border-white/[0.1] bg-[#12151d] shadow-2xl p-6 sm:p-7 text-left font-sans cursor-default"
+      >
         
         {/* Close Button */}
         <button
@@ -50,7 +68,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
         {/* Header */}
         <div className="mb-5">
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight">
             Get in Touch
           </h3>
           <p className="text-xs text-slate-400 mt-1">
@@ -66,7 +84,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </div>
             <div>
               <div className="text-[11px] text-slate-400">Direct Email</div>
-              <div className="text-xs font-semibold text-white">
+              <div className="text-xs font-semibold text-slate-200">
                 {PORTFOLIO_DATA.engineer.links.email}
               </div>
             </div>
@@ -79,8 +97,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             >
               {copiedEmail ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-white" />
-                  <span className="text-white">Copied</span>
+                  <Check className="w-3.5 h-3.5 text-slate-200" />
+                  <span className="text-slate-200">Copied</span>
                 </>
               ) : (
                 <>
@@ -105,13 +123,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         {/* Message Form */}
         {formSent ? (
           <div className="py-8 text-center space-y-3 bg-white/[0.02] rounded-xl border border-white/[0.08] p-6">
-            <h4 className="text-white font-bold text-base">Message Ready</h4>
+            <h4 className="text-slate-100 font-bold text-base">Message Ready</h4>
             <p className="text-xs text-slate-300 max-w-sm mx-auto">
               Opening your default email client with your message to Farhan.
             </p>
             <button
               onClick={() => setFormSent(false)}
-              className="text-xs text-white underline pt-2 inline-block"
+              className="text-xs text-slate-200 underline pt-2 inline-block"
             >
               Edit message
             </button>
@@ -127,7 +145,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="e.g. Alex Mercer"
-                  className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
+                  className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-white/30"
                 />
               </div>
               <div>
@@ -138,7 +156,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="alex@example.com"
-                  className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
+                  className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-white/30"
                 />
               </div>
             </div>
@@ -150,7 +168,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 placeholder="e.g. Fintech Corp"
-                className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
+                className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-white/30"
               />
             </div>
 
@@ -162,7 +180,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="How can Farhan help your team or system?"
-                className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
+                className="w-full bg-black/60 border border-white/[0.1] rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-white/30"
               />
             </div>
 
