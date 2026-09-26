@@ -21,6 +21,8 @@ export interface Experience {
   description: string;
   highlights: string[];
   techStack: string[];
+  logo?: string;
+  website?: string;
 }
 
 export const PORTFOLIO_DATA = {
@@ -29,7 +31,6 @@ export const PORTFOLIO_DATA = {
     headline: "Senior Backend & Payment Systems Engineer",
     currentRole: "Software Engineer (SDE-1) at Paymid",
     location: "Limassol, Cyprus (Remote) · Dhaka, Bangladesh",
-    education: "B.Sc. in Electrical, Electronics & Communication Engineering — KUET (ECE '13)",
     experienceYears: "7+",
     summary: "Architecting zero-fault-tolerance payment infrastructure, multi-gateway orchestration engines, and high-concurrency transactional backends. Specialized in dynamic PSP routing, idempotent transaction lifecycles, and resilient cross-border financial rails.",
     status: {
@@ -39,7 +40,7 @@ export const PORTFOLIO_DATA = {
       timezone: "UTC+6 / UTC+2",
     },
     links: {
-      linkedin: "https://www.linkedin.com/in/farhan-khan-kuet/",
+      linkedin: "https://www.linkedin.com/in/farhan-khan-a6a8b2157/",
       email: "farhankhan.engr@gmail.com",
       github: "https://github.com/farhankhan",
     }
@@ -48,7 +49,7 @@ export const PORTFOLIO_DATA = {
   stats: [
     { label: "Production Experience", value: "7+ Years", detail: "LAMP, Laravel & FinTech" },
     { label: "Gateways & APMs Orchestrated", value: "200+", detail: "Cards, Crypto & Local Rails" },
-    { label: "Engineering Rigor", value: "KUET ECE '13", detail: "Hardware & Telecom Foundations" },
+    { label: "Enterprise Track Record", value: "7 Companies", detail: "FinTech, Telecom & Enterprise" },
     { label: "Cognitive Aptitude", value: "IQ 123", detail: "Verified Analytical Score" }
   ],
 
@@ -241,71 +242,117 @@ public function settleTransaction(string $txId, Money $amount): void
       period: "Aug 2024 – Present",
       duration: "Ongoing",
       type: "Full-time",
+      logo: "/logos/paymid.png",
+      website: "https://paymid.com/",
       description: "Core engineer on the payment orchestration infrastructure team. Designing multi-channel integration engines, codeless checkout flows, smart routing, and global gateway connectors.",
       highlights: [
         "Architecting payment gateway integration systems connecting global merchants with 200+ gateways and 700+ APMs.",
         "Developing dynamic payment routing logic optimizing checkout conversion and interchange rates.",
         "Building resilient webhook handlers with cryptographic signature guards and atomic transaction settlement."
       ],
-      techStack: ["PHP 8.3", "Laravel", "MySQL", "Redis", "PSP Integrations", "APMs", "Docker", "REST APIs"]
+      techStack: ["PHP 8.3", "Laravel 11", "MySQL 8.0", "Redis", "PSP Integrations", "APMs", "Docker", "REST APIs"]
     },
     {
       company: "SJ Innovation LLC",
-      role: "Senior Software Engineer L1 / L2",
-      location: "Dhaka, Bangladesh · Hybrid",
-      period: "Apr 2023 – Aug 2024",
+      role: "Senior Software Engineer L1",
+      location: "Dhaka, Bangladesh · On-site",
+      period: "May 2023 – Aug 2024",
       duration: "1 yr 4 mos",
       type: "Full-time",
-      description: "Promoted from Software Engineer L1 to L2 and Senior L1. Recognized as 'Performer of the Month' and awarded for AI/Chatbot innovation. Led enterprise integrations and high-scale client systems.",
+      logo: "/logos/sjinnovation.png",
+      website: "https://sjinnovation.com/",
+      description: "Progressed through 2 consecutive promotions across 16 months: Software Engineer L1 (May 2023 – Nov 2023), Software Engineer L2 (Nov 2023 – Apr 2024), and Senior Software Engineer L1 (Apr 2024 – Aug 2024). Awarded 'Performer of the Month' and recognized for AI/Chatbot innovation.",
       highlights: [
-        "Earned 2 consecutive promotions within 16 months for consistent technical delivery and leadership.",
-        "Worked on US enterprise Johnson & Johnson DXP Contentful platform migration for Tylenol, Zarbees, and Aveeno.",
-        "Engineered custom backend microservices, caching architectures, and high-volume REST APIs."
+        "Earned 2 consecutive engineering promotions within 16 months for consistent technical execution, problem solving, and team delivery.",
+        "Led backend integrations on Johnson & Johnson enterprise Contentful DXP migration for global brands including Tylenol, Zarbees, and Aveeno.",
+        "Engineered custom backend microservices, caching architectures, and high-throughput REST APIs."
       ],
-      techStack: ["Laravel", "PHP", "Contentful DXP", "MySQL", "Node.js", "Docker", "Git", "Agile/Scrum"]
+      techStack: ["Laravel", "PHP", "Contentful DXP", "MySQL", "Node.js", "Docker", "REST APIs", "Agile/Scrum"]
     },
     {
       company: "Namhost",
       role: "Software Engineer (FinTech Platforms)",
-      location: "South Africa · Remote Contract",
+      location: "South Africa · Remote",
       period: "Oct 2023 – Apr 2024",
       duration: "7 mos",
       type: "Contract via SJ Innovation",
-      description: "Deployed to support South African engineering teams on 3 cash service and lending platforms: Broke-Relief, Kuda, and Fynbos.",
+      logo: "/logos/namhost.png",
+      website: "https://namhost.com/",
+      description: "Contracted via SJ Innovation to build and scale transactional backends for 3 high-volume cash service and micro-credit platforms operating across Southern Africa: Broke-Relief, Kuda, and Fynbos.",
       highlights: [
-        "Engineered multi-currency wallet ledger logic with zero rounding drift or ledger variance.",
-        "Integrated South African payment networks and automated instant credit rails.",
-        "Pioneered performance refactoring for concurrent borrower applications under high load."
+        "Engineered strict double-entry ledger bookkeeping to guarantee zero mathematical drift across multi-currency accounts.",
+        "Integrated Southern African regional banking APIs and automated instant disbursement rails with robust retry circuits.",
+        "Optimized serializable database isolation levels to prevent race conditions during high-volume concurrent loan applications."
       ],
-      techStack: ["PHP", "Laravel", "Financial Ledgers", "REST APIs", "MySQL", "Performance Tuning"]
+      techStack: ["PHP", "Laravel", "MySQL", "Double-Entry Ledger", "Payment Gateways", "REST APIs"]
     },
     {
       company: "Instantwebb",
       role: "Laravel Developer",
-      location: "Dhaka, Bangladesh",
+      location: "Dhaka, Bangladesh · On-site",
       period: "Nov 2022 – Apr 2023",
       duration: "6 mos",
       type: "Full-time",
-      description: "Core backend developer on an 8-member engineering team building comprehensive US-client hospital management platforms.",
+      logo: "/logos/instantwebb.png",
+      website: "https://instantwebb.com/",
+      description: "Backend developer on an 8-member engineering team designing and implementing large-scale healthcare and hospital management platforms for US clients.",
       highlights: [
-        "Engineered complex patient admission, electronic medical records, and billing calculation modules.",
-        "Designed relational schema models with strict relational integrity constraints."
+        "Architected electronic health records (EHR), patient admission workflows, and automated medical billing calculation modules.",
+        "Implemented relational database models with strict foreign key constraints and transactional integrity.",
+        "Built secure RESTful APIs adhering to healthcare data protection and privacy requirements."
       ],
       techStack: ["Laravel", "PHP", "MySQL", "Database Architecture", "REST APIs"]
     },
     {
       company: "IYLMA Innovation Limited",
       role: "Software Engineer",
-      location: "Dhaka, Bangladesh",
+      location: "Dhaka, Bangladesh · On-site",
       period: "Jan 2022 – Nov 2022",
       duration: "11 mos",
       type: "Full-time",
-      description: "Engineered enterprise web platforms for Grameenphone Limited (Telenor Group): Grameenphone Academy LMS and bSafe.",
+      logo: "/logos/iylma.png",
+      website: "https://iylma.com/",
+      description: "Engineered enterprise web systems for Grameenphone Limited (Telenor Group, largest telecom operator in Bangladesh), delivering the Grameenphone Academy LMS and bSafe vehicle safety systems.",
       highlights: [
-        "Delivered Grameenphone Academy enterprise learning portal and bSafe field vehicle inspection systems.",
-        "Engaged in client requirement gathering sessions and feedback loops at Grameenphone House."
+        "Built the Grameenphone Academy enterprise learning portal and bSafe vehicle inspection platform deployed to nationwide field operations.",
+        "Participated directly in requirement discovery, architectural reviews, and stakeholder demo loops at GP House.",
+        "Designed role-based access control (RBAC) supporting multi-tier corporate hierarchies and departmental auditing."
       ],
-      techStack: ["PHP", "Laravel", "MySQL", "Vue.js", "Enterprise Systems"]
+      techStack: ["PHP", "Laravel", "MySQL", "Vue.js", "RESTful APIs", "Enterprise RBAC"]
+    },
+    {
+      company: "Perky Rabbit",
+      role: "Software Engineer",
+      location: "Dhaka, Bangladesh · On-site",
+      period: "Jan 2021 – Dec 2021",
+      duration: "1 yr",
+      type: "Full-time",
+      logo: "/logos/perkyrabbit.png",
+      website: "https://perkyrabbit.com/",
+      description: "Full-time software engineer building core governmental web systems for the Bangladesh Fire Service and Civil Defence (FSCD).",
+      highlights: [
+        "Developed critical operational modules for FSCD including Inventory Management, HR Management, Fire Safety Clearance Applications, and Workshop Management.",
+        "Engineered database schemas and transactional workflows handling departmental requisitions and equipment maintenance tracking.",
+        "Maintained and optimized production web applications with continuous feature delivery and security patches."
+      ],
+      techStack: ["PHP", "Laravel", "MySQL", "JavaScript", "REST APIs", "System Architecture"]
+    },
+    {
+      company: "MIEN IT LIMITED",
+      role: "Jr. Software Engineer",
+      location: "Bangladesh · On-site",
+      period: "Jan 2019 – Mar 2020",
+      duration: "1 yr 3 mos",
+      type: "Full-time",
+      logo: "/logos/mienit.png",
+      website: "https://mienit.com/",
+      description: "Started professional engineering career building custom backend web applications, client solutions, and managing Linux deployment environments.",
+      highlights: [
+        "Translated business requirements into functional database schemas and robust backend web applications.",
+        "Managed Linux server deployments, cPanel hosting environments, domain configurations, and MySQL database administration.",
+        "Debugged and resolved production issues across multiple concurrent client web applications."
+      ],
+      techStack: ["PHP", "MySQL", "JavaScript", "HTML/CSS", "Linux", "cPanel"]
     }
   ] as Experience[],
 
@@ -333,12 +380,6 @@ public function settleTransaction(string $txId, Money $amount): void
       issuer: "SJ Innovation LLC",
       date: "October 2023",
       description: "Recognized for prototyping and integrating cutting-edge AI and automated conversational workflows into enterprise products."
-    },
-    {
-      title: "B.Sc. in Electrical, Electronics & Communication Engineering",
-      issuer: "Khulna University of Engineering & Technology (KUET)",
-      date: "2014 – 2019",
-      description: "Comprehensive 4-year engineering degree covering signal processing, telecommunication protocols, system architecture, and computational mathematics."
     }
   ]
 };

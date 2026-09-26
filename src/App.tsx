@@ -434,46 +434,49 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   Work Experience
                 </h3>
 
-                {/* Real Software Engineering Roles Timeline */}
                 <div className="space-y-2 text-xs">
-                  <div className="border-l-2 border-white/[0.15] pl-3 py-0.5">
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-semibold text-slate-200">Paymid (Cyprus)</span>
-                      <span className="text-[11px] text-slate-400">2024 — Present</span>
+                  {/* Current Featured Role with Paymid logo */}
+                  <div className="p-2.5 rounded-xl bg-white/[0.015] border border-white/[0.05]">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-white flex items-center justify-center p-1 shrink-0 shadow-sm border border-white/[0.1] overflow-hidden">
+                        <img
+                          src="/logos/paymid.png"
+                          alt="Paymid"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="font-semibold text-slate-200 truncate">Paymid (Cyprus)</span>
+                          <span className="text-[10px] text-emerald-400/90 font-medium">Present</span>
+                        </div>
+                        <div className="text-[11px] text-slate-400 truncate">Software Engineer (SDE-1)</div>
+                      </div>
                     </div>
-                    <div className="text-[11px] text-slate-400">Software Engineer — Platform & Payments</div>
                   </div>
 
-                  <div className="border-l-2 border-white/[0.08] pl-3 py-0.5">
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-medium text-slate-300">SJ Innovation</span>
-                      <span className="text-[11px] text-slate-400">2023 — 2024</span>
+                  {/* Prior Key Engineering Roles */}
+                  <div className="px-1 space-y-1.5 text-xs">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-300">SJ Innovation</span>
+                      <span className="text-[11px] text-slate-400">Senior Software Eng · 2023–24</span>
                     </div>
-                    <div className="text-[11px] text-slate-400">Senior Software Engineer</div>
-                  </div>
-
-                  <div className="border-l-2 border-white/[0.08] pl-3 py-0.5">
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-medium text-slate-300">Namhost</span>
-                      <span className="text-[11px] text-slate-400">2023 — 2024</span>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-300">Namhost</span>
+                      <span className="text-[11px] text-slate-400">FinTech Engineer · 2023–24</span>
                     </div>
-                    <div className="text-[11px] text-slate-400">FinTech & Ledger Engineer</div>
-                  </div>
-
-                  <div className="border-l-2 border-white/[0.08] pl-3 py-0.5">
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-medium text-slate-300">IYLMA / Grameenphone</span>
-                      <span className="text-[11px] text-slate-400">2022</span>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400 text-[11px]">Instantwebb · IYLMA · Perky Rabbit · MIEN IT</span>
+                      <span className="text-[10px] text-slate-500">2019–23</span>
                     </div>
-                    <div className="text-[11px] text-slate-400">Software Engineer</div>
                   </div>
                 </div>
               </div>
 
               <div className="pt-2.5 mt-2.5 border-t border-white/[0.05] flex items-center justify-between text-xs text-slate-400">
-                <span>7+ Years Production Track Record</span>
+                <span>7 Companies · 7+ Years</span>
                 <span className="text-slate-300 group-hover:text-slate-100 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                  <span>View Timeline</span>
+                  <span>View All 7 Roles</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </div>
@@ -995,23 +998,52 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   {PORTFOLIO_DATA.experiences.map((exp, idx) => (
                     <div
                       key={idx}
-                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-3"
+                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-4"
                     >
-                      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                        <div className="flex flex-wrap items-baseline gap-2">
-                          <h2 className="text-lg sm:text-xl font-bold text-slate-200">
-                            {exp.role}
-                          </h2>
-                          <span className="text-slate-500 text-sm">at</span>
-                          <span className="text-slate-300 font-semibold text-base">{exp.company}</span>
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                        <div className="flex items-start gap-4">
+                          {exp.logo && (
+                            <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-1.5 shrink-0 shadow-sm border border-white/[0.1] overflow-hidden">
+                              <img
+                                src={exp.logo}
+                                alt={`${exp.company} logo`}
+                                className="w-full h-full object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
+                          <div>
+                            <div className="flex flex-wrap items-baseline gap-2">
+                              <h2 className="text-lg sm:text-xl font-bold text-slate-200">
+                                {exp.role}
+                              </h2>
+                              <span className="text-slate-500 text-sm">at</span>
+                              {exp.website ? (
+                                <a
+                                  href={exp.website}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-slate-300 font-semibold text-base hover:text-white inline-flex items-center gap-1 group/link transition-colors"
+                                >
+                                  <span>{exp.company}</span>
+                                  <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover/link:opacity-100 transition-opacity" />
+                                </a>
+                              ) : (
+                                <span className="text-slate-300 font-semibold text-base">{exp.company}</span>
+                              )}
+                            </div>
+                            <div className="text-xs text-slate-400 mt-1 flex flex-wrap items-center gap-2">
+                              <span>{exp.location}</span>
+                              <span className="text-slate-600">•</span>
+                              <span>{exp.type}</span>
+                            </div>
+                          </div>
                         </div>
-                        <span className="text-xs text-slate-400">
-                          {exp.period}
-                        </span>
-                      </div>
 
-                      <div className="text-xs text-slate-400">
-                        {exp.location} • {exp.type}
+                        <div className="text-xs text-slate-400 sm:text-right shrink-0 pt-0.5">
+                          <div className="font-medium text-slate-300">{exp.period}</div>
+                          <div className="text-[11px] text-slate-500 mt-0.5">{exp.duration}</div>
+                        </div>
                       </div>
 
                       <p className="text-sm text-slate-400 leading-relaxed">
