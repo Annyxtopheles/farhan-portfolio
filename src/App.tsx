@@ -27,7 +27,6 @@ export const App: React.FC = () => {
   const [copiedCli, setCopiedCli] = useState(false);
   const [activeStageId, setActiveStageId] = useState<string>('idempotency');
 
-  // Handle browser back/forward and hash
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '');
@@ -180,18 +179,19 @@ if (abs(now()->timestamp - $timestamp) > 300) {
     <div className="min-h-screen bg-[#0b1120] text-slate-300 font-sans selection:bg-sky-500/20 selection:text-sky-200">
       
       {/* =========================================================================
-          VIEW A: SINGLE PAGE BENTO GRID (Zero Scroll on Desktop, Summarizing Everything)
+          VIEW A: SINGLE PAGE BENTO GRID (Balanced, Zero Scroll on Desktop)
           ========================================================================= */}
       {currentPage === 'bento' && (
-        <div className="min-h-screen lg:h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
+        <div className="min-h-screen lg:h-screen lg:max-h-screen lg:overflow-hidden flex flex-col justify-between p-3.5 sm:p-5 lg:p-4 xl:p-6 max-w-7xl mx-auto">
           
-          {/* Top Navbar */}
-          <header className="flex items-center justify-between pb-4 border-b border-slate-800/80 shrink-0">
+          {/* Top Navbar: No duplicate name, clean status bar */}
+          <header className="flex items-center justify-between pb-2 xl:pb-3 border-b border-slate-800/80 shrink-0">
             <div className="flex items-center gap-3">
-              <span className="text-base font-bold text-slate-100 tracking-tight font-sans">
-                {PORTFOLIO_DATA.engineer.name}
+              <span className="text-xs font-mono font-medium text-slate-400">
+                Payment Infrastructure
               </span>
-              <span className="inline-flex items-center bg-slate-800/80 text-slate-300 text-xs font-semibold px-2.5 py-0.5 rounded-full border border-slate-700/60">
+              <span className="text-slate-700">•</span>
+              <span className="inline-flex items-center bg-slate-800/80 text-slate-300 text-xs font-medium px-2.5 py-0.5 rounded-full border border-slate-700/60">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-400 mr-1.5 animate-pulse"></span>
                 Paymid • Remote
               </span>
@@ -208,81 +208,136 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             </div>
           </header>
 
-          {/* Bento Grid: 12 Columns, No Scroll on Desktop */}
-          <main className="my-auto py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5 flex-1 items-stretch">
+          {/* Bento Grid: 12 Columns, High Information Density & Perfect Balance */}
+          <main className="my-auto py-2 xl:py-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3 xl:gap-4 flex-1 items-stretch">
             
-            {/* BOX 1: Persona & Narrative Summary (5 cols) -> Clicks to About */}
+            {/* BOX 1: Persona & Bio (5 cols) -> Clicks to About */}
             <div
               onClick={() => navigateTo('about')}
-              className="lg:col-span-5 rounded-2xl bg-slate-900/60 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
+              className="lg:col-span-5 rounded-2xl bg-slate-900/60 border border-slate-800 p-4 sm:p-5 xl:p-6 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
             >
               <div>
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-3.5 xl:gap-4 mb-3 xl:mb-4">
                   <img
                     src="/farhan.jpg"
                     alt={PORTFOLIO_DATA.engineer.name}
-                    className="w-16 h-16 rounded-xl border border-slate-700 object-cover bg-slate-950 shadow shrink-0"
+                    className="w-13 h-13 xl:w-16 xl:h-16 rounded-xl border border-slate-700 object-cover bg-slate-950 shadow shrink-0"
                     width="64"
                     height="64"
                   />
                   <div>
-                    <h2 className="text-xl font-bold text-slate-100 tracking-tight group-hover:text-sky-300 transition-colors">
+                    <h1 className="text-lg xl:text-xl font-bold text-slate-100 tracking-tight group-hover:text-sky-300 transition-colors">
                       {PORTFOLIO_DATA.engineer.name}
-                    </h2>
-                    <p className="text-xs text-slate-400 font-medium">
+                    </h1>
+                    <p className="text-xs text-slate-400 font-medium mt-0.5">
                       Senior Backend & Payment Systems Engineer
                     </p>
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-300 leading-relaxed font-sans">
-                  Architecting multi-PSP orchestration pipelines, distributed idempotency mutexes, and zero-variance double-entry ledgers at Paymid.
+                <p className="text-xs xl:text-sm text-slate-300 leading-relaxed font-sans mb-3 xl:mb-4">
+                  7+ years architecting high-throughput multi-PSP payment rails, sub-15ms dynamic routing solvers, distributed Redis mutexes, and zero-variance double-entry financial ledgers at <strong className="text-slate-100 font-medium">Paymid</strong>.
                 </p>
+
+                {/* Direct Social Links */}
+                <div className="flex items-center gap-4 text-xs text-slate-400 pt-1">
+                  <a
+                    href={PORTFOLIO_DATA.engineer.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
+                  >
+                    <GithubIcon className="w-3.5 h-3.5 text-slate-400" />
+                    <span>GitHub</span>
+                  </a>
+                  <span className="text-slate-700">•</span>
+                  <a
+                    href={PORTFOLIO_DATA.engineer.links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
+                  >
+                    <LinkedInIcon className="w-3.5 h-3.5 text-slate-400" />
+                    <span>LinkedIn</span>
+                  </a>
+                  <span className="text-slate-700">•</span>
+                  <a
+                    href="https://x.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
+                  >
+                    <TwitterIcon className="w-3.5 h-3.5 text-slate-400" />
+                    <span>Twitter</span>
+                  </a>
+                </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                <span className="text-slate-500 font-mono">7+ Yrs Production Backend</span>
+              <div className="pt-3 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span className="text-slate-500 font-mono">B.Sc. ECE '13 • KUET</span>
                 <span className="text-sky-400 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                  <span>Read full bio</span>
+                  <span>Read full profile</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </div>
             </div>
 
-            {/* BOX 2: Architecture Blueprint Summary (7 cols) -> Clicks to Architecture */}
+            {/* BOX 2: Architecture Blueprint (7 cols) -> Visual Rail Flow */}
             <div
               onClick={() => navigateTo('architecture')}
-              className="lg:col-span-7 rounded-2xl bg-slate-900/60 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
+              className="lg:col-span-7 rounded-2xl bg-slate-900/60 border border-slate-800 p-4 sm:p-5 xl:p-6 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
             >
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2 text-xs font-mono text-sky-400 font-bold uppercase tracking-wider">
-                    <Layers className="w-4 h-4" />
+                <div className="flex items-center justify-between mb-1.5 xl:mb-2">
+                  <div className="flex items-center gap-2 text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">
+                    <Layers className="w-4 h-4 text-sky-400" />
                     <span>System Architecture Blueprint</span>
                   </div>
-                  <span className="text-xs font-mono text-slate-400">&lt;15ms Automated Failover</span>
+                  <span className="text-xs font-mono text-sky-400 font-medium">&lt;15ms Acquirer Failover</span>
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-100 tracking-tight mb-2 group-hover:text-sky-300 transition-colors">
+                <h2 className="text-base xl:text-lg font-bold text-slate-100 tracking-tight mb-1.5 xl:mb-2 group-hover:text-sky-300 transition-colors">
                   Anatomy of a Fault-Tolerant Payment Rail
-                </h3>
+                </h2>
 
-                <p className="text-sm text-slate-300 leading-relaxed mb-4">
-                  Multi-acquirer routing solver, Redis atomic mutexes, Strategy Pattern drivers, and strict double-entry ledger bookkeeping.
+                <p className="text-xs xl:text-sm text-slate-300 leading-relaxed mb-2.5 xl:mb-3">
+                  Multi-acquirer priority solver, atomic Redis distributed idempotency locks, Strategy Pattern drivers, and ACID double-entry ledger bookkeeping.
                 </p>
 
-                {/* Micro stage pills */}
-                <div className="flex flex-wrap gap-1.5 font-mono text-xs">
-                  {['01 Ingress Contract', '02 Redis Mutex', '03 Smart Router', '04 Strategy Drivers', '05 HMAC Webhook', '06 Double-Entry'].map((s) => (
-                    <span key={s} className="px-2 py-1 rounded-md bg-slate-950/70 border border-slate-800 text-slate-400 text-[11px]">
-                      {s}
-                    </span>
-                  ))}
+                {/* Visual Pipeline Flow */}
+                <div className="p-2 xl:p-2.5 rounded-xl bg-slate-950/70 border border-slate-800 grid grid-cols-3 sm:grid-cols-6 gap-1.5 xl:gap-2 text-center text-xs font-mono">
+                  <div className="p-1 xl:p-1.5 rounded bg-slate-900/90 border border-slate-800">
+                    <span className="text-[10px] text-slate-500 block">01</span>
+                    <span className="text-slate-300 font-medium text-[11px]">Ingress DTO</span>
+                  </div>
+                  <div className="p-1 xl:p-1.5 rounded bg-slate-900/90 border border-slate-800">
+                    <span className="text-[10px] text-slate-500 block">02</span>
+                    <span className="text-slate-300 font-medium text-[11px]">Redis Mutex</span>
+                  </div>
+                  <div className="p-1 xl:p-1.5 rounded bg-slate-900/90 border border-slate-800">
+                    <span className="text-[10px] text-slate-500 block">03</span>
+                    <span className="text-slate-300 font-medium text-[11px]">Smart Router</span>
+                  </div>
+                  <div className="p-1 xl:p-1.5 rounded bg-slate-900/90 border border-slate-800">
+                    <span className="text-[10px] text-slate-500 block">04</span>
+                    <span className="text-slate-300 font-medium text-[11px]">PSP Drivers</span>
+                  </div>
+                  <div className="p-1 xl:p-1.5 rounded bg-slate-900/90 border border-slate-800">
+                    <span className="text-[10px] text-slate-500 block">05</span>
+                    <span className="text-slate-300 font-medium text-[11px]">HMAC Hook</span>
+                  </div>
+                  <div className="p-1 xl:p-1.5 rounded bg-slate-900/90 border border-slate-800">
+                    <span className="text-[10px] text-slate-500 block">06</span>
+                    <span className="text-slate-300 font-medium text-[11px]">ACID Ledger</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                <span className="text-slate-500 font-mono">PHP 8.3 • Concurrency Invariants</span>
+              <div className="pt-2 xl:pt-2.5 mt-2.5 xl:mt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span className="text-slate-500 font-mono">200+ Gateways • 700+ APMs</span>
                 <span className="text-sky-400 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>Inspect Blueprint & Code</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -290,85 +345,109 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               </div>
             </div>
 
-            {/* BOX 3: Selected Enterprise Projects (4 cols) -> Clicks to Projects */}
+            {/* BOX 3: Selected Enterprise Systems (4 cols) */}
             <div
               onClick={() => navigateTo('projects')}
-              className="lg:col-span-4 rounded-2xl bg-slate-900/60 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
+              className="lg:col-span-4 rounded-2xl bg-slate-900/60 border border-slate-800 p-3.5 sm:p-4 xl:p-5 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
             >
               <div>
-                <div className="flex items-center gap-2 text-xs font-mono text-sky-400 font-bold uppercase tracking-wider mb-3">
-                  <Briefcase className="w-4 h-4" />
+                <div className="flex items-center gap-2 text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider mb-2.5">
+                  <Briefcase className="w-4 h-4 text-sky-400" />
                   <span>Selected Platforms</span>
                 </div>
 
-                <h3 className="text-base font-bold text-slate-100 mb-2 group-hover:text-sky-300 transition-colors">
+                <h3 className="text-base font-bold text-slate-100 mb-2.5 group-hover:text-sky-300 transition-colors">
                   4 Production Systems
                 </h3>
 
                 <ul className="space-y-2 text-xs text-slate-300">
-                  <li className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-200">Paymid</span>
-                    <span className="text-slate-500 font-mono">Global PSP Engine</span>
+                  <li className="p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-slate-200">Paymid</div>
+                      <div className="text-[11px] text-slate-400">Global Payment Orchestrator</div>
+                    </div>
+                    <span className="text-[10px] font-mono text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded">PSP</span>
                   </li>
-                  <li className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-200">Namhost</span>
-                    <span className="text-slate-500 font-mono">Cross-Border Fintech</span>
+                  <li className="p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-slate-200">Namhost</div>
+                      <div className="text-[11px] text-slate-400">Cross-Border Fintech & Wallets</div>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Fintech</span>
                   </li>
-                  <li className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-200">Johnson & Johnson</span>
-                    <span className="text-slate-500 font-mono">DXP Modernization</span>
+                  <li className="p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-slate-200">Johnson & Johnson</div>
+                      <div className="text-[11px] text-slate-400">DXP Modernization</div>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Enterprise</span>
                   </li>
-                  <li className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-200">Grameenphone</span>
-                    <span className="text-slate-500 font-mono">Telecom Systems</span>
+                  <li className="p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-slate-200">Grameenphone</div>
+                      <div className="text-[11px] text-slate-400">Telecom Core Services</div>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Telecom</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                <span className="text-slate-500 font-mono">FinTech & Lending</span>
+              <div className="pt-3 mt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span className="text-slate-500 font-mono">Specs & Highlights</span>
                 <span className="text-sky-400 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                  <span>View Project Specs</span>
+                  <span>View specs</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </div>
             </div>
 
-            {/* BOX 4: Career Experience (4 cols) -> Clicks to Experience */}
+            {/* BOX 4: Career & Academic Rigor (4 cols) */}
             <div
               onClick={() => navigateTo('experience')}
-              className="lg:col-span-4 rounded-2xl bg-slate-900/60 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
+              className="lg:col-span-4 rounded-2xl bg-slate-900/60 border border-slate-800 p-3.5 sm:p-4 xl:p-5 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
             >
               <div>
-                <div className="flex items-center gap-2 text-xs font-mono text-sky-400 font-bold uppercase tracking-wider mb-3">
-                  <GraduationCap className="w-4 h-4" />
+                <div className="flex items-center gap-2 text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider mb-2">
+                  <GraduationCap className="w-4 h-4 text-sky-400" />
                   <span>Career & Academic Rigor</span>
                 </div>
 
                 <h3 className="text-base font-bold text-slate-100 mb-2 group-hover:text-sky-300 transition-colors">
-                  Career Track Record
+                  7+ Years Track Record
                 </h3>
 
-                <ul className="space-y-2 text-xs text-slate-300">
-                  <li className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-200">Paymid (Cyprus)</span>
-                    <span className="text-slate-500 font-mono">2023 — Present</span>
+                <ul className="space-y-1.5 xl:space-y-2 text-xs text-slate-300">
+                  <li className="p-1.5 xl:p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-slate-200">Paymid (Cyprus)</div>
+                      <div className="text-[11px] text-slate-400">Senior Backend Engineer</div>
+                    </div>
+                    <span className="text-[11px] font-mono text-slate-400">2023 — Pres</span>
                   </li>
-                  <li className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-200">SJ Innovation</span>
-                    <span className="text-slate-500 font-mono">2021 — 2023</span>
+                  <li className="p-1.5 xl:p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-slate-200">SJ Innovation</div>
+                      <div className="text-[11px] text-slate-400">Senior Software Engineer</div>
+                    </div>
+                    <span className="text-[11px] font-mono text-slate-400">2021 — 2023</span>
                   </li>
-                  <li className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-200">KUET (ECE '13)</span>
-                    <span className="text-slate-500 font-mono">B.Sc. in Engineering</span>
+                  <li className="p-1.5 xl:p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold text-slate-200">KUET (ECE '13)</div>
+                      <div className="text-[11px] text-slate-400">B.Sc. in Engineering</div>
+                    </div>
+                    <span className="text-[11px] font-mono text-slate-400">2014 — 2019</span>
+                  </li>
+                  <li className="p-1.5 xl:p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 text-[11px] text-slate-400 italic">
+                    "Consistent, reliable, and thorough problem solver."
                   </li>
                 </ul>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                <span className="text-slate-500 font-mono">Timeline & KUET</span>
+              <div className="pt-2 xl:pt-2.5 mt-2 xl:mt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span className="text-slate-500 font-mono">Work History</span>
                 <span className="text-sky-400 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                  <span>View Timeline</span>
+                  <span>View timeline</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </div>
@@ -377,11 +456,11 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 5: Core Tech Stack & Protocols (4 cols) */}
             <div
               onClick={() => navigateTo('architecture')}
-              className="lg:col-span-4 rounded-2xl bg-slate-900/60 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
+              className="lg:col-span-4 rounded-2xl bg-slate-900/60 border border-slate-800 p-3.5 sm:p-4 xl:p-5 flex flex-col justify-between hover:border-slate-700 hover:bg-slate-850/60 transition-all cursor-pointer group shadow-sm"
             >
               <div>
-                <div className="flex items-center gap-2 text-xs font-mono text-sky-400 font-bold uppercase tracking-wider mb-3">
-                  <Cpu className="w-4 h-4" />
+                <div className="flex items-center gap-2 text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider mb-2">
+                  <Cpu className="w-4 h-4 text-sky-400" />
                   <span>Core Tech Stack</span>
                 </div>
 
@@ -389,17 +468,42 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   Backend & Invariants
                 </h3>
 
-                <div className="flex flex-wrap gap-1.5 font-mono text-xs">
-                  {['PHP 8.3', 'Laravel 11', 'Go', 'Redis Cluster', 'MySQL', 'PostgreSQL', 'Docker', 'PCI-DSS'].map((item) => (
-                    <span key={item} className="px-2 py-1 rounded bg-slate-950/70 border border-slate-800 text-slate-300 text-[11px]">
-                      {item}
-                    </span>
-                  ))}
+                <div className="space-y-1.5 xl:space-y-2 text-xs">
+                  <div>
+                    <span className="text-[10px] font-mono text-slate-500 uppercase block mb-1">Languages & Frameworks</span>
+                    <div className="flex flex-wrap gap-1">
+                      {['PHP 8.3', 'Laravel 11', 'Go', 'Node.js', 'Symfony'].map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-slate-300 text-[11px] font-mono">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono text-slate-500 uppercase block mb-1">Data & Mutex</span>
+                    <div className="flex flex-wrap gap-1">
+                      {['Redis Cluster', 'Redlock', 'MySQL', 'PostgreSQL'].map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-slate-300 text-[11px] font-mono">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono text-slate-500 uppercase block mb-1">Protocols & Standards</span>
+                    <div className="flex flex-wrap gap-1">
+                      {['PCI-DSS Ingress', 'HMAC-SHA256', 'OpenAPI', 'Docker'].map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-slate-300 text-[11px] font-mono">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                <span className="text-slate-500 font-mono">Zero Toy Dependencies</span>
+              <div className="pt-2 xl:pt-2.5 mt-2 xl:mt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span className="text-slate-500 font-mono">Production Ready</span>
                 <span className="text-sky-400 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>Stack details</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -409,8 +513,8 @@ if (abs(now()->timestamp - $timestamp) > 300) {
 
           </main>
 
-          {/* Bottom Bar / Quick Links */}
-          <footer className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400 shrink-0">
+          {/* Bottom Bar: CLI Prompt & Colophon */}
+          <footer className="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400 shrink-0">
             <div
               onClick={handleCopyCli}
               title="Click to copy CLI command"
@@ -419,23 +523,21 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               <span className="text-sky-400 font-bold">$</span>
               <span className="text-slate-300 group-hover:underline">npx farhankhan</span>
               <span className="text-slate-500 text-[11px]">
-                {copiedCli ? 'Copied!' : '— try CLI portfolio'}
+                {copiedCli ? 'Copied to clipboard!' : '— try CLI portfolio'}
               </span>
             </div>
 
             <div className="flex items-center gap-4 text-slate-400">
-              <a href={PORTFOLIO_DATA.engineer.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-slate-100 transition-colors">
-                <GithubIcon className="w-4 h-4" />
+              <a
+                href={PORTFOLIO_DATA.engineer.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-slate-200 transition-colors"
+              >
+                Source on GitHub
               </a>
-              <a href={PORTFOLIO_DATA.engineer.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-slate-100 transition-colors">
-                <LinkedInIcon className="w-4 h-4" />
-              </a>
-              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-100 transition-colors">
-                <TwitterIcon className="w-4 h-4" />
-              </a>
-              <button onClick={() => setIsContactOpen(true)} className="hover:text-slate-100 transition-colors">
-                <Mail className="w-4 h-4" />
-              </button>
+              <span>•</span>
+              <span>Dhaka (UTC+6) • Remote</span>
             </div>
           </footer>
 
@@ -452,44 +554,54 @@ if (abs(now()->timestamp - $timestamp) > 300) {
           <div className="sticky top-0 z-30 -mx-6 px-6 py-4 bg-[#0b1120]/90 backdrop-blur border-b border-slate-800/80 mb-10 flex items-center justify-between">
             <button
               onClick={() => navigateTo('bento')}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors group px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-slate-700"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors group px-3.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-slate-700 shadow-sm"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Back to Overview</span>
             </button>
 
-            {/* Quick tabs */}
-            <div className="flex items-center gap-2 text-xs font-mono">
+            {/* Quick tabs + Contact */}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1 sm:gap-1.5 text-xs font-mono">
+                <button
+                  onClick={() => navigateTo('about')}
+                  className={`px-2.5 sm:px-3 py-1 rounded-lg transition-colors ${currentPage === 'about' ? 'text-sky-400 bg-sky-500/10 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => navigateTo('architecture')}
+                  className={`px-2.5 sm:px-3 py-1 rounded-lg transition-colors ${currentPage === 'architecture' ? 'text-sky-400 bg-sky-500/10 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                >
+                  Architecture
+                </button>
+                <button
+                  onClick={() => navigateTo('projects')}
+                  className={`px-2.5 sm:px-3 py-1 rounded-lg transition-colors ${currentPage === 'projects' ? 'text-sky-400 bg-sky-500/10 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                >
+                  Projects
+                </button>
+                <button
+                  onClick={() => navigateTo('experience')}
+                  className={`px-2.5 sm:px-3 py-1 rounded-lg transition-colors ${currentPage === 'experience' ? 'text-sky-400 bg-sky-500/10 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                >
+                  Experience
+                </button>
+              </div>
+
               <button
-                onClick={() => navigateTo('about')}
-                className={`px-2.5 py-1 rounded transition-colors ${currentPage === 'about' ? 'text-sky-400 bg-sky-500/10 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                onClick={() => setIsContactOpen(true)}
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-200 hover:text-white bg-slate-800/80 hover:bg-slate-750 border border-slate-700 transition-colors"
               >
-                About
-              </button>
-              <button
-                onClick={() => navigateTo('architecture')}
-                className={`px-2.5 py-1 rounded transition-colors ${currentPage === 'architecture' ? 'text-sky-400 bg-sky-500/10 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
-              >
-                Architecture
-              </button>
-              <button
-                onClick={() => navigateTo('projects')}
-                className={`px-2.5 py-1 rounded transition-colors ${currentPage === 'projects' ? 'text-sky-400 bg-sky-500/10 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => navigateTo('experience')}
-                className={`px-2.5 py-1 rounded transition-colors ${currentPage === 'experience' ? 'text-sky-400 bg-sky-500/10 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
-              >
-                Experience
+                <Mail className="w-3.5 h-3.5 text-slate-400" />
+                <span>Contact</span>
               </button>
             </div>
           </div>
 
           {/* DETAIL PAGE 1: ABOUT */}
           {currentPage === 'about' && (
-            <div className="space-y-8 animate-fadeIn text-left">
+            <div className="space-y-8 text-left">
               <div className="flex items-center gap-5 pb-6 border-b border-slate-800">
                 <img
                   src="/farhan.jpg"
@@ -562,7 +674,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
 
           {/* DETAIL PAGE 2: ARCHITECTURE BLUEPRINT */}
           {currentPage === 'architecture' && (
-            <div className="space-y-10 animate-fadeIn text-left">
+            <div className="space-y-10 text-left">
               <div>
                 <div className="text-xs font-mono text-sky-400 font-bold uppercase tracking-wider mb-2">
                   Technical Architecture
@@ -641,12 +753,77 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
                 </div>
               </div>
+
+              {/* Stack & System Invariants Section */}
+              <div className="space-y-6 pt-6 border-t border-slate-800">
+                <div>
+                  <div className="text-xs font-mono text-sky-400 font-bold uppercase tracking-wider mb-2">
+                    Production Stack & Principles
+                  </div>
+                  <h2 className="text-2xl font-bold text-slate-100 tracking-tight">
+                    Core Tech Stack & Systems Invariants
+                  </h2>
+                  <p className="text-sm text-slate-400 mt-1 max-w-2xl leading-relaxed">
+                    Technologies and architectural constraints chosen for strict zero-drift transactional processing and sub-15ms latency.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+                    <h3 className="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">
+                      Languages & Frameworks
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {['PHP 8.3', 'Laravel 11', 'Go', 'Node.js', 'Symfony'].map((t) => (
+                        <span key={t} className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-slate-200 text-xs font-mono">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-xs text-slate-400 leading-relaxed pt-2">
+                      Modern PHP 8.3 typed properties, readonly classes, and JIT compilation powering high-throughput API endpoints with low memory footprint.
+                    </p>
+                  </div>
+
+                  <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+                    <h3 className="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">
+                      Data & Mutex Defense
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {['Redis Cluster', 'Redlock', 'MySQL 8.0', 'PostgreSQL'].map((t) => (
+                        <span key={t} className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-slate-200 text-xs font-mono">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-xs text-slate-400 leading-relaxed pt-2">
+                      Distributed idempotency locks with Redlock algorithm, ACID serializable transactions, and strict row-level pessimistic locking for ledger records.
+                    </p>
+                  </div>
+
+                  <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+                    <h3 className="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">
+                      Protocols & Standards
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {['PCI-DSS Ingress', 'HMAC-SHA256', 'OpenAPI 3.1', 'Docker / K8s'].map((t) => (
+                        <span key={t} className="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-slate-200 text-xs font-mono">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-xs text-slate-400 leading-relaxed pt-2">
+                      Zero card data at rest outside tokenization perimeter, constant-time webhook verification, and contract-first OpenAPI schemas.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
           {/* DETAIL PAGE 3: PROJECTS */}
           {currentPage === 'projects' && (
-            <div className="space-y-10 animate-fadeIn text-left">
+            <div className="space-y-10 text-left">
               <div>
                 <div className="text-xs font-mono text-sky-400 font-bold uppercase tracking-wider mb-2">
                   Production Platforms
@@ -714,7 +891,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
 
           {/* DETAIL PAGE 4: EXPERIENCE */}
           {currentPage === 'experience' && (
-            <div className="space-y-10 animate-fadeIn text-left">
+            <div className="space-y-10 text-left">
               <div>
                 <div className="text-xs font-mono text-sky-400 font-bold uppercase tracking-wider mb-2">
                   Career Record
