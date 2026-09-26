@@ -153,43 +153,36 @@ if (abs(now()->timestamp - $timestamp) > 300) {
   const activeStage = stages.find(s => s.id === activeStageId) || stages[1];
 
   return (
-    <div className="min-h-screen bg-[#08090d] text-slate-300 font-sans selection:bg-white/20 selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-[#0f1117] text-slate-300 font-sans selection:bg-white/20 selection:text-white flex flex-col justify-between">
       
       {/* =========================================================================
-          GLOBAL CONSISTENT SHELL: SAME WIDTH (max-w-6xl), SAME MARGINS, NO LAYOUT SHIFT
+          GLOBAL SHELL: CONSISTENT WIDTH (max-w-6xl), NO JUMPING, SOFT PROFESSIONAL PALETTE
           ========================================================================= */}
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col min-h-screen">
         
-        {/* Unified Top Navigation Header: Identical across all pages */}
+        {/* Top Navigation Header: NO duplicate name/logo! Clean navigation */}
         <header className="flex items-center justify-between py-4 border-b border-white/[0.08] shrink-0">
-          <div className="flex items-center gap-3">
-            {currentPage !== 'bento' && (
+          <div>
+            {currentPage === 'bento' ? (
+              <span className="text-xs font-medium text-slate-400 tracking-wide uppercase">
+                Payment Infrastructure & Rails
+              </span>
+            ) : (
               <button
                 onClick={() => navigateTo('bento')}
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-white transition-colors mr-1 group"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white transition-colors group"
               >
                 <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
-                <span>Overview</span>
+                <span>Back to Overview</span>
               </button>
             )}
-            <div>
-              <button
-                onClick={() => navigateTo('bento')}
-                className="text-sm font-semibold text-white tracking-tight hover:text-slate-200 transition-colors text-left block"
-              >
-                Farhan Zaman Khan
-              </button>
-              <span className="text-xs text-slate-400 block">
-                Senior Backend & Payment Systems Engineer
-              </span>
-            </div>
           </div>
 
-          <nav className="flex items-center gap-1 sm:gap-2">
+          <nav className="flex items-center gap-1 sm:gap-1.5">
             <button
               onClick={() => navigateTo('bento')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'bento' ? 'text-white bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'bento' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Overview
@@ -197,7 +190,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('about')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'about' ? 'text-white bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'about' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               About
@@ -205,7 +198,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('architecture')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'architecture' ? 'text-white bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'architecture' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Architecture
@@ -213,7 +206,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('projects')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'projects' ? 'text-white bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'projects' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Projects
@@ -221,14 +214,14 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             <button
               onClick={() => navigateTo('experience')}
               className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                currentPage === 'experience' ? 'text-white bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
+                currentPage === 'experience' ? 'text-slate-100 bg-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Experience
             </button>
             <button
               onClick={() => setIsContactOpen(true)}
-              className="ml-2 px-3 py-1 rounded-lg text-xs font-medium text-white bg-white/[0.08] hover:bg-white/[0.14] border border-white/[0.1] transition-colors"
+              className="ml-2 px-3 py-1 rounded-lg text-xs font-medium text-slate-200 bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] transition-colors"
             >
               Contact
             </button>
@@ -236,7 +229,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
         </header>
 
         {/* =========================================================================
-            VIEW A: BENTO GRID OVERVIEW (Single-screen on desktop, clean neutral cards)
+            VIEW A: BENTO GRID OVERVIEW (Single-screen on desktop, soft easy-to-read surfaces)
             ========================================================================= */}
         {currentPage === 'bento' && (
           <main className="my-auto py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3.5 xl:gap-4 flex-1 items-stretch">
@@ -244,19 +237,19 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 1: Persona & Bio (5 cols) */}
             <div
               onClick={() => navigateTo('about')}
-              className="lg:col-span-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.16] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-5 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
             >
               <div>
                 <div className="flex items-center gap-4 mb-3.5 xl:mb-4">
                   <img
                     src="/farhan.jpg"
                     alt={PORTFOLIO_DATA.engineer.name}
-                    className="w-14 h-14 xl:w-16 xl:h-16 rounded-xl border border-white/[0.1] object-cover bg-black shrink-0"
+                    className="w-14 h-14 xl:w-16 xl:h-16 rounded-xl border border-white/[0.08] object-cover bg-black shrink-0"
                     width="64"
                     height="64"
                   />
                   <div>
-                    <h1 className="text-lg xl:text-xl font-bold text-white tracking-tight group-hover:text-slate-200 transition-colors">
+                    <h1 className="text-lg xl:text-xl font-bold text-slate-100 tracking-tight group-hover:text-white transition-colors">
                       {PORTFOLIO_DATA.engineer.name}
                     </h1>
                     <p className="text-xs text-slate-400 mt-0.5">
@@ -266,7 +259,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 </div>
 
                 <p className="text-xs xl:text-sm text-slate-300 leading-relaxed mb-3.5 xl:mb-4">
-                  7+ years architecting high-throughput payment rails, sub-15ms dynamic routing solvers, distributed Redis mutexes, and zero-variance double-entry ledgers at <strong className="text-white font-medium">Paymid</strong>.
+                  Over 7 years architecting high-throughput payment rails, sub-15ms dynamic routing solvers, distributed Redis mutexes, and zero-variance double-entry ledgers at <strong className="text-slate-100 font-medium">Paymid</strong>.
                 </p>
 
                 {/* Direct Social Links */}
@@ -276,7 +269,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center gap-1.5 hover:text-white transition-colors"
+                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
                   >
                     <GithubIcon className="w-3.5 h-3.5 text-slate-400" />
                     <span>GitHub</span>
@@ -287,7 +280,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center gap-1.5 hover:text-white transition-colors"
+                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
                   >
                     <LinkedInIcon className="w-3.5 h-3.5 text-slate-400" />
                     <span>LinkedIn</span>
@@ -298,7 +291,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center gap-1.5 hover:text-white transition-colors"
+                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
                   >
                     <TwitterIcon className="w-3.5 h-3.5 text-slate-400" />
                     <span>Twitter</span>
@@ -307,7 +300,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               </div>
 
               <div className="pt-3 mt-3 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
-                <span>KUET ECE '13 · Engineering Degree</span>
+                <span>Limassol, Cyprus (Remote)</span>
                 <span className="text-slate-300 group-hover:text-white font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>About Farhan</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -318,11 +311,11 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 2: Architecture Focus (7 cols) */}
             <div
               onClick={() => navigateTo('architecture')}
-              className="lg:col-span-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.16] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-7 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
             >
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-semibold text-white">
+                  <span className="text-xs font-semibold text-slate-200">
                     Payment Architecture & Concurrency
                   </span>
                   <span className="text-xs text-slate-400">
@@ -330,7 +323,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </span>
                 </div>
 
-                <h2 className="text-base xl:text-lg font-bold text-white tracking-tight mb-1.5 group-hover:text-slate-200 transition-colors">
+                <h2 className="text-base xl:text-lg font-bold text-slate-100 tracking-tight mb-1.5 group-hover:text-white transition-colors">
                   Fault-Tolerant Payment Rail Orchestration
                 </h2>
 
@@ -340,24 +333,24 @@ if (abs(now()->timestamp - $timestamp) > 300) {
 
                 {/* 3 Clean Focus Invariant Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
-                    <div className="text-xs font-semibold text-white">Dynamic Failover</div>
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] text-left">
+                    <div className="text-xs font-semibold text-slate-200">Dynamic Failover</div>
                     <div className="text-xs text-slate-400 mt-0.5">&lt;15ms automated swap</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                       Instant circuit breaker fallbacks when upstream acquirers timeout.
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
-                    <div className="text-xs font-semibold text-white">Redis Mutex Lock</div>
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] text-left">
+                    <div className="text-xs font-semibold text-slate-200">Redis Mutex Lock</div>
                     <div className="text-xs text-slate-400 mt-0.5">Zero double charges</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                       Distributed locks guarantee single-execution mutation per key.
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-left">
-                    <div className="text-xs font-semibold text-white">ACID Double-Entry</div>
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] text-left">
+                    <div className="text-xs font-semibold text-slate-200">ACID Double-Entry</div>
                     <div className="text-xs text-slate-400 mt-0.5">Zero rounding drift</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
                       Serializable journal records ensure matching debits and credits sum to zero.
@@ -378,23 +371,23 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 3: Selected Platforms (4 cols) */}
             <div
               onClick={() => navigateTo('projects')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.16] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-white mb-1">
+                <div className="text-xs font-semibold text-slate-200 mb-1">
                   Production Platforms
                 </div>
 
-                <h3 className="text-base font-bold text-white mb-2.5 group-hover:text-slate-200 transition-colors">
+                <h3 className="text-base font-bold text-slate-100 mb-2.5 group-hover:text-white transition-colors">
                   Key Systems Engineered
                 </h3>
 
                 <div className="space-y-2 text-xs">
                   {/* Paymid Flagship Feature */}
-                  <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                  <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05]">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-white">Paymid</span>
-                      <span className="text-[10px] text-slate-300 bg-white/[0.08] px-2 py-0.5 rounded font-medium">Core PSP</span>
+                      <span className="font-semibold text-slate-100">Paymid</span>
+                      <span className="text-[10px] text-slate-300 bg-white/[0.06] px-2 py-0.5 rounded font-medium">Core PSP</span>
                     </div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
                       Global payment gateway orchestrator handling multi-acquirer transaction routing and APMs across Europe.
@@ -428,50 +421,58 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               </div>
             </div>
 
-            {/* BOX 4: Career & Academic Rigor (4 cols) */}
+            {/* BOX 4: Career Record (4 cols) — Real Engineering Roles Only! */}
             <div
               onClick={() => navigateTo('experience')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.16] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-white mb-1">
+                <div className="text-xs font-semibold text-slate-200 mb-1">
                   Career Record
                 </div>
 
-                <h3 className="text-base font-bold text-white mb-2.5 group-hover:text-slate-200 transition-colors">
-                  Experience & Background
+                <h3 className="text-base font-bold text-slate-100 mb-2.5 group-hover:text-white transition-colors">
+                  Work History
                 </h3>
 
-                {/* Clean Timeline Presentation */}
-                <div className="space-y-2.5 text-xs">
+                {/* Real Software Engineering Roles Timeline */}
+                <div className="space-y-2 text-xs">
                   <div className="border-l-2 border-white/[0.2] pl-3 py-0.5">
                     <div className="flex items-baseline justify-between">
-                      <span className="font-semibold text-white">Paymid (Cyprus)</span>
-                      <span className="text-[11px] text-slate-400">2023 — Present</span>
+                      <span className="font-semibold text-slate-100">Paymid (Cyprus)</span>
+                      <span className="text-[11px] text-slate-400">2024 — Present</span>
                     </div>
-                    <div className="text-[11px] text-slate-400">Senior Backend Engineer · Remote</div>
+                    <div className="text-[11px] text-slate-400">Software Engineer — Platform & Payments</div>
                   </div>
 
                   <div className="border-l-2 border-white/[0.1] pl-3 py-0.5">
                     <div className="flex items-baseline justify-between">
                       <span className="font-medium text-slate-200">SJ Innovation</span>
-                      <span className="text-[11px] text-slate-400">2021 — 2023</span>
+                      <span className="text-[11px] text-slate-400">2023 — 2024</span>
                     </div>
                     <div className="text-[11px] text-slate-400">Senior Software Engineer</div>
                   </div>
 
                   <div className="border-l-2 border-white/[0.1] pl-3 py-0.5">
                     <div className="flex items-baseline justify-between">
-                      <span className="font-medium text-slate-200">KUET (ECE '13)</span>
-                      <span className="text-[11px] text-slate-400">2014 — 2019</span>
+                      <span className="font-medium text-slate-200">Namhost</span>
+                      <span className="text-[11px] text-slate-400">2023 — 2024</span>
                     </div>
-                    <div className="text-[11px] text-slate-400">B.Sc. in Electrical & Communication Eng.</div>
+                    <div className="text-[11px] text-slate-400">FinTech & Ledger Engineer</div>
+                  </div>
+
+                  <div className="border-l-2 border-white/[0.1] pl-3 py-0.5">
+                    <div className="flex items-baseline justify-between">
+                      <span className="font-medium text-slate-200">IYLMA / Grameenphone</span>
+                      <span className="text-[11px] text-slate-400">2022</span>
+                    </div>
+                    <div className="text-[11px] text-slate-400">Software Engineer</div>
                   </div>
                 </div>
               </div>
 
               <div className="pt-2.5 mt-2.5 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
-                <span>7+ Years Track Record</span>
+                <span>7+ Years Production Track Record</span>
                 <span className="text-slate-300 group-hover:text-white font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                   <span>View Timeline</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -482,14 +483,14 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 5: Core Tech Stack (4 cols) */}
             <div
               onClick={() => navigateTo('architecture')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.16] hover:bg-white/[0.04] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.14] hover:bg-white/[0.04] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-white mb-1">
+                <div className="text-xs font-semibold text-slate-200 mb-1">
                   Core Technologies
                 </div>
 
-                <h3 className="text-base font-bold text-white mb-2.5 group-hover:text-slate-200 transition-colors">
+                <h3 className="text-base font-bold text-slate-100 mb-2.5 group-hover:text-white transition-colors">
                   Backend & Systems Stack
                 </h3>
 
@@ -498,7 +499,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     <span className="text-[11px] text-slate-400 block mb-1">Languages & Frameworks</span>
                     <div className="flex flex-wrap gap-1">
                       {['PHP 8.3', 'Laravel 11', 'Go', 'Node.js', 'Symfony'].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-300 text-xs">
+                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
                           {t}
                         </span>
                       ))}
@@ -508,7 +509,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     <span className="text-[11px] text-slate-400 block mb-1">Data & Mutex</span>
                     <div className="flex flex-wrap gap-1">
                       {['Redis Cluster', 'Redlock', 'MySQL', 'PostgreSQL'].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-300 text-xs">
+                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
                           {t}
                         </span>
                       ))}
@@ -518,7 +519,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     <span className="text-[11px] text-slate-400 block mb-1">Protocols & Standards</span>
                     <div className="flex flex-wrap gap-1">
                       {['PCI-DSS Ingress', 'HMAC-SHA256', 'OpenAPI', 'Docker'].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-300 text-xs">
+                        <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
                           {t}
                         </span>
                       ))}
@@ -540,7 +541,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
         )}
 
         {/* =========================================================================
-            VIEW B: CLEAN DETAIL PAGES (Inside Same Frame, No Jump, Clean Neutral Surface)
+            VIEW B: CLEAN DETAIL PAGES (Inside Same Frame, Soft Comfortable Lighting)
             ========================================================================= */}
         {currentPage !== 'bento' && (
           <main className="py-8 lg:py-10 flex-1">
@@ -552,12 +553,12 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   <img
                     src="/farhan.jpg"
                     alt={PORTFOLIO_DATA.engineer.name}
-                    className="w-20 h-20 rounded-2xl border border-white/[0.1] object-cover shadow-lg"
+                    className="w-20 h-20 rounded-2xl border border-white/[0.08] object-cover shadow-lg"
                     width="80"
                     height="80"
                   />
                   <div>
-                    <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
                       {PORTFOLIO_DATA.engineer.name}
                     </h1>
                     <p className="text-base text-slate-300 font-medium mt-1">
@@ -580,7 +581,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                       href="https://paymid.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white font-medium underline underline-offset-4 hover:text-slate-200 transition-colors"
+                      className="text-slate-100 font-medium underline underline-offset-4 hover:text-white transition-colors"
                     >
                       Paymid
                     </a>
@@ -589,15 +590,15 @@ if (abs(now()->timestamp - $timestamp) > 300) {
 
                   <p>
                     My technical foundation centers around event-driven architectures, distributed idempotency mutexes, and zero-variance double-entry ledgers with{' '}
-                    <strong className="text-white font-semibold">PHP 8.3 / Laravel</strong>,{' '}
-                    <strong className="text-white font-semibold">Go</strong>,{' '}
-                    <strong className="text-white font-semibold">Node.js</strong>, and{' '}
-                    <strong className="text-white font-semibold">Redis</strong>.
+                    <strong className="text-slate-100 font-semibold">PHP 8.3 / Laravel</strong>,{' '}
+                    <strong className="text-slate-100 font-semibold">Go</strong>,{' '}
+                    <strong className="text-slate-100 font-semibold">Node.js</strong>, and{' '}
+                    <strong className="text-slate-100 font-semibold">Redis</strong>.
                   </p>
 
                   <p>
                     I hold an engineering degree from{' '}
-                    <strong className="text-white font-semibold">Khulna University of Engineering & Technology (KUET)</strong> in Electrical, Electronics & Communication Engineering (Batch ECE '13). When away from production logs, I study distributed consensus papers, brew pour-over coffee, and mentor engineers.
+                    <strong className="text-slate-100 font-semibold">Khulna University of Engineering & Technology (KUET)</strong> in Electrical, Electronics & Communication Engineering. When away from production logs, I study distributed consensus papers, brew pour-over coffee, and mentor engineers.
                   </p>
                 </div>
 
@@ -622,10 +623,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'architecture' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-white uppercase tracking-wider mb-2">
+                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                     Technical Architecture
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
                     Anatomy of a Fault-Tolerant Payment Rail
                   </h1>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
@@ -643,8 +644,8 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         onClick={() => setActiveStageId(stage.id)}
                         className={`p-3 rounded-xl border text-left transition-all ${
                           isSelected
-                            ? 'bg-white/[0.1] border-white/[0.25] text-white shadow-sm'
-                            : 'bg-white/[0.02] border-white/[0.06] text-slate-400 hover:text-white hover:border-white/[0.12]'
+                            ? 'bg-white/[0.08] border-white/[0.2] text-slate-100 shadow-sm'
+                            : 'bg-white/[0.02] border-white/[0.05] text-slate-400 hover:text-slate-200 hover:border-white/[0.1]'
                         }`}
                       >
                         <div className="text-[11px] font-bold text-slate-400">
@@ -658,21 +659,21 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   })}
                 </div>
 
-                {/* Active Stage Deep Dive: Clean, Single Surface, No Russian-Doll Nested Boxes */}
-                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-6">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-white">
+                {/* Active Stage Deep Dive */}
+                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-6">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
                     <span>Stage {activeStage.num}</span>
                     <span>•</span>
                     <span>{activeStage.category}</span>
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl font-bold text-white">
+                  <h2 className="text-xl sm:text-2xl font-bold text-slate-100">
                     {activeStage.title}
                   </h2>
 
                   <div className="space-y-4">
                     <div>
-                      <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-1">
+                      <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         The Financial Failure Mode
                       </h3>
                       <p className="text-sm text-slate-300 leading-relaxed">
@@ -681,7 +682,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     </div>
 
                     <div>
-                      <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-1">
+                      <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Architectural Resolution
                       </h3>
                       <p className="text-sm text-slate-300 leading-relaxed">
@@ -691,10 +692,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
 
                   <div>
-                    <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2">
+                    <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                       Production Architecture Pattern (PHP 8.3)
                     </h3>
-                    <div className="p-4 rounded-xl bg-black/60 border border-white/[0.08] font-mono text-xs overflow-x-auto text-slate-200 leading-relaxed">
+                    <div className="p-4 rounded-xl bg-[#090b0f] border border-white/[0.07] font-mono text-xs overflow-x-auto text-slate-300 leading-relaxed">
                       <pre>{activeStage.code}</pre>
                     </div>
                   </div>
@@ -703,10 +704,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 {/* Stack & System Invariants Section */}
                 <div className="space-y-6 pt-6 border-t border-white/[0.08]">
                   <div>
-                    <div className="text-xs font-semibold text-white uppercase tracking-wider mb-1">
+                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
                       Production Stack & Principles
                     </div>
-                    <h2 className="text-xl font-bold text-white tracking-tight">
+                    <h2 className="text-xl font-bold text-slate-100 tracking-tight">
                       Core Tech Stack & Systems Invariants
                     </h2>
                     <p className="text-sm text-slate-400 mt-1 leading-relaxed">
@@ -715,13 +716,13 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
-                      <h3 className="text-xs font-semibold text-white uppercase tracking-wider">
+                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
+                      <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
                         Languages & Frameworks
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
                         {['PHP 8.3', 'Laravel 11', 'Go', 'Node.js', 'Symfony'].map((t) => (
-                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-200 text-xs">
+                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
                             {t}
                           </span>
                         ))}
@@ -731,13 +732,13 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                       </p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
-                      <h3 className="text-xs font-semibold text-white uppercase tracking-wider">
+                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
+                      <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
                         Data & Mutex Defense
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
                         {['Redis Cluster', 'Redlock', 'MySQL 8.0', 'PostgreSQL'].map((t) => (
-                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-200 text-xs">
+                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
                             {t}
                           </span>
                         ))}
@@ -747,13 +748,13 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                       </p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
-                      <h3 className="text-xs font-semibold text-white uppercase tracking-wider">
+                    <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
+                      <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
                         Protocols & Standards
                       </h3>
                       <div className="flex flex-wrap gap-1.5 pt-1">
                         {['PCI-DSS Ingress', 'HMAC-SHA256', 'OpenAPI 3.1', 'Docker'].map((t) => (
-                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-200 text-xs">
+                          <span key={t} className="px-2 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300 text-xs">
                             {t}
                           </span>
                         ))}
@@ -771,10 +772,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'projects' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-white uppercase tracking-wider mb-2">
+                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                     Production Platforms
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
                     Selected Systems & Production Migrations
                   </h1>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
@@ -786,10 +787,10 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   {PORTFOLIO_DATA.projects.map((project) => (
                     <div
                       key={project.id}
-                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-3"
+                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-3"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="text-xs font-medium text-slate-200 bg-white/[0.06] px-2.5 py-0.5 rounded-full border border-white/[0.08]">
+                        <span className="text-xs font-medium text-slate-200 bg-white/[0.05] px-2.5 py-0.5 rounded-full border border-white/[0.06]">
                           {project.company}
                         </span>
                         <span className="text-xs text-slate-400">
@@ -797,7 +798,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         </span>
                       </div>
 
-                      <h2 className="text-lg sm:text-xl font-bold text-white">
+                      <h2 className="text-lg sm:text-xl font-bold text-slate-100">
                         {project.title}
                       </h2>
 
@@ -806,7 +807,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                       </p>
 
                       <div className="space-y-1.5 pt-2">
-                        <h3 className="text-xs font-semibold text-white uppercase tracking-wider">
+                        <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">
                           Architectural Highlights
                         </h3>
                         <ul className="space-y-1.5 text-xs text-slate-300">
@@ -823,7 +824,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         {project.techStack.map((tech, idx) => (
                           <span
                             key={idx}
-                            className="text-xs px-2.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-300"
+                            className="text-xs px-2.5 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300"
                           >
                             {tech}
                           </span>
@@ -839,11 +840,11 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'experience' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-white uppercase tracking-wider mb-2">
+                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                     Career Record
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                    Work Experience & Academic Rigor
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
+                    Work Experience & Academic Background
                   </h1>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
                     Over seven years building transactional web applications, payment rails, and enterprise microservices.
@@ -855,11 +856,11 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   {PORTFOLIO_DATA.experiences.map((exp, idx) => (
                     <div
                       key={idx}
-                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-3"
+                      className="p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-3"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                         <div className="flex flex-wrap items-baseline gap-2">
-                          <h2 className="text-lg sm:text-xl font-bold text-white">
+                          <h2 className="text-lg sm:text-xl font-bold text-slate-100">
                             {exp.role}
                           </h2>
                           <span className="text-slate-500 text-sm">at</span>
@@ -891,7 +892,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                         {exp.techStack.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="text-xs px-2.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-300"
+                            className="text-xs px-2.5 py-0.5 rounded bg-white/[0.03] border border-white/[0.06] text-slate-300"
                           >
                             {tech}
                           </span>
@@ -901,22 +902,22 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   ))}
                 </div>
 
-                {/* Education & Recommendation */}
+                {/* Dedicated Education & Recommendation */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                   
-                  {/* KUET Education */}
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
-                    <div className="text-xs font-semibold text-white uppercase tracking-wider">
-                      Education
+                  {/* Academic Background / Education */}
+                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
+                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                      Academic Background
                     </div>
-                    <h3 className="text-base font-bold text-white">
+                    <h3 className="text-base font-bold text-slate-100">
                       Khulna University of Engineering & Technology (KUET)
                     </h3>
                     <div className="text-xs text-slate-300 font-medium">
-                      Bachelor of Engineering in Electrical, Electronics & Communication Engineering
+                      B.Sc. in Electrical, Electronics & Communication Engineering
                     </div>
                     <div className="text-xs text-slate-400">
-                      Batch of ECE '13 • 2014 – 2019
+                      2014 – 2019
                     </div>
                     <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-white/[0.06]">
                       Rigorous 4-year engineering foundation in telecommunication protocols, signal processing, network topologies, and computational systems.
@@ -924,15 +925,15 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
 
                   {/* Manager Testimonial */}
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
-                    <div className="text-xs font-semibold text-white uppercase tracking-wider">
+                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-2">
+                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                       Manager Testimonial
                     </div>
                     <p className="text-xs text-slate-300 leading-relaxed italic">
                       "{PORTFOLIO_DATA.recommendations[0].quote}"
                     </p>
                     <div className="pt-2 border-t border-white/[0.06] text-xs">
-                      <div className="font-semibold text-white">{PORTFOLIO_DATA.recommendations[0].name}</div>
+                      <div className="font-semibold text-slate-100">{PORTFOLIO_DATA.recommendations[0].name}</div>
                       <div className="text-xs text-slate-400 mt-0.5">
                         {PORTFOLIO_DATA.recommendations[0].title} · SJ Innovation
                       </div>
@@ -946,7 +947,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
           </main>
         )}
 
-        {/* Unified Bottom Colophon Footer: Identical on all pages */}
+        {/* Bottom Colophon Footer */}
         <footer className="py-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 shrink-0">
           <div>
             <span>Dhaka, Bangladesh · Remote Worldwide</span>
@@ -957,7 +958,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               href={PORTFOLIO_DATA.engineer.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-slate-200 transition-colors"
             >
               GitHub
             </a>
@@ -966,14 +967,14 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               href={PORTFOLIO_DATA.engineer.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-slate-200 transition-colors"
             >
               LinkedIn
             </a>
             <span className="text-slate-700">•</span>
             <button
               onClick={handleCopyEmail}
-              className="hover:text-white transition-colors"
+              className="hover:text-slate-200 transition-colors"
             >
               {copiedEmail ? 'Copied' : 'Email'}
             </button>
