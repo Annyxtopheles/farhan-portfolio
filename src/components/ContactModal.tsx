@@ -38,24 +38,24 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-      <div className="relative w-full max-w-xl rounded-2xl border border-white/[0.08] bg-[#111318] shadow-2xl p-6 sm:p-8 text-left">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
+      <div className="relative w-full max-w-xl rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl p-6 sm:p-8 text-left">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-lg bg-[#090a0d] border border-white/[0.08] text-slate-400 hover:text-white transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-lg bg-slate-950/80 border border-slate-800 text-slate-400 hover:text-slate-200 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Header */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-blue-400 uppercase mb-1">
+          <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-sky-400 uppercase mb-1">
             <Terminal className="w-3.5 h-3.5" />
             <span>Direct Engineering Ingress</span>
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight">
             Discuss Architecture or Retain Farhan
           </h3>
           <p className="text-xs text-slate-400 mt-1">
@@ -64,14 +64,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         </div>
 
         {/* Fast Action: Direct Email Pill */}
-        <div className="mb-6 p-4 rounded-xl bg-[#090a0d] border border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
+        <div className="mb-6 p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center">
-              <Mail className="w-4 h-4 text-blue-400" />
+            <div className="w-8 h-8 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center">
+              <Mail className="w-4 h-4 text-sky-400" />
             </div>
             <div>
               <div className="text-[11px] font-mono text-slate-400">Direct Email</div>
-              <div className="text-xs font-mono font-bold text-white">
+              <div className="text-xs font-mono font-bold text-slate-100">
                 {PORTFOLIO_DATA.engineer.links.email}
               </div>
             </div>
@@ -80,12 +80,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyEmail}
-              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
             >
               {copiedEmail ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-blue-400" />
-                  <span className="text-blue-300">Copied</span>
+                  <Check className="w-3.5 h-3.5 text-sky-400" />
+                  <span className="text-sky-300">Copied</span>
                 </>
               ) : (
                 <>
@@ -99,7 +99,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               href={PORTFOLIO_DATA.engineer.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
             >
               <LinkedInIcon className="w-3.5 h-3.5" />
               <span>LinkedIn</span>
@@ -109,17 +109,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
         {/* Message Form */}
         {formSent ? (
-          <div className="py-8 text-center space-y-3 bg-[#090a0d] rounded-xl border border-white/[0.08] p-6">
-            <div className="w-12 h-12 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center mx-auto">
-              <ShieldCheck className="w-6 h-6 text-blue-400" />
+          <div className="py-8 text-center space-y-3 bg-slate-950/60 rounded-xl border border-slate-800 p-6">
+            <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto">
+              <ShieldCheck className="w-6 h-6 text-sky-400" />
             </div>
-            <h4 className="text-white font-bold text-base">Transmission Formatted</h4>
+            <h4 className="text-slate-100 font-bold text-base">Transmission Formatted</h4>
             <p className="text-xs text-slate-300 max-w-sm mx-auto">
               Opening your mail client with pre-formatted encryption headers and details for Farhan.
             </p>
             <button
               onClick={() => setFormSent(false)}
-              className="text-xs font-mono text-blue-400 hover:underline pt-2 inline-block"
+              className="text-xs font-mono text-sky-400 hover:underline pt-2 inline-block"
             >
               Edit parameters
             </button>
@@ -135,7 +135,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="e.g. Alex Mercer"
-                  className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-slate-600"
                 />
               </div>
               <div>
@@ -146,7 +146,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="alex@fintech.co"
-                  className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-slate-600"
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder="e.g. PayFlow Global"
-                  className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-slate-600"
                 />
               </div>
               <div>
@@ -167,7 +167,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 <select
                   value={formData.scope}
                   onChange={(e) => setFormData({ ...formData, scope: e.target.value })}
-                  className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white focus:outline-none focus:border-white/30"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-slate-600"
                 >
                   <option value="Payment Gateway Integration">Payment Gateway Integration</option>
                   <option value="Multi-PSP Orchestration & Routing">Multi-PSP Orchestration & Routing</option>
@@ -186,15 +186,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="Describe your current payment routing challenge or backend requirements..."
-                className="w-full bg-[#090a0d] border border-white/[0.08] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-white/30"
+                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-slate-600"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-2.5 px-4 rounded-xl font-bold bg-white hover:bg-slate-200 text-black flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+              className="w-full py-2.5 px-4 rounded-xl font-bold bg-slate-100 hover:bg-white text-slate-950 flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm"
             >
-              <Send className="w-3.5 h-3.5 fill-black" />
+              <Send className="w-3.5 h-3.5 fill-slate-950" />
               <span>Transmit Engineering Ingress</span>
             </button>
           </form>

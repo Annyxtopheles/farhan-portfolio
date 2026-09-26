@@ -188,26 +188,26 @@ DB::transaction(function () use ($transactionId, $amount) {
   const activeNode = nodes.find(n => n.id === activeNodeId) || nodes[1];
 
   return (
-    <section id="workbench" className="py-20 max-w-6xl mx-auto px-6 lg:px-8 border-t border-white/[0.06]">
+    <div className="rounded-2xl bg-slate-900/50 border border-slate-800/80 p-6 sm:p-8 hover:border-slate-700/80 transition-all shadow-sm">
       
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-blue-400 font-semibold uppercase tracking-wider mb-2">
+          <div className="flex items-center gap-2 text-xs font-mono text-sky-400 font-semibold uppercase tracking-wider mb-1">
             <Layers className="w-4 h-4" />
             <span>Interactive Architecture Blueprint</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight">
             Anatomy of a Fault-Tolerant Payment Rail
           </h2>
         </div>
         <p className="text-slate-400 text-xs sm:text-sm max-w-md font-normal md:text-right">
-          Interactive technical blueprint of the multi-PSP orchestration pipeline. Click any architectural stage below to inspect the production concurrency considerations and implementation logic.
+          Interactive blueprint of the multi-PSP orchestration pipeline. Click any architectural stage to inspect the concurrency invariants and implementation logic.
         </p>
       </div>
 
       {/* Main Blueprint Explorer Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* Left Column: Architectural Pipeline Sequence (5 cols) */}
         <div className="lg:col-span-5 space-y-2.5">
@@ -225,11 +225,11 @@ DB::transaction(function () use ($transactionId, $amount) {
                 onClick={() => setActiveNodeId(node.id)}
                 className={`w-full p-4 rounded-xl border text-left transition-all flex items-start gap-3.5 ${
                   isSelected
-                    ? 'bg-[#141620] border-blue-500/40 text-white shadow-sm'
-                    : 'bg-[#111318] border-white/[0.06] text-slate-400 hover:text-slate-200 hover:border-white/15'
+                    ? 'bg-slate-800/90 border-sky-500/40 text-slate-100 shadow-sm'
+                    : 'bg-slate-950/60 border-slate-800/80 text-slate-400 hover:text-slate-200 hover:border-slate-700/80'
                 }`}
               >
-                <div className={`p-2 rounded-lg mt-0.5 ${isSelected ? 'bg-white text-black' : 'bg-[#090a0d] text-slate-500 border border-white/[0.04]'}`}>
+                <div className={`p-2 rounded-lg mt-0.5 ${isSelected ? 'bg-sky-400 text-slate-950 font-bold' : 'bg-slate-900 text-slate-500 border border-slate-800'}`}>
                   <Icon className="w-4 h-4" />
                 </div>
 
@@ -239,7 +239,7 @@ DB::transaction(function () use ($transactionId, $amount) {
                       Stage {node.number} • {node.category}
                     </span>
                     {isSelected && (
-                      <span className="text-[10px] font-mono text-blue-400 flex items-center gap-1 font-semibold">
+                      <span className="text-[10px] font-mono text-sky-400 flex items-center gap-1 font-semibold">
                         <span>Active</span>
                         <ArrowRight className="w-3 h-3" />
                       </span>
@@ -258,30 +258,30 @@ DB::transaction(function () use ($transactionId, $amount) {
         </div>
 
         {/* Right Column: Architectural Deep-Dive & Code Specification (7 cols) */}
-        <div className="lg:col-span-7 rounded-2xl bg-[#111318] border border-white/[0.07] p-6 sm:p-8 space-y-6 shadow-xl">
+        <div className="lg:col-span-7 rounded-xl bg-slate-950/60 border border-slate-800/80 p-6 sm:p-7 space-y-5">
           
           {/* Header of Active Node */}
-          <div className="border-b border-white/[0.06] pb-4">
-            <div className="flex items-center gap-2 text-xs font-mono text-blue-400 font-semibold uppercase">
+          <div className="border-b border-slate-800/80 pb-4">
+            <div className="flex items-center gap-2 text-xs font-mono text-sky-400 font-semibold uppercase">
               <span>Stage {activeNode.number}</span>
               <span>•</span>
               <span>{activeNode.category}</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">
+            <h3 className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight mt-1">
               {activeNode.title}
             </h3>
-            <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+            <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
               {activeNode.shortDesc}
             </p>
           </div>
 
           {/* Technical Specs Breakdown */}
-          <div className="space-y-4 text-xs">
+          <div className="space-y-3.5 text-xs">
             <div>
               <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-1">
                 The Financial Failure Mode
               </div>
-              <p className="text-slate-300 leading-relaxed bg-[#090a0d] p-3.5 rounded-xl border border-white/[0.05]">
+              <p className="text-slate-300 leading-relaxed bg-slate-900/70 p-3 rounded-lg border border-slate-800/80">
                 {activeNode.spec.problemStatement}
               </p>
             </div>
@@ -290,7 +290,7 @@ DB::transaction(function () use ($transactionId, $amount) {
               <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-1">
                 Architectural Resolution
               </div>
-              <p className="text-slate-300 leading-relaxed bg-[#090a0d] p-3.5 rounded-xl border border-white/[0.05]">
+              <p className="text-slate-300 leading-relaxed bg-slate-900/70 p-3 rounded-lg border border-slate-800/80">
                 {activeNode.spec.architecturalSolution}
               </p>
             </div>
@@ -299,18 +299,18 @@ DB::transaction(function () use ($transactionId, $amount) {
               <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-1">
                 Concurrency & Edge Case Invariant
               </div>
-              <p className="text-slate-300 leading-relaxed bg-[#090a0d] p-3.5 rounded-xl border border-white/[0.05]">
+              <p className="text-slate-300 leading-relaxed bg-slate-900/70 p-3 rounded-lg border border-slate-800/80">
                 {activeNode.spec.concurrencyHandling}
               </p>
             </div>
           </div>
 
           {/* Implementation Pattern (PHP 8.3 / Laravel 11) */}
-          <div className="pt-2">
-            <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-2">
+          <div className="pt-1">
+            <div className="font-mono text-[10px] font-bold text-slate-500 uppercase mb-1.5">
               Production Architecture Pattern (PHP 8.3)
             </div>
-            <div className="p-4 rounded-xl bg-[#07080b] border border-white/[0.07] font-mono text-xs overflow-x-auto text-slate-300 leading-relaxed">
+            <div className="p-3.5 rounded-lg bg-[#060a12] border border-slate-800 font-mono text-xs overflow-x-auto text-slate-300 leading-relaxed">
               <pre>{activeNode.spec.codePattern}</pre>
             </div>
           </div>
@@ -319,6 +319,6 @@ DB::transaction(function () use ($transactionId, $amount) {
 
       </div>
 
-    </section>
+    </div>
   );
 };

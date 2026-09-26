@@ -2,112 +2,79 @@ import React, { useState } from 'react';
 import { Mail, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
-  activeTab: string;
-  onSelectTab: (tab: string) => void;
   onOpenContact: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  activeTab,
-  onSelectTab,
-  onOpenContact,
-}) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'workbench', label: 'Architecture' },
-    { id: 'work', label: 'Projects' },
-    { id: 'experience', label: 'Experience' },
+    { href: '#overview', label: 'Overview' },
+    { href: '#architecture', label: 'Architecture' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#experience', label: 'Experience' },
   ];
 
-  const handleNavClick = (id: string) => {
-    onSelectTab(id);
-    setMobileMenuOpen(false);
-  };
-
   return (
-    <header className="w-full">
-      <div className="max-w-2xl mx-auto px-6 py-6 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full bg-[#0b1120]/85 backdrop-blur-md border-b border-slate-800/80">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         
-        {/* Left: Avatar / Logo */}
-        <button
-          onClick={() => handleNavClick('home')}
-          className="focus:outline-none transition-transform hover:scale-105 active:scale-95"
-          title="Farhan Zaman Khan"
-        >
-          <img
-            src="/farhan.jpg"
-            alt="Farhan Zaman Khan"
-            className="w-[42px] h-[42px] rounded-full object-cover border border-white/10 hover:border-white/30 transition-all shadow-sm"
-            width="42"
-            height="42"
-          />
-        </button>
+        {/* Left: Clean text title (No logo, no avatar) */}
+        <a href="#overview" className="text-sm font-bold text-slate-100 tracking-tight hover:text-white transition-colors">
+          Farhan Zaman Khan
+          <span className="text-slate-500 font-normal ml-2 hidden sm:inline">
+            / Payment Systems Engineer
+          </span>
+        </a>
 
         {/* Center: Desktop Navigation Bar */}
         <nav className="hidden sm:flex items-center gap-1">
-          {navItems.map((item) => {
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`px-3 py-1.5 text-sm rounded-lg transition-colors font-medium ${
-                  isActive
-                    ? 'text-sky-400 font-semibold bg-white/[0.04]'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.02]'
-                }`}
-              >
-                {item.label}
-              </button>
-            );
-          })}
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 rounded-lg transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Right: Email Button */}
+        {/* Right: Contact Trigger */}
         <div className="flex items-center gap-2">
-          {/* Email Envelope Button */}
           <button
             onClick={onOpenContact}
-            className="p-2 text-slate-400 hover:text-slate-200 transition-colors rounded-lg hover:bg-white/[0.03]"
-            aria-label="Contact Farhan"
-            title="Send Email"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-lg transition-colors"
           >
-            <Mail className="w-4 h-4" />
+            <Mail className="w-3.5 h-3.5 text-slate-400" />
+            <span>Contact</span>
           </button>
 
           {/* Mobile Menu Toggle */}
           <div className="relative sm:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-slate-400 hover:text-white transition-colors"
+              className="p-1.5 text-slate-400 hover:text-slate-200 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
-            {/* Mobile Dropdown */}
             {mobileMenuOpen && (
-              <div className="absolute top-full right-0 mt-2 w-44 rounded-xl bg-[#111318] border border-white/[0.08] shadow-2xl p-2 z-50">
+              <div className="absolute top-full right-0 mt-2 w-44 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl p-2 z-50">
                 {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => handleNavClick(item.id)}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
-                      activeTab === item.id
-                        ? 'text-blue-400 bg-white/[0.04]'
-                        : 'text-slate-400 hover:text-white hover:bg-white/[0.02]'
-                    }`}
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors"
                   >
                     {item.label}
-                  </button>
+                  </a>
                 ))}
               </div>
             )}
           </div>
-
         </div>
 
       </div>
