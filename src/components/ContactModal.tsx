@@ -31,7 +31,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     e.preventDefault();
     setFormSent(true);
     setTimeout(() => {
-      // Create mailto link as fallback
       const subject = encodeURIComponent(`[Engineering Ingress] ${formData.scope} - ${formData.company || formData.name}`);
       const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\nScope: ${formData.scope}\n\nMessage:\n${formData.message}`);
       window.location.href = `mailto:${PORTFOLIO_DATA.engineer.links.email}?subject=${subject}&body=${body}`;
@@ -39,39 +38,39 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-xl rounded-2xl border border-[#1f283a] bg-[#0c0f16] shadow-2xl p-6 sm:p-8 text-left">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+      <div className="relative w-full max-w-xl rounded-2xl border border-blue-500/20 bg-[#0e1422] shadow-2xl p-6 sm:p-8 text-left">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-lg bg-[#141924] border border-[#20293a] text-slate-400 hover:text-white transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-lg bg-[#080c14] border border-white/[0.08] text-slate-400 hover:text-white transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Header */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase mb-1">
+          <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-blue-400 uppercase mb-1">
             <Terminal className="w-3.5 h-3.5" />
-            <span>Initiate Engineering Ingress</span>
+            <span>Direct Engineering Ingress</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
             Discuss Architecture or Retain Farhan
           </h3>
           <p className="text-xs text-slate-400 mt-1">
-            Available for mission-critical payment architecture, backend contracts, and engineering advisory.
+            Available for payment architecture, backend contracts, and engineering advisory.
           </p>
         </div>
 
         {/* Fast Action: Direct Email Pill */}
-        <div className="mb-6 p-4 rounded-xl bg-[#090b10] border border-[#1b2230] flex flex-wrap items-center justify-between gap-3">
+        <div className="mb-6 p-4 rounded-xl bg-[#080c14] border border-blue-500/15 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-              <Mail className="w-4 h-4 text-emerald-400" />
+            <div className="w-8 h-8 rounded-lg bg-blue-600/15 border border-blue-500/30 flex items-center justify-center">
+              <Mail className="w-4 h-4 text-blue-400" />
             </div>
             <div>
-              <div className="text-[11px] font-mono text-slate-400">Direct Engineering Email</div>
+              <div className="text-[11px] font-mono text-slate-400">Direct Email</div>
               <div className="text-xs font-mono font-bold text-white">
                 {PORTFOLIO_DATA.engineer.links.email}
               </div>
@@ -81,12 +80,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyEmail}
-              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-[#141924] border border-[#212a3c] text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-lg text-xs font-mono bg-blue-600/10 border border-blue-500/20 text-blue-300 hover:text-white flex items-center gap-1.5 transition-colors"
             >
               {copiedEmail ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-300">Copied</span>
+                  <Check className="w-3.5 h-3.5 text-blue-400" />
+                  <span className="text-blue-300">Copied</span>
                 </>
               ) : (
                 <>
@@ -110,9 +109,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
         {/* Message Form */}
         {formSent ? (
-          <div className="py-8 text-center space-y-3 bg-[#080b10] rounded-xl border border-emerald-500/30 p-6">
-            <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto">
-              <ShieldCheck className="w-6 h-6 text-emerald-400" />
+          <div className="py-8 text-center space-y-3 bg-[#080c14] rounded-xl border border-blue-500/30 p-6">
+            <div className="w-12 h-12 rounded-full bg-blue-600/15 border border-blue-500/30 flex items-center justify-center mx-auto">
+              <ShieldCheck className="w-6 h-6 text-blue-400" />
             </div>
             <h4 className="text-white font-bold text-base">Transmission Formatted</h4>
             <p className="text-xs text-slate-300 max-w-sm mx-auto">
@@ -120,7 +119,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </p>
             <button
               onClick={() => setFormSent(false)}
-              className="text-xs font-mono text-emerald-400 hover:underline pt-2 inline-block"
+              className="text-xs font-mono text-blue-400 hover:underline pt-2 inline-block"
             >
               Edit parameters
             </button>
@@ -136,7 +135,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="e.g. Alex Mercer"
-                  className="w-full bg-[#111622] border border-[#1e2637] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div>
@@ -147,7 +146,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="alex@fintech.co"
-                  className="w-full bg-[#111622] border border-[#1e2637] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
                 />
               </div>
             </div>
@@ -160,7 +159,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder="e.g. PayFlow Global"
-                  className="w-full bg-[#111622] border border-[#1e2637] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div>
@@ -168,12 +167,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 <select
                   value={formData.scope}
                   onChange={(e) => setFormData({ ...formData, scope: e.target.value })}
-                  className="w-full bg-[#111622] border border-[#1e2637] rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                  className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
                 >
                   <option value="Payment Gateway Integration">Payment Gateway Integration</option>
                   <option value="Multi-PSP Orchestration & Routing">Multi-PSP Orchestration & Routing</option>
                   <option value="FinTech Backend Architecture">FinTech Backend Architecture</option>
-                  <option value="Full-Time / Senior SDE Hire">Full-Time / Senior SDE Hire</option>
+                  <option value="Senior SDE Role">Senior SDE Role</option>
                   <option value="Technical Advisory / Audit">Technical Advisory / Audit</option>
                 </select>
               </div>
@@ -186,16 +185,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 required
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Describe your current payment routing bottleneck, gateway expansion plan, or backend requirements..."
-                className="w-full bg-[#111622] border border-[#1e2637] rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
+                placeholder="Describe your current payment routing challenge or backend requirements..."
+                className="w-full bg-[#080c14] border border-blue-500/20 rounded-lg px-3 py-2 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-2.5 px-4 rounded-xl font-bold bg-emerald-500 hover:bg-emerald-400 text-black flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg shadow-emerald-500/20"
+              className="w-full py-2.5 px-4 rounded-xl font-bold bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-lg shadow-blue-600/20"
             >
-              <Send className="w-3.5 h-3.5 fill-black" />
+              <Send className="w-3.5 h-3.5 fill-white" />
               <span>Transmit Engineering Ingress</span>
             </button>
           </form>

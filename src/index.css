@@ -8,30 +8,35 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: #0c0e12;
+    background-color: #080c14; /* Deep midnight titanium */
     color: #94a3b8;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {
-    color: #f1f5f9;
+    color: #f8fafc;
   }
 }
 
-/* Subtle architectural dot grid */
-.editorial-grid {
+/* Subtle modern blue ambient glow */
+.blue-ambient {
+  background: radial-gradient(800px circle at 50% 0%, rgba(37, 99, 235, 0.08), transparent 70%);
+}
+
+/* Subtle geometric dot grid */
+.midnight-grid {
   background-size: 32px 32px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(59, 130, 246, 0.07) 1px, transparent 1px);
 }
 
-/* Subtle warm card elevation */
-.warm-surface {
-  background: #12151c;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+/* Midnight card surface with crisp border */
+.midnight-card {
+  background-color: #0e1422;
+  border: 1px solid rgba(59, 130, 246, 0.12);
 }
 
-.warm-surface:hover {
-  border-color: rgba(255, 255, 255, 0.14);
+.midnight-card:hover {
+  border-color: rgba(59, 130, 246, 0.28);
 }
 
 /* Custom scrollbar */
@@ -40,12 +45,12 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0c0e12;
+  background: #080c14;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232834;
+  background: #1e293b;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #333b4d;
+  background: #334155;
 }
