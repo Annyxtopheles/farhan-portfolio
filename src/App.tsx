@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { CoreStack } from './components/CoreStack';
 import { OrchestrationEngine } from './components/OrchestrationEngine';
-import { ProjectsSection } from './components/ProjectsSection';
-import { ArchitecturePillars } from './components/ArchitecturePillars';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
+import { ProjectsSection } from './components/ProjectsSection';
 import { ContactModal } from './components/ContactModal';
 import { Footer } from './components/Footer';
 
@@ -12,32 +12,25 @@ export const App: React.FC = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#080a0d] text-slate-300 font-sans selection:bg-emerald-500/20 selection:text-emerald-300 fintech-grid">
+    <div className="min-h-screen bg-[#07090e] text-slate-300 font-sans selection:bg-emerald-500/20 selection:text-emerald-300 fintech-grid">
       <Header onOpenContact={() => setIsContactOpen(true)} />
       
       <main>
         <Hero onOpenContact={() => setIsContactOpen(true)} />
 
-        {/* The Flagship Interactive Proof-of-Work Section */}
-        <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-6">
-            <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase mb-1">
-              <span>● Live Technical Demonstration</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Test The Payment Engine
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-              Interact with the live simulator below to test smart routing, multi-currency settlement, and simulated gateway failovers in real time.
-            </p>
-          </div>
+        {/* 1. Core Competencies & Stack (3-column layout matching reference) */}
+        <CoreStack />
 
+        {/* 2. Interactive Proof-of-Work Centerpiece */}
+        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-white/10">
           <OrchestrationEngine />
         </section>
 
-        <ProjectsSection />
-        <ArchitecturePillars />
+        {/* 3. Work Experience, Education & Recommendations */}
         <ExperienceTimeline />
+
+        {/* 4. Enterprise & FinTech Projects (2x2 grid) */}
+        <ProjectsSection />
       </main>
 
       <Footer onOpenContact={() => setIsContactOpen(true)} />
