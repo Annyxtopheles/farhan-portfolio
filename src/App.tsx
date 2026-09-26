@@ -178,11 +178,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
         {/* Top Navigation Header: NO duplicate name/logo! Clean navigation */}
         <header className="flex items-center justify-between py-4 border-b border-white/[0.06] shrink-0">
           <div>
-            {currentPage === 'bento' ? (
-              <span className="text-xs font-medium text-slate-400 tracking-wide uppercase">
-                Payment Infrastructure & Rails
-              </span>
-            ) : (
+            {currentPage !== 'bento' && (
               <button
                 onClick={() => navigateTo('bento')}
                 className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors group"
@@ -329,18 +325,14 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               className="lg:col-span-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-semibold text-slate-300">
-                    Payment Architecture & Concurrency
-                  </span>
+                <div className="flex items-center justify-between mb-2">
+                  <h2 className="text-base xl:text-lg font-bold text-slate-200 tracking-tight group-hover:text-slate-100 transition-colors">
+                    Payment Architecture
+                  </h2>
                   <span className="text-xs text-slate-400">
                     200+ Gateways · 700+ APMs
                   </span>
                 </div>
-
-                <h2 className="text-base xl:text-lg font-bold text-slate-200 tracking-tight mb-1.5 group-hover:text-slate-100 transition-colors">
-                  Fault-Tolerant Payment Rail Orchestration
-                </h2>
 
                 <p className="text-xs xl:text-sm text-slate-400 leading-relaxed mb-3 xl:mb-4">
                   Multi-acquirer priority routing, distributed idempotency locks, and ACID double-entry bookkeeping engineered for zero downtime and zero financial drift.
@@ -389,12 +381,8 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-slate-300 mb-1">
-                  Production Platforms
-                </div>
-
                 <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
-                  Key Systems Engineered
+                  Projects
                 </h3>
 
                 <div className="space-y-2 text-xs">
@@ -442,12 +430,8 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-slate-300 mb-1">
-                  Career Record
-                </div>
-
                 <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
-                  Work History
+                  Work Experience
                 </h3>
 
                 {/* Real Software Engineering Roles Timeline */}
@@ -501,12 +485,8 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
             >
               <div>
-                <div className="text-xs font-semibold text-slate-300 mb-1">
-                  Core Technologies
-                </div>
-
                 <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
-                  Backend & Systems Stack
+                  Core Stack
                 </h3>
 
                 <div className="space-y-2 text-xs">
@@ -592,30 +572,33 @@ if (abs(now()->timestamp - $timestamp) > 300) {
         {currentPage !== 'bento' && (
           <main className="py-8 lg:py-10 flex-1">
             
-            {/* DETAIL PAGE 1: ABOUT (Inspired, Grounded Story & Narrative) */}
+            {/* DETAIL PAGE 1: ABOUT (Clean, Unboxed Layout) */}
             {currentPage === 'about' && (
               <div className="space-y-10 text-left max-w-4xl">
                 
-                {/* Hero Header with Large Portrait */}
-                <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex flex-col md:flex-row items-start md:items-center gap-6">
-                  <img
-                    src="/farhan.jpg"
-                    alt={PORTFOLIO_DATA.engineer.name}
-                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border border-white/[0.08] object-cover shadow-xl shrink-0"
-                    width="112"
-                    height="112"
-                  />
-                  <div className="space-y-1.5">
-                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-[11px] text-slate-400 font-medium">
-                      <span>Based in Dhaka, Bangladesh · Remote for Paymid (Cyprus)</span>
+                {/* Profile Block: Photo on Left, Content on Right (Top and Bottom Aligned) */}
+                <div className="flex flex-col sm:flex-row items-stretch gap-6 sm:gap-8">
+                  <div className="w-full sm:w-44 md:w-48 shrink-0">
+                    <img
+                      src="/farhan.jpg"
+                      alt={PORTFOLIO_DATA.engineer.name}
+                      className="w-full h-48 sm:h-full rounded-xl border border-white/[0.08] object-cover object-top shadow-lg"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-between py-0.5 space-y-3 flex-1">
+                    <div className="space-y-2">
+                      <div className="text-xs text-slate-400 font-medium">
+                        Based in Dhaka, Bangladesh · Remote for Paymid (Cyprus)
+                      </div>
+                      <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
+                        {PORTFOLIO_DATA.engineer.name}
+                      </h1>
+                      <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-normal">
+                        Senior Backend & Payment Systems Engineer specializing in multi-PSP orchestration, distributed mutexes, and zero-drift financial ledgers.
+                      </p>
                     </div>
-                    <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
-                      {PORTFOLIO_DATA.engineer.name}
-                    </h1>
-                    <p className="text-sm sm:text-base text-slate-400 font-normal">
-                      Senior Backend & Payment Systems Engineer specializing in multi-PSP orchestration, distributed mutexes, and zero-drift financial ledgers.
-                    </p>
-                    <div className="pt-2 flex items-center gap-3 text-xs text-slate-400">
+
+                    <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-3 border-t border-white/[0.06]">
                       <a
                         href={PORTFOLIO_DATA.engineer.links.github}
                         target="_blank"
@@ -624,7 +607,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                       >
                         GitHub Profile
                       </a>
-                      <span>•</span>
+                      <span className="text-slate-600">•</span>
                       <a
                         href={PORTFOLIO_DATA.engineer.links.linkedin}
                         target="_blank"
@@ -633,7 +616,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                       >
                         LinkedIn Profile
                       </a>
-                      <span>•</span>
+                      <span className="text-slate-600">•</span>
                       <button
                         onClick={handleCopyEmail}
                         className="hover:text-slate-200 transition-colors"
@@ -644,27 +627,27 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   </div>
                 </div>
 
-                {/* 4 Proven Operational Milestones */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
-                    <div className="text-2xl font-bold text-slate-200">7+</div>
-                    <div className="text-xs text-slate-300 font-medium mt-0.5">Years Experience</div>
-                    <p className="text-[11px] text-slate-400 mt-1">High-concurrency backend & fintech platforms.</p>
+                {/* 4 Operational Milestones (Unboxed, Clean Typography) */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-6 border-y border-white/[0.06]">
+                  <div>
+                    <div className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">7+</div>
+                    <div className="text-xs text-slate-300 font-medium mt-1">Years Experience</div>
+                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">High-concurrency backend & fintech platforms.</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
-                    <div className="text-2xl font-bold text-slate-200">200+</div>
-                    <div className="text-xs text-slate-300 font-medium mt-0.5">Payment Gateways</div>
-                    <p className="text-[11px] text-slate-400 mt-1">APMs, cards, and banking connectors integrated.</p>
+                  <div>
+                    <div className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">200+</div>
+                    <div className="text-xs text-slate-300 font-medium mt-1">Payment Gateways</div>
+                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">APMs, cards, and banking connectors integrated.</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
-                    <div className="text-2xl font-bold text-slate-200">&lt;15ms</div>
-                    <div className="text-xs text-slate-300 font-medium mt-0.5">Acquirer Failover</div>
-                    <p className="text-[11px] text-slate-400 mt-1">Automated circuit breaking without checkout loss.</p>
+                  <div>
+                    <div className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">&lt;15ms</div>
+                    <div className="text-xs text-slate-300 font-medium mt-1">Acquirer Failover</div>
+                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">Automated circuit breaking without checkout loss.</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
-                    <div className="text-2xl font-bold text-slate-200">0.00%</div>
-                    <div className="text-xs text-slate-300 font-medium mt-0.5">Ledger Variance</div>
-                    <p className="text-[11px] text-slate-400 mt-1">Strict double-entry bookkeeping precision.</p>
+                  <div>
+                    <div className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">0.00%</div>
+                    <div className="text-xs text-slate-300 font-medium mt-1">Ledger Variance</div>
+                    <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">Strict double-entry bookkeeping precision.</p>
                   </div>
                 </div>
 
@@ -703,31 +686,31 @@ if (abs(now()->timestamp - $timestamp) > 300) {
 
                 </div>
 
-                {/* 4 Core Architectural Principles */}
-                <div className="space-y-3 pt-2">
+                {/* 4 Core Architectural Principles (Unboxed) */}
+                <div className="space-y-4 pt-4 border-t border-white/[0.06]">
                   <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     Core Engineering Invariants
                   </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] space-y-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                    <div className="space-y-1">
                       <div className="text-xs font-bold text-slate-200">01 · Idempotency by Default</div>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         Never assume a reliable network. Every payment mutation must accept an idempotency key and be safely replayable without side effects.
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] space-y-1">
+                    <div className="space-y-1">
                       <div className="text-xs font-bold text-slate-200">02 · Pessimistic Integrity over Hope</div>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         When account balances are mutated, row-level locks (SELECT FOR UPDATE) and serializable transactions guarantee zero overdraft races.
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] space-y-1">
+                    <div className="space-y-1">
                       <div className="text-xs font-bold text-slate-200">03 · Zero-Trust Webhook Ingestion</div>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         Treat asynchronous callbacks as unverified until constant-time HMAC-SHA256 verification and 300s timestamp drift checks confirm origin.
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/[0.015] border border-white/[0.05] space-y-1">
+                    <div className="space-y-1">
                       <div className="text-xs font-bold text-slate-200">04 · Contract Decoupling</div>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         Wrap raw third-party gateway APIs behind strict Polymorphic Strategy Pattern drivers so acquirer breaking changes never leak into core domain logic.
@@ -766,15 +749,9 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'architecture' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                    Technical Architecture
-                  </div>
                   <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
-                    Anatomy of a Fault-Tolerant Payment Rail
+                    Payment Architecture
                   </h1>
-                  <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                    Interactive blueprint of the multi-PSP orchestration pipeline. Select any stage to inspect the production failure mode, architectural resolution, and PHP 8.3 implementation.
-                  </p>
                 </div>
 
                 {/* Stage selector bar */}
@@ -946,15 +923,9 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'projects' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                    Production Platforms
-                  </div>
                   <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
-                    Selected Systems & Production Migrations
+                    Projects
                   </h1>
-                  <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                    Real enterprise platforms across payment gateway orchestration, cross-border credit, and telecom billing backends.
-                  </p>
                 </div>
 
                 <div className="space-y-6">
@@ -1014,15 +985,9 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {currentPage === 'experience' && (
               <div className="space-y-8 text-left max-w-4xl">
                 <div>
-                  <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                    Career Record
-                  </div>
                   <h1 className="text-2xl sm:text-3xl font-bold text-slate-200 tracking-tight">
-                    Work Experience & Academic Background
+                    Work Experience
                   </h1>
-                  <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                    Over seven years building transactional web applications, payment rails, and enterprise microservices.
-                  </p>
                 </div>
 
                 {/* Roles Timeline */}
@@ -1076,44 +1041,17 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                   ))}
                 </div>
 
-                {/* Dedicated Education & Recommendation */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                  
-                  {/* Academic Background / Education */}
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-2">
-                    <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      Academic Background
-                    </div>
-                    <h3 className="text-base font-bold text-slate-200">
-                      Khulna University of Engineering & Technology (KUET)
-                    </h3>
-                    <div className="text-xs text-slate-400 font-medium">
-                      B.Sc. in Electrical, Electronics & Communication Engineering
-                    </div>
-                    <div className="text-xs text-slate-400">
-                      2014 – 2019
-                    </div>
-                    <p className="text-xs text-slate-400 leading-relaxed pt-2 border-t border-white/[0.05]">
-                      Rigorous 4-year engineering foundation in telecommunication protocols, signal processing, network topologies, and computational systems.
-                    </p>
-                  </div>
-
-                  {/* Manager Testimonial */}
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-2">
-                    <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                      Manager Testimonial
-                    </div>
-                    <p className="text-xs text-slate-400 leading-relaxed italic">
-                      "{PORTFOLIO_DATA.recommendations[0].quote}"
-                    </p>
-                    <div className="pt-2 border-t border-white/[0.05] text-xs">
-                      <div className="font-semibold text-slate-200">{PORTFOLIO_DATA.recommendations[0].name}</div>
-                      <div className="text-xs text-slate-400 mt-0.5">
-                        {PORTFOLIO_DATA.recommendations[0].title} · SJ Innovation
-                      </div>
+                {/* Manager Testimonial */}
+                <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-2 mt-4">
+                  <p className="text-xs text-slate-300 leading-relaxed italic">
+                    "{PORTFOLIO_DATA.recommendations[0].quote}"
+                  </p>
+                  <div className="pt-2 border-t border-white/[0.05] text-xs flex flex-wrap items-baseline justify-between gap-1">
+                    <div className="font-semibold text-slate-200">{PORTFOLIO_DATA.recommendations[0].name}</div>
+                    <div className="text-slate-400">
+                      {PORTFOLIO_DATA.recommendations[0].title} · SJ Innovation
                     </div>
                   </div>
-
                 </div>
               </div>
             )}
