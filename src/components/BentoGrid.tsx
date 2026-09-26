@@ -518,7 +518,7 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                     </p>
 
                     <ul className="space-y-1.5 mb-4 text-xs text-slate-400">
-                      {project.architecturePoints.slice(0, 2).map((point, idx) => (
+                      {project.architecturePoints?.slice(0, 2).map((point, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <span className="text-sky-400 mt-0.5">•</span>
                           <span className="leading-relaxed">{point}</span>

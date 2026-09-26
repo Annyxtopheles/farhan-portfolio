@@ -49,7 +49,7 @@ export const ProjectsSection: React.FC = () => {
 
               {/* Architecture Highlights */}
               <div className="space-y-1.5 mb-5 text-xs text-slate-400">
-                {project.architecturePoints.map((point, idx) => (
+                {project.architecturePoints?.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-2">
                     <span className="text-blue-400/80 mt-1">•</span>
                     <span className="leading-relaxed">{point}</span>
