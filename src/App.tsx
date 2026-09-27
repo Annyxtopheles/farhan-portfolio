@@ -169,12 +169,21 @@ if (abs(now()->timestamp - $timestamp) > 300) {
   const activeStage = stages.find(s => s.id === activeStageId) || stages[1];
 
   return (
-    <div className="min-h-screen bg-[#0f1117] text-slate-400 font-sans selection:bg-white/10 selection:text-slate-200 flex flex-col justify-between">
+    <div className="min-h-screen bg-[#0c0e14] text-slate-400 font-sans selection:bg-white/10 selection:text-slate-200 flex flex-col justify-between relative overflow-hidden">
+      {/* Subtle Ambient Lighting (Linear/Stripe aesthetic) */}
+      <div 
+        className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_75%_55%_at_50%_-15%,rgba(56,189,248,0.06),transparent_75%)]" 
+        aria-hidden="true" 
+      />
+      <div 
+        className="pointer-events-none absolute -top-40 right-1/4 w-96 h-96 bg-emerald-500/[0.025] rounded-full blur-3xl" 
+        aria-hidden="true" 
+      />
       
       {/* =========================================================================
           GLOBAL SHELL: CONSISTENT WIDTH (max-w-6xl), NO JUMPING, SOFT PROFESSIONAL PALETTE
           ========================================================================= */}
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col min-h-screen">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col min-h-screen relative z-10">
         
         {/* Top Navigation Header: NO duplicate name/logo! Clean navigation */}
         <header className="flex items-center justify-between py-4 border-b border-white/[0.06] shrink-0">
@@ -249,17 +258,28 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 1: Persona & Bio (5 cols) */}
             <div
               onClick={() => navigateTo('about')}
-              className="lg:col-span-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
+              className="lg:col-span-5 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.15] hover:bg-white/[0.035] transition-all duration-300 cursor-pointer group shadow-[0_4px_24px_-4px_rgba(0,0,0,0.45)] relative overflow-hidden"
             >
               <div>
+                {/* Live Status Badge */}
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-[11px] text-emerald-400 font-medium mb-3.5">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400"></span>
+                  </span>
+                  <span>Active at Paymid · Global Payment Rails</span>
+                </div>
+
                 <div className="flex items-center gap-4 mb-3.5 xl:mb-4">
-                  <img
-                    src="/farhan.jpg"
-                    alt={PORTFOLIO_DATA.engineer.name}
-                    className="w-14 h-14 xl:w-16 xl:h-16 rounded-xl border border-white/[0.06] object-cover bg-black shrink-0"
-                    width="64"
-                    height="64"
-                  />
+                  <div className="relative">
+                    <img
+                      src="/farhan.jpg"
+                      alt={PORTFOLIO_DATA.engineer.name}
+                      className="w-14 h-14 xl:w-16 xl:h-16 rounded-xl border border-white/[0.1] object-cover bg-black shrink-0 ring-1 ring-white/[0.05] group-hover:border-white/[0.2] transition-colors"
+                      width="64"
+                      height="64"
+                    />
+                  </div>
                   <div>
                     <h1 className="text-lg xl:text-xl font-bold text-slate-200 tracking-tight group-hover:text-slate-100 transition-colors">
                       {PORTFOLIO_DATA.engineer.name}
@@ -275,35 +295,33 @@ if (abs(now()->timestamp - $timestamp) > 300) {
                 </p>
 
                 {/* Direct Social Links */}
-                <div className="flex items-center gap-3.5 text-xs text-slate-400 pt-0.5">
+                <div className="flex items-center gap-2 text-xs text-slate-400 pt-0.5">
                   <a
                     href={PORTFOLIO_DATA.engineer.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.025] border border-white/[0.06] hover:bg-white/[0.06] hover:text-slate-200 transition-colors"
                   >
                     <GithubIcon className="w-3.5 h-3.5 text-slate-400" />
                     <span>GitHub</span>
                   </a>
-                  <span className="text-slate-700">•</span>
                   <a
                     href={PORTFOLIO_DATA.engineer.links.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.025] border border-white/[0.06] hover:bg-white/[0.06] hover:text-slate-200 transition-colors"
                   >
                     <LinkedInIcon className="w-3.5 h-3.5 text-slate-400" />
                     <span>LinkedIn</span>
                   </a>
-                  <span className="text-slate-700">•</span>
                   <a
                     href="https://x.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center gap-1.5 hover:text-slate-200 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.025] border border-white/[0.06] hover:bg-white/[0.06] hover:text-slate-200 transition-colors"
                   >
                     <TwitterIcon className="w-3.5 h-3.5 text-slate-400" />
                     <span>Twitter</span>
@@ -323,47 +341,78 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 2: Architecture Focus (7 cols) */}
             <div
               onClick={() => navigateTo('architecture')}
-              className="lg:col-span-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
+              className="lg:col-span-7 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-5 xl:p-6 flex flex-col justify-between hover:border-white/[0.15] hover:bg-white/[0.035] transition-all duration-300 cursor-pointer group shadow-[0_4px_24px_-4px_rgba(0,0,0,0.45)] relative overflow-hidden"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-base xl:text-lg font-bold text-slate-200 tracking-tight group-hover:text-slate-100 transition-colors">
-                    Payment Architecture
-                  </h2>
-                  <span className="text-xs text-slate-400">
+                  <div className="flex items-center gap-2.5">
+                    <h2 className="text-base xl:text-lg font-bold text-slate-200 tracking-tight group-hover:text-slate-100 transition-colors">
+                      Payment Architecture
+                    </h2>
+                    <span className="text-[10px] uppercase font-semibold tracking-wider text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">
+                      Live Engine
+                    </span>
+                  </div>
+                  <span className="text-xs text-slate-400 font-mono">
                     200+ Gateways · 700+ APMs
                   </span>
                 </div>
 
-                <p className="text-xs xl:text-sm text-slate-400 leading-relaxed mb-3 xl:mb-4">
+                <p className="text-xs xl:text-sm text-slate-400 leading-relaxed mb-4">
                   Multi-acquirer priority routing, distributed idempotency locks, and ACID double-entry bookkeeping engineered for zero downtime and zero financial drift.
                 </p>
 
-                {/* 3 Clean Focus Invariant Cards */}
+                {/* VISUAL SYSTEMS PIPELINE: 3 Architectural Core Stages */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  <div className="p-3 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
-                    <div className="text-xs font-semibold text-slate-300">Dynamic Failover</div>
-                    <div className="text-xs text-slate-400 mt-0.5">&lt;15ms automated swap</div>
+                  {/* Step 1 */}
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] group-hover:border-white/[0.1] text-left transition-colors relative overflow-hidden">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-mono font-medium text-slate-400 uppercase tracking-wider">01 · Mutex</span>
+                      <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">Atomic</span>
+                    </div>
+                    <div className="text-xs font-semibold text-slate-200">Redis Idempotency</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
-                      Instant circuit breaker fallbacks when upstream acquirers timeout.
+                      Distributed locks prevent duplicate card charges under network retries.
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
-                    <div className="text-xs font-semibold text-slate-300">Redis Mutex Lock</div>
-                    <div className="text-xs text-slate-400 mt-0.5">Zero double charges</div>
+                  {/* Step 2 */}
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] group-hover:border-white/[0.1] text-left transition-colors relative overflow-hidden">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-mono font-medium text-slate-400 uppercase tracking-wider">02 · Cascades</span>
+                      <span className="text-[10px] font-semibold text-sky-400 bg-sky-500/10 px-1.5 py-0.5 rounded">&lt;15ms</span>
+                    </div>
+                    <div className="text-xs font-semibold text-slate-200">Dynamic Failover</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
-                      Distributed locks guarantee single-execution mutation per key.
+                      Circuit breakers hot-swap acquirers instantly during 502/504 timeouts.
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.015] border border-white/[0.05] text-left">
-                    <div className="text-xs font-semibold text-slate-300">ACID Double-Entry</div>
-                    <div className="text-xs text-slate-400 mt-0.5">Zero rounding drift</div>
+                  {/* Step 3 */}
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] group-hover:border-white/[0.1] text-left transition-colors relative overflow-hidden">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-mono font-medium text-slate-400 uppercase tracking-wider">03 · Ledgers</span>
+                      <span className="text-[10px] font-semibold text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded">0.00 Drift</span>
+                    </div>
+                    <div className="text-xs font-semibold text-slate-200">ACID Double-Entry</div>
                     <p className="text-[11px] text-slate-400 mt-1 leading-snug">
-                      Serializable journal records ensure matching debits and credits sum to zero.
+                      Serializable journal records guarantee matching debits and credits.
                     </p>
                   </div>
+                </div>
+
+                {/* Micro Pipeline Indicator Bar */}
+                <div className="mt-3 py-1.5 px-3 rounded-lg bg-white/[0.015] border border-white/[0.04] flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span className="text-slate-300">Ingress (PCI Token)</span>
+                  </div>
+                  <span className="text-slate-600">→</span>
+                  <span>Redis Mutex</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Routing Engine</span>
+                  <span className="text-slate-600">→</span>
+                  <span className="text-slate-300">Ledger</span>
                 </div>
               </div>
 
@@ -376,117 +425,166 @@ if (abs(now()->timestamp - $timestamp) > 300) {
               </div>
             </div>
 
-            {/* BOX 3: Selected Platforms (4 cols) */}
+            {/* BOX 3: Selected Platforms (4 cols) — Product Catalog */}
             <div
               onClick={() => navigateTo('projects')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.15] hover:bg-white/[0.035] transition-all duration-300 cursor-pointer group shadow-[0_4px_24px_-4px_rgba(0,0,0,0.45)]"
             >
               <div>
-                <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
-                  Projects
-                </h3>
+                <div className="flex items-center justify-between mb-2.5">
+                  <h3 className="text-base font-bold text-slate-200 group-hover:text-slate-100 transition-colors">
+                    Projects
+                  </h3>
+                  <span className="text-[11px] font-mono text-slate-400 bg-white/[0.035] px-2 py-0.5 rounded border border-white/[0.06]">
+                    32 Shipped
+                  </span>
+                </div>
 
-                <div className="space-y-2 text-xs">
-                  {/* Paymid Flagship Feature */}
-                  <div className="p-2.5 rounded-xl bg-white/[0.015] border border-white/[0.05]">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-lg bg-white flex items-center justify-center p-1 shrink-0 shadow-sm border border-white/[0.1] overflow-hidden">
-                        <img
-                          src="/logos/paymid.png"
-                          alt="Paymid"
-                          className="w-full h-full object-contain"
-                        />
+                {/* Paymid Flagship Feature */}
+                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] mb-3 group-hover:border-white/[0.1] transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center p-1 shrink-0 shadow-sm border border-white/[0.1] overflow-hidden">
+                      <img
+                        src="/logos/paymid.png"
+                        alt="Paymid"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <span className="font-semibold text-slate-200 text-xs truncate">Paymid Orchestrator</span>
+                        <span className="text-[10px] text-emerald-400 font-semibold bg-emerald-500/10 px-1.5 py-0.5 rounded">Core PSP</span>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                          <span className="font-semibold text-slate-200 truncate">Paymid Orchestrator</span>
-                          <span className="text-[10px] text-emerald-400/90 font-medium">Flagship</span>
-                        </div>
-                        <div className="text-[11px] text-slate-400 truncate">200+ PSPs · Dynamic Routing</div>
-                      </div>
+                      <div className="text-[11px] text-slate-400 truncate mt-0.5">200+ Gateways · Sub-30ms Router</div>
                     </div>
                   </div>
+                  <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-white/[0.05]">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/[0.03] text-slate-300 font-mono">PHP 8.3</span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/[0.03] text-slate-300 font-mono">Laravel 11</span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/[0.03] text-slate-300 font-mono">Redis</span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/[0.03] text-slate-300 font-mono">MySQL</span>
+                  </div>
+                </div>
 
-                  {/* Secondary platforms list */}
-                  <div className="px-1 space-y-1.5 text-xs">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-300">SJ Innovation (11 Projects)</span>
-                      <span className="text-[11px] text-slate-400">J&J DXP · Simple Therapy</span>
+                {/* Domain Distribution Pills */}
+                <div className="space-y-1.5">
+                  <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider block">Domain Ecosystem</span>
+                  <div className="grid grid-cols-2 gap-1.5 text-[11px]">
+                    <div className="px-2 py-1 rounded bg-white/[0.02] border border-white/[0.05] text-slate-300 flex items-center justify-between">
+                      <span>FinTech Rails</span>
+                      <span className="text-slate-400 font-mono">4</span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-300">Namhost FinTech (3 Rails)</span>
-                      <span className="text-[11px] text-slate-400">Fynbos · Kuda · Broke-Relief</span>
+                    <div className="px-2 py-1 rounded bg-white/[0.02] border border-white/[0.05] text-slate-300 flex items-center justify-between">
+                      <span>Enterprise DXP</span>
+                      <span className="text-slate-400 font-mono">2</span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-400 text-[11px]">GovTech, Telecom & Enterprise (17)</span>
-                      <span className="text-[10px] text-slate-500">2020–23</span>
+                    <div className="px-2 py-1 rounded bg-white/[0.02] border border-white/[0.05] text-slate-300 flex items-center justify-between">
+                      <span>GovTech & Safety</span>
+                      <span className="text-slate-400 font-mono">5</span>
+                    </div>
+                    <div className="px-2 py-1 rounded bg-white/[0.02] border border-white/[0.05] text-slate-300 flex items-center justify-between">
+                      <span>Web & Ledgers</span>
+                      <span className="text-slate-400 font-mono">21</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="pt-2.5 mt-2.5 border-t border-white/[0.05] flex items-center justify-between text-xs text-slate-400">
-                <span>32 Production Projects</span>
+                <span>Filter & Explore All Systems</span>
                 <span className="text-slate-300 group-hover:text-slate-100 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                  <span>View All Projects</span>
+                  <span>View All 32</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </div>
             </div>
 
-            {/* BOX 4: Career Record (4 cols) — Real Engineering Roles Only! */}
+            {/* BOX 4: Career Record (4 cols) — Connected Career Timeline with Company Logos */}
             <div
               onClick={() => navigateTo('experience')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.15] hover:bg-white/[0.035] transition-all duration-300 cursor-pointer group shadow-[0_4px_24px_-4px_rgba(0,0,0,0.45)]"
             >
               <div>
-                <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
-                  Work Experience
-                </h3>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-base font-bold text-slate-200 group-hover:text-slate-100 transition-colors">
+                    Work Experience
+                  </h3>
+                  <span className="text-[11px] font-mono text-slate-400 bg-white/[0.035] px-2 py-0.5 rounded border border-white/[0.06]">
+                    7+ Years
+                  </span>
+                </div>
 
-                <div className="space-y-2 text-xs">
-                  {/* Current Featured Role with Paymid logo */}
-                  <div className="p-2.5 rounded-xl bg-white/[0.015] border border-white/[0.05]">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-7 h-7 rounded-lg bg-white flex items-center justify-center p-1 shrink-0 shadow-sm border border-white/[0.1] overflow-hidden">
-                        <img
-                          src="/logos/paymid.png"
-                          alt="Paymid"
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                          <span className="font-semibold text-slate-200 truncate">Paymid (Cyprus)</span>
-                          <span className="text-[10px] text-emerald-400/90 font-medium">Present</span>
-                        </div>
-                        <div className="text-[11px] text-slate-400 truncate">Software Engineer (SDE-1)</div>
-                      </div>
+                {/* Connected Vertical Timeline */}
+                <div className="relative pl-7 space-y-3 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-px before:bg-white/[0.1]">
+                  
+                  {/* Node 1: Paymid */}
+                  <div className="relative">
+                    <div className="absolute -left-7 top-0.5 w-6 h-6 rounded-md bg-white flex items-center justify-center p-0.5 shadow-sm border border-white/[0.1] overflow-hidden">
+                      <img src="/logos/paymid.png" alt="Paymid" className="w-full h-full object-contain" />
                     </div>
+                    <div className="flex items-baseline justify-between">
+                      <span className="font-semibold text-slate-200 text-xs">Paymid (Cyprus)</span>
+                      <span className="text-[10px] text-emerald-400 font-medium">Present</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-0.5">Software Engineer (SDE-1) — Payments</p>
                   </div>
 
-                  {/* Prior Key Engineering Roles */}
-                  <div className="px-1 space-y-1.5 text-xs">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-300">SJ Innovation</span>
-                      <span className="text-[11px] text-slate-400">Senior Software Eng · 2023–24</span>
+                  {/* Node 2: SJ Innovation */}
+                  <div className="relative">
+                    <div className="absolute -left-7 top-0.5 w-6 h-6 rounded-md bg-white flex items-center justify-center p-0.5 shadow-sm border border-white/[0.1] overflow-hidden">
+                      <img src="/logos/sjinnovation.png" alt="SJ Innovation" className="w-full h-full object-contain" />
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-300">Namhost</span>
-                      <span className="text-[11px] text-slate-400">FinTech Engineer · 2023–24</span>
+                    <div className="flex items-baseline justify-between">
+                      <span className="font-medium text-slate-300 text-xs">SJ Innovation</span>
+                      <span className="text-[10px] text-slate-400">2023–24</span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-400 text-[11px]">Instantwebb · IYLMA · Perky Rabbit · MIEN IT</span>
+                    <p className="text-[11px] text-slate-400 mt-0.5">Senior Software Eng L1 · Promoted 2x</p>
+                  </div>
+
+                  {/* Node 3: Namhost */}
+                  <div className="relative">
+                    <div className="absolute -left-7 top-0.5 w-6 h-6 rounded-md bg-white flex items-center justify-center p-0.5 shadow-sm border border-white/[0.1] overflow-hidden">
+                      <img src="/logos/namhost.png" alt="Namhost" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-baseline justify-between">
+                      <span className="font-medium text-slate-300 text-xs">Namhost (South Africa)</span>
+                      <span className="text-[10px] text-slate-400">2023–24</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-0.5">FinTech & Ledger Platforms Engineer</p>
+                  </div>
+
+                  {/* Node 4: Earlier Companies */}
+                  <div className="relative pt-0.5">
+                    <div className="absolute -left-7 top-0.5 w-6 h-6 rounded-md bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[10px] text-slate-300 font-mono">
+                      +4
+                    </div>
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-slate-400 text-xs">Instantwebb · IYLMA · Perky · MIEN</span>
                       <span className="text-[10px] text-slate-500">2019–23</span>
                     </div>
+                    <div className="flex items-center gap-1.5 mt-1">
+                      <div className="h-4 w-7 rounded bg-white p-0.5 flex items-center justify-center border border-white/[0.1] overflow-hidden">
+                        <img src="/logos/instantwebb.png" alt="Instantwebb" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="h-4 w-4 rounded bg-white p-0.5 flex items-center justify-center border border-white/[0.1] overflow-hidden">
+                        <img src="/logos/iylma.png" alt="IYLMA" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="h-4 w-4 rounded bg-white p-0.5 flex items-center justify-center border border-white/[0.1] overflow-hidden">
+                        <img src="/logos/perkyrabbit.png" alt="Perky Rabbit" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="h-4 w-4 rounded bg-white p-0.5 flex items-center justify-center border border-white/[0.1] overflow-hidden">
+                        <img src="/logos/mienit.png" alt="MIEN IT" className="w-full h-full object-contain" />
+                      </div>
+                    </div>
                   </div>
+
                 </div>
               </div>
 
               <div className="pt-2.5 mt-2.5 border-t border-white/[0.05] flex items-center justify-between text-xs text-slate-400">
-                <span>7 Companies · 7+ Years</span>
+                <span>7 Companies Spanning 2019–2026</span>
                 <span className="text-slate-300 group-hover:text-slate-100 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                  <span>View All 7 Roles</span>
+                  <span>View Timeline</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </div>
@@ -495,75 +593,86 @@ if (abs(now()->timestamp - $timestamp) > 300) {
             {/* BOX 5: Core Tech Stack (4 cols) — With Real Vector Tech Logos! */}
             <div
               onClick={() => navigateTo('architecture')}
-              className="lg:col-span-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.12] hover:bg-white/[0.035] transition-all cursor-pointer group"
+              className="lg:col-span-4 rounded-2xl bg-white/[0.025] border border-white/[0.07] p-4 xl:p-5 flex flex-col justify-between hover:border-white/[0.15] hover:bg-white/[0.035] transition-all duration-300 cursor-pointer group shadow-[0_4px_24px_-4px_rgba(0,0,0,0.45)]"
             >
               <div>
-                <h3 className="text-base font-bold text-slate-200 mb-2.5 group-hover:text-slate-100 transition-colors">
-                  Core Stack
-                </h3>
+                <div className="flex items-center justify-between mb-2.5">
+                  <h3 className="text-base font-bold text-slate-200 group-hover:text-slate-100 transition-colors">
+                    Core Stack
+                  </h3>
+                  <span className="text-[11px] font-mono text-slate-400 bg-white/[0.035] px-2 py-0.5 rounded border border-white/[0.06]">
+                    Production Tech
+                  </span>
+                </div>
 
                 <div className="space-y-2 text-xs">
                   <div>
-                    <span className="text-[11px] text-slate-400 block mb-1">Languages & Frameworks</span>
+                    <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider block mb-1">Languages & Frameworks</span>
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <PhpIcon className="w-3 h-3 text-slate-400" />
                         <span>PHP 8.3</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <LaravelIcon className="w-3 h-3 text-slate-400" />
                         <span>Laravel 11</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <GoIcon className="w-3 h-3 text-slate-400" />
                         <span>Go</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <NodeIcon className="w-3 h-3 text-slate-400" />
                         <span>Node.js</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <SymfonyIcon className="w-3 h-3 text-slate-400" />
                         <span>Symfony</span>
                       </span>
                     </div>
                   </div>
                   <div>
-                    <span className="text-[11px] text-slate-400 block mb-1">Data & Mutex</span>
+                    <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider block mb-1">Data & Mutex</span>
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <RedisIcon className="w-3 h-3 text-slate-400" />
                         <span>Redis Cluster</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <MySqlIcon className="w-3 h-3 text-slate-400" />
                         <span>MySQL 8.0</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <PostgreSqlIcon className="w-3 h-3 text-slate-400" />
                         <span>PostgreSQL</span>
                       </span>
                     </div>
                   </div>
                   <div>
-                    <span className="text-[11px] text-slate-400 block mb-1">Protocols & Standards</span>
+                    <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider block mb-1">Protocols & Standards</span>
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <DockerIcon className="w-3 h-3 text-slate-400" />
                         <span>Docker</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] text-slate-300 text-xs transition-colors">
                         <TypeScriptIcon className="w-3 h-3 text-slate-400" />
                         <span>TypeScript</span>
                       </span>
-                      <span className="px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] text-slate-300 text-xs transition-colors">
                         PCI-DSS Ingress
                       </span>
-                      <span className="px-2 py-0.5 rounded bg-white/[0.025] border border-white/[0.06] text-slate-300 text-xs">
+                      <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] text-slate-300 text-xs transition-colors">
                         HMAC-SHA256
                       </span>
                     </div>
                   </div>
+                </div>
+
+                {/* Tactile Engineering Metric Callout */}
+                <div className="pt-2 mt-2 border-t border-white/[0.04] flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                  <span>Zero-N+1 Discipline</span>
+                  <span className="text-emerald-400 font-semibold">&lt;50ms p99</span>
                 </div>
               </div>
 
